@@ -1,0 +1,5 @@
+package concesionario.model;
+
+public class Empleado {
+
+}

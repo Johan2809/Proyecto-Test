@@ -1,0 +1,35 @@
+package concesionario.model;
+
+public class Administrador {
+    private String nombre;
+    private String apellido;
+    private String usuario;
+    private String contrasena;
+
+    public Administrador(String nombre, String apellido, String usuario, String contrasena) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+    }
+
+    public void verReportes() {
+        // Codigo para ver reportes de negocios realizados por cada uno de los empleados en un periodo de tiempo dado
+    }
+
+    public void registrarEmpleado() {
+        // Codigo para registrar un empleado
+    }
+
+    public void gestionarEmpleado() {
+        // Codigo para gestionar un empleado
+    }
+
+    public void bloquearCuenta() {
+        // Codigo para bloquear una cuenta de empleado
+    }
+
+    public void recuperarContrasena() {
+        // Codigo para recuperar la contrase�a mediante una pregunta de seguridad
+    }
+}

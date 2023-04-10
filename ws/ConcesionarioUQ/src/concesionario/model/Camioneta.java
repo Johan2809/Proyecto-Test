@@ -1,0 +1,23 @@
+package concesionario.model;
+
+public class Camioneta extends Vehiculo{
+	private double capacidadMaletero;
+	private boolean velocidadCrucero;
+	private boolean sensorColision;
+	private boolean sensorTraficoCruzado;
+	private boolean asistenciaPermanenciaCarril;
+    private boolean es4x4;
+
+    public Camioneta(String marca, boolean esNuevo, String modelo, int cambios,TipoTransmision tipoTransmision,TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje,
+                     int nPasajeros, int nPuertas, double capacidadMaletero, boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, int nBolsasDeAire, boolean abs, boolean sensorColision, boolean sensorTraficoCruzado,
+                     boolean asistenciaPermanenciaCarril, boolean es4x4) {
+        super(marca, esNuevo, modelo, cambios, tipoTransmision, tipoCombustible, velocidadMaxima, cilindraje,aireAcondicionado, nPuertas, camaraReversa, nBolsasDeAire, nPasajeros, abs);
+        this.capacidadMaletero = capacidadMaletero;
+        this.velocidadCrucero = velocidadCrucero;
+        this.sensorColision = sensorColision;
+        this.sensorTraficoCruzado = sensorTraficoCruzado;
+        this.asistenciaPermanenciaCarril = asistenciaPermanenciaCarril;
+        this.es4x4 = es4x4;
+
+    }//VERIFICADO 2.0
+}

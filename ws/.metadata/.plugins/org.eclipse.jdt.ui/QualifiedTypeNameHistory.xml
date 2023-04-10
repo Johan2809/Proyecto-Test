@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javafx.scene.ParentBuilder"/>
+<fullyQualifiedTypeName name="javafx.fxml.FXML"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
+<fullyQualifiedTypeName name="concesionario.model.ConcesionarioUQ"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
+<fullyQualifiedTypeName name="concesionario.controllers.InicioSesionController"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="concesionario.application.Aplicacion"/>
+<fullyQualifiedTypeName name="javafx.scene.Parent"/>
+<fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
+<fullyQualifiedTypeName name="javafx.scene.Scene"/>
+</qualifiedTypeNameHistroy>
