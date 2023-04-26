@@ -1,0 +1,51 @@
+package concesionario.model;
+
+public abstract class Vehiculo {
+	protected String marca;
+	protected boolean esNuevo;
+	protected String modelo;
+	protected int cambios;
+	protected TipoTransmision tipoTransmision;
+	protected TipoCombustible tipoCombustible;
+	protected int velocidadMaxima;
+    protected float cilindraje;
+    protected boolean aireAcondicionado;
+    protected int nPuertas;
+    protected boolean camaraReversa;
+    protected int nBolsasDeAire;
+    protected int nPasajeros;
+    protected boolean abs;
+    protected String numeroChasis;
+
+    public Vehiculo(String marca, boolean esNuevo, String modelo, int cambios, TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje, boolean aireAcondicionado,
+    				int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros, boolean abs, String numeroChasis) {
+        this.marca = marca;
+        this.esNuevo = esNuevo;
+        this.modelo = modelo;
+        this.cambios = cambios;
+        this.tipoTransmision = tipoTransmision;
+        this.tipoCombustible = tipoCombustible;
+        this.velocidadMaxima = velocidadMaxima;
+        this.cilindraje = cilindraje;
+        this.aireAcondicionado = aireAcondicionado;
+        this.nPuertas = nPuertas;
+        this.camaraReversa = camaraReversa;
+        this.nBolsasDeAire = nBolsasDeAire;
+        this.nPasajeros = nPasajeros;
+        this.abs = abs;
+        this.numeroChasis = numeroChasis;
+    }
+
+	public String getNumeroChasis() {
+		return numeroChasis;
+	}
+
+	public void setNumeroChasis(String numeroChasis) {
+		this.numeroChasis = numeroChasis;
+	}
+
+	public boolean pasarRevisionTecnica() {
+
+		return false;
+	}
+}

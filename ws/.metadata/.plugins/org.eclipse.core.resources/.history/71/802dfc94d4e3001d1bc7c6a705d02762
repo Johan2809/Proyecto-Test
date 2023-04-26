@@ -1,0 +1,3 @@
+package concesionario.model;
+
+public class Moto extends Vehiculo{

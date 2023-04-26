@@ -10,8 +10,8 @@ public class Camioneta extends Vehiculo{
 
     public Camioneta(String marca, boolean esNuevo, String modelo, int cambios,TipoTransmision tipoTransmision,TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje,
                      int nPasajeros, int nPuertas, double capacidadMaletero, boolean aireAcondicionado, boolean camaraReversa, boolean velocidadCrucero, int nBolsasDeAire, boolean abs, boolean sensorColision, boolean sensorTraficoCruzado,
-                     boolean asistenciaPermanenciaCarril, boolean es4x4) {
-        super(marca, esNuevo, modelo, cambios, tipoTransmision, tipoCombustible, velocidadMaxima, cilindraje,aireAcondicionado, nPuertas, camaraReversa, nBolsasDeAire, nPasajeros, abs);
+                     boolean asistenciaPermanenciaCarril, boolean es4x4,String numeroChasis) {
+        super(marca, esNuevo, modelo, cambios, tipoTransmision, tipoCombustible, velocidadMaxima, cilindraje,aireAcondicionado, nPuertas, camaraReversa, nBolsasDeAire, nPasajeros, abs, numeroChasis);
         this.capacidadMaletero = capacidadMaletero;
         this.velocidadCrucero = velocidadCrucero;
         this.sensorColision = sensorColision;

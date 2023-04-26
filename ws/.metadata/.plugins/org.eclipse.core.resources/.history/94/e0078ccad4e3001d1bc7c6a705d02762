@@ -1,0 +1,10 @@
+package concesionario.model;
+
+import java.util.ArrayList;
+
+public class ConcesionarioUQ {
+	private String nombre;
+	private String direccion;
+	Empleado empleado;
+
+}

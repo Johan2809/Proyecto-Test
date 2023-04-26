@@ -1,0 +1,99 @@
+package concesionario.model;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+import concesionario.exceptions.EmpleadoException;
+
+public class Empleado {
+    private String nombre;
+    private String idEmpleado;
+    private ArrayList<Vehiculo>listaVehiculos;
+    private ArrayList<Cliente>listaClientes;
+
+    public Empleado(String nombre, String idEmpleado) {
+        this.nombre = nombre;
+        this.idEmpleado = idEmpleado;
+    }
+
+    public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(String idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
+
+	public String registroVehiculo(String marca, boolean esNuevo, String modelo, int cambios, TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje, boolean aireAcondicionado,
+			int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros, boolean abs) throws EmpleadoException {
+		String mensaje = "El vehiculo ha sido registrado";
+		String accion = "El vehiculo sera para la venta";
+		Vehiculo nuevoVehiculo = new Vehiculo(String marca, boolean esNuevo, String modelo, int cambios, TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje, boolean aireAcondicionado,
+				int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros, boolean abs);
+		if(esNuevo==true){
+			return accion;
+		}
+		else{
+		 accion="El vehiculo sera para alquilar";
+		}
+
+        System.out.println("Se registró un vehículo para " + accion + ": ");
+		return accion;
+    }
+//	public String crearEstudiante(String nombres, String apellidos, Integer edad, String programa, String estado,
+//			String identificacion) throws Exception {
+//		String mensaje = "El estudiante ha sido registrado";
+//		boolean estudianteEncontrado = verificarEstudiante(identificacion);
+//		if (estudianteEncontrado == true) {
+//			throw new Exception("El estudiante ya existe");
+//		} else {
+//			Estudiante nuevoEstudiante = new Estudiante(nombres, apellidos, edad, programa, estado, identificacion);
+//			listaEstudiantes.add(nuevoEstudiante);
+//		}
+//		return mensaje;
+//	}
+
+//	private boolean verificarEstudiante(String identificacion) {
+//		boolean verificado = false;
+//		for (Estudiante estudianteaux : listaEstudiantes) {
+//			if (estudianteaux.getIdentificacion().equals(identificacion)) {
+//				verificado = true;
+//				return verificado;
+//			}
+//		}
+//		return verificado;
+//	}
+
+    public void registrarCliente(String cliente) throws EmpleadoException {
+        // Lógica para registrar un cliente
+        System.out.println("Se registró un nuevo cliente: " + cliente);
+    }
+
+    public void alquilarVehiculo(String vehiculo, String cliente) {
+        // Lógica para alquilar un vehículo a un cliente
+        System.out.println("El cliente " + cliente + " alquiló el vehículo: " + vehiculo);
+    }
+
+    public void venderVehiculo(String vehiculo, String cliente) {
+        // Lógica para vender un vehículo a un cliente
+        System.out.println("Se vendió el vehículo: " + vehiculo + " al cliente " + cliente);
+    }
+
+    public void comprarVehiculo(String vehiculo, String cliente) {
+        // Lógica para comprar un vehículo de un cliente
+        System.out.println("Se compró el vehículo: " + vehiculo + " del cliente " + cliente);
+    }
+
+    public void registroTransacciones(String transaccion) {
+        // Lógica para registrar una transacción
+        System.out.println("Se registró la transacción: " + transaccion);
+    }
+}

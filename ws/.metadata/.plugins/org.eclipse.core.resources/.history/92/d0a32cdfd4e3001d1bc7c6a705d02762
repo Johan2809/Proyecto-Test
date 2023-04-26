@@ -1,0 +1,16 @@
+package concesionario.model;
+
+import java.util.ArrayList;
+
+public class ConcesionarioUQ {
+	private String nombre;
+	private String direccion;
+
+	public static void main(String[] args) {
+		// Registrar un nuevo vehículo para la venta
+		try {
+			empleado.registroVehiculo("Toyota", true, "Corolla", 6, Tipo
+
+	}
+
+}

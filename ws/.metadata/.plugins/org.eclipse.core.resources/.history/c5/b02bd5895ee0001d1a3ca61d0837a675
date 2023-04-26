@@ -1,0 +1,15 @@
+package concesionario.model;
+
+public class Cliente {
+	public Cliente(String nombre2, String apellido, String usuario, String contrasena) {
+		// TODO Auto-generated constructor stub
+	}
+	private String nombre;
+	private String apellido;
+	private String usuario;
+	private String contrasena;
+	private String correoElectronico;
+	private String identificacion;
+
+
+}

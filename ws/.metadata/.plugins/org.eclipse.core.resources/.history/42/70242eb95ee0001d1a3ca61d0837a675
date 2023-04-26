@@ -1,0 +1,124 @@
+package concesionario.model;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import concesionario.model.Vehiculo;
+
+import concesionario.exceptions.EmpleadoException;
+import concesionario.exceptions.VehiculoException;
+
+public class Empleado {
+    private String nombre;
+    private String idEmpleado;
+    private ArrayList<Vehiculo>listaVehiculos;
+    private ArrayList<Cliente>listaClientes;
+
+    public Empleado(String nombre, String idEmpleado) {
+        this.nombre = nombre;
+        this.idEmpleado = idEmpleado;
+    }
+
+    public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getIdEmpleado() {
+		return idEmpleado;
+	}
+
+	public void setIdEmpleado(String idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
+//CRUD VEHICULO
+	public String registroVehiculo(String marca, boolean esNuevo, String modelo, int cambios, TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje, boolean aireAcondicionado,
+			int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros, boolean abs, String numeroChasis) throws EmpleadoException {
+		String mensaje = "El vehiculo ha sido registrado";
+		String accion = "El vehiculo sera para la venta";
+		Vehiculo nuevoVehiculo = new Vehiculo( marca, esNuevo, modelo, cambios,tipoTransmision,tipoCombustible, velocidadMaxima, cilindraje, aireAcondicionado,
+				nPuertas, camaraReversa,nBolsasDeAire,nPasajeros,abs,numeroChasis);
+		listaVehiculos.add(nuevoVehiculo);
+		if(esNuevo==false){
+			accion="El vehiculo sera para alquilar";
+		}
+		return accion;
+        System.out.println("Se registró un vehículo para " + accion + ": ");
+    }
+
+	public Vehiculo obtenerVehiculo(String numeroChasis){
+		Vehiculo vehiculoEncontrado = null;
+		for (Vehiculo vehiculo : listaVehiculos) {
+			if (vehiculo.getNumeroChasis().equals(numeroChasis)) {
+			vehiculoEncontrado = vehiculo;
+			}
+		}
+		return vehiculoEncontrado;
+	}
+	public void eliminarVehiculo(String numeroChasis) throws VehiculoException{
+		Vehiculo vehiculoEncontrado= obtenerVehiculo(numeroChasis);
+		if(vehiculoEncontrado==null){
+			throw new VehiculoException("El Vehiculo no esta registrado");
+			}
+		listaVehiculos.remove(vehiculoEncontrado);
+	}
+	public String actualizarVehiculo(String marca, boolean esNuevo, String modelo, int cambios, TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje, boolean aireAcondicionado,
+			int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros, boolean abs, String numeroChasis) throws VehiculoException{
+		Vehiculo vehiculoEncontrado = obtenerVehiculo(numeroChasis);
+		if(vehiculoEncontrado == null){
+			throw new VehiculoException("El vehiculo no se encuentra registrado");
+		}
+		vehiculoEncontrado.setNumeroChasis(marca);
+		vehiculoEncontrado.setEsNuevo(esNuevo);
+		vehiculoEncontrado.setModelo(modelo);
+		vehiculoEncontrado.setCambios(cambios);
+		vehiculoEncontrado.setTipoTransmision(tipoTransmision);
+		vehiculoEncontrado.setTipoCombustible(tipoCombustible);
+		vehiculoEncontrado.setVelocidadMaxima(velocidadMaxima);
+		vehiculoEncontrado.setCilindraje(cilindraje);
+		vehiculoEncontrado.setAireAcondicionado(aireAcondicionado);
+		vehiculoEncontrado.setnPuertas(nPuertas);
+		vehiculoEncontrado.setCamaraReversa(camaraReversa);
+		vehiculoEncontrado.setnBolsasDeAire(nBolsasDeAire);
+		vehiculoEncontrado.setnPasajeros(nPasajeros);
+		vehiculoEncontrado.setAbs(abs);
+		vehiculoEncontrado.setNumeroChasis(numeroChasis);
+		return "El vehiculo ha sido actualizado";
+	}
+
+public String registrarClientes (String usuario, String  nombre, String apellido, String contrasena ) throws EmpleadoException{
+
+		String mensaje = "El cliente ha sido registrado";
+		boolean ClienteEncontrado = verificarCliente(usuario);
+		if( ClienteEncontrado == true){
+			throw new EmpleadoException("El cliente ya existe");
+		}else{
+			Cliente nuevoCliente = new Cliente(nombre, apellido, usuario,contrasena );
+			listaCliente.add(nuevoCliente);
+		}
+		return mensaje;
+	}
+
+
+    public void alquilarVehiculo(String vehiculo, String cliente) {
+        // Lógica para alquilar un vehículo a un cliente
+        System.out.println("El cliente " + cliente + " alquiló el vehículo: " + vehiculo);
+    }
+
+    public void venderVehiculo(String vehiculo, String cliente) {
+        // Lógica para vender un vehículo a un cliente
+        System.out.println("Se vendió el vehículo: " + vehiculo + " al cliente " + cliente);
+    }
+
+    public void comprarVehiculo(String vehiculo, String cliente) {
+        // Lógica para comprar un vehículo de un cliente
+        System.out.println("Se compró el vehículo: " + vehiculo + " del cliente " + cliente);
+    }
+
+    public void registroTransacciones(String transaccion) {
+        // Lógica para registrar una transacción
+        System.out.println("Se registró la transacción: " + transaccion);
+    }
+}
