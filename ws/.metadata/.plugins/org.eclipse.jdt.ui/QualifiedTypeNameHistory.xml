@@ -11,4 +11,7 @@
 <fullyQualifiedTypeName name="javafx.scene.Parent"/>
 <fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
 <fullyQualifiedTypeName name="javafx.scene.Scene"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="concesionario.exceptions.AdministradorException"/>
+<fullyQualifiedTypeName name="concesionario.exceptions.EmpleadoException"/>
 </qualifiedTypeNameHistroy>
