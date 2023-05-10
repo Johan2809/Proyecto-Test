@@ -13,5 +13,10 @@
 <fullyQualifiedTypeName name="javafx.scene.Scene"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="concesionario.exceptions.AdministradorException"/>
+<fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+<fullyQualifiedTypeName name="java.time.LocalDate"/>
+<fullyQualifiedTypeName name="java.util.UUID"/>
+<fullyQualifiedTypeName name="java.net.PasswordAuthentication"/>
 <fullyQualifiedTypeName name="concesionario.exceptions.EmpleadoException"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
 </qualifiedTypeNameHistroy>

@@ -1,6 +1,5 @@
 package concesionario.model;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import concesionario.model.Vehiculo;
 import concesionario.exceptions.ClienteException;
@@ -8,22 +7,70 @@ import concesionario.exceptions.EmpleadoException;
 import concesionario.exceptions.VehiculoException;
 
 public class Empleado {
-	private String nombre;
-	private String idEmpleado;
-	private ArrayList<Vehiculo> listaVehiculos;
-	private ArrayList<Cliente> listaClientes;
+    private String nombre;
+    private String apellido;
+    private String usuario;
+    private String contrasenia;
+    private String correoElectronico;
+    private String idEmpleado;
+    private String respuestaSeguridad;
+    private boolean cuentaBloqueada;
+    private ArrayList<Vehiculo> listaVehiculos;
+    private ArrayList<Cliente> listaClientes;
+    private ArrayList<Transaccion> listaTransacciones;
 
-	public Empleado(String nombre, String idEmpleado) {
-		this.nombre = nombre;
-		this.idEmpleado = idEmpleado;
-	}
+    public Empleado(String nombre, String apellido, String usuario, String contrasenia, String idEmpleado,
+                    String correoElectronico, String respuestaSeguridad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+        this.idEmpleado = idEmpleado;
+        this.correoElectronico = correoElectronico;
+        this.respuestaSeguridad = respuestaSeguridad;
+        this.listaVehiculos = new ArrayList<Vehiculo>();
+        this.listaClientes = new ArrayList<Cliente>();
+        this.listaTransacciones = new ArrayList<Transaccion>();
+    }
 
-	public String getNombre() {
+    public String getNombre() {
 		return nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+	public String getCorreoElectronico() {
+		return correoElectronico;
+	}
+
+	public void setCorreoElectronico(String correoElectronico) {
+		this.correoElectronico = correoElectronico;
 	}
 
 	public String getIdEmpleado() {
@@ -33,6 +80,85 @@ public class Empleado {
 	public void setIdEmpleado(String idEmpleado) {
 		this.idEmpleado = idEmpleado;
 	}
+
+	public String getRespuestaSeguridad() {
+		return respuestaSeguridad;
+	}
+
+	public void setRespuestaSeguridad(String respuestaSeguridad) {
+		this.respuestaSeguridad = respuestaSeguridad;
+	}
+
+	public ArrayList<Vehiculo> getListaVehiculos() {
+		return listaVehiculos;
+	}
+
+	public void setListaVehiculos(ArrayList<Vehiculo> listaVehiculos) {
+		this.listaVehiculos = listaVehiculos;
+	}
+
+	public ArrayList<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
+	public void setListaClientes(ArrayList<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+
+	public ArrayList<Transaccion> getListaTransacciones() {
+		return listaTransacciones;
+	}
+
+	public void setListaTransacciones(ArrayList<Transaccion> listaTransacciones) {
+		this.listaTransacciones = listaTransacciones;
+	}
+
+	public boolean isCuentaBloqueada() {
+		return cuentaBloqueada;
+	}
+
+	public void setCuentaBloqueada(boolean cuentaBloqueada) {
+		this.cuentaBloqueada = cuentaBloqueada;
+	}
+
+	public void registrarVehiculo(Vehiculo vehiculo) {
+        listaVehiculos.add(vehiculo);
+    }
+
+    public void registrarCliente(Cliente cliente) {
+        listaClientes.add(cliente);
+    }
+
+    public void alquilarVehiculo(Vehiculo vehiculo, Cliente cliente) {
+        if (listaVehiculos.contains(vehiculo)) {
+            vehiculo.alquilar(cliente);
+        } else {
+            System.out.println("El vehículo no se encuentra en el inventario");
+        }
+    }
+
+    public void venderVehiculo(Vehiculo vehiculo, Cliente cliente) {
+        if (listaVehiculos.contains(vehiculo)) {
+            vehiculo.vender(cliente);
+            listaVehiculos.remove(vehiculo);
+        } else {
+            System.out.println("El vehículo no se encuentra en el inventario");
+        }
+    }
+
+    public void comprarVehiculo(Vehiculo vehiculo, Cliente cliente) {
+        if (vehiculo.revisionTecnicaAprobada()) {
+            listaVehiculos.add(vehiculo);
+            cliente.getListaVehiculos().remove(vehiculo);
+        } else {
+            System.out.println("El vehículo no ha pasado la revisión técnica");
+        }
+    }
+
+    public void registrarTransaccion(Transaccion transaccion) {
+        listaTransacciones.add(transaccion);
+//		System.out.println("Empleado " + nombre + " realizó una " + TipoTransaccion + " del vehículo " + vehiculo.getModelo() + " al cliente " + cliente.getNombre());
+    }
 
 	// CRUD VEHICULO
 	public String registroVehiculo(String marca, boolean esNuevo, String modelo, int cambios,
@@ -153,31 +279,4 @@ public class Empleado {
 		return " El cliente ha sido actualizado ";
 	}
 
-	public void alquilarVehiculo(String vehiculo, String cliente) {
-		boolean vehiculoVerificado=verificarVehiculo(vehiculo,cliente);
-			if(vehiculoVerificado==true){
-
-			}
-		System.out.println("El cliente " + cliente + " alquiló el vehículo: " + vehiculo);
-	}
-
-	private boolean verificarVehiculo(String vehiculo, String cliente) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public void venderVehiculo(String vehiculo, String cliente) {
-		// Lógica para vender un vehículo a un cliente
-		System.out.println("Se vendió el vehículo: " + vehiculo + " al cliente " + cliente);
-	}
-
-	public void comprarVehiculo(String vehiculo, String cliente) {
-		// Lógica para comprar un vehículo de un cliente
-		System.out.println("Se compró el vehículo: " + vehiculo + " del cliente " + cliente);
-	}
-
-	public void registroTransacciones(String transaccion) {
-		// Lógica para registrar una transacción
-		System.out.println("Se registró la transacción: " + transaccion);
-	}
 }

@@ -1,5 +1,7 @@
 package concesionario.model;
 
+import java.util.ArrayList;
+
 public class Cliente {
 
 	private String nombre;
@@ -66,6 +68,11 @@ public class Cliente {
 
 	public void setIdentificacion(String identificacion) {
 		this.identificacion = identificacion;
+	}
+
+	public ArrayList<Vehiculo> getListaVehiculos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

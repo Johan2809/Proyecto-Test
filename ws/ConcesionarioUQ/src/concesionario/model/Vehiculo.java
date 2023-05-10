@@ -161,4 +161,20 @@ public class Vehiculo {
 
 		return false;
 	}
+
+
+	public void alquilar(Cliente cliente) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public boolean revisionTecnicaAprobada() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public void vender(Cliente cliente) {
+		// TODO Auto-generated method stub
+
+	}
 }
