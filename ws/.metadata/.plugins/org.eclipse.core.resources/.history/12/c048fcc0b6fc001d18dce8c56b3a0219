@@ -1,0 +1,57 @@
+package concesionario.application;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+public class Aplicacion extends Application {
+
+	@Override
+	public void start(Stage primaryStage) {
+		try {
+	        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/FacturaView.fxml"));
+	        Parent root = loader.load();
+
+	        // Obtener el controlador y llamar al método setStage()
+	        FacturaController controller = loader.getController();
+
+	        // Crear una instancia de ClienteManager
+	        ClienteManager clienteManager = new ClienteManager();
+
+	        // Asignar la instancia de ClienteManager al controlador
+	        controller.setClienteManager(clienteManager);
+	        controller.setStage(primaryStage);
+
+	        Scene scene = new Scene(root);
+	        primaryStage.setScene(scene);
+	        primaryStage.show();
+	    }
+
+	}
+
+
+	public void mostrarCrudUsuario(String ruta) {
+		try {
+			FXMLLoader ventana = new FXMLLoader();
+			ventana.setLocation(Aplicacion.class.getResource(ruta));
+
+			AnchorPane diseño = (AnchorPane)ventana.load();
+			CrudUsuarioController crudUsuarioController = ventana.getController();
+			crudUsuarioController.setAplicacion(this);
+
+			Scene lugar = new Scene(diseño);
+			Escena.setScene(lugar);
+			Escena.show();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
+}

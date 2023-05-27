@@ -4,13 +4,7 @@
 <fullyQualifiedTypeName name="javafx.fxml.FXML"/>
 <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
 <fullyQualifiedTypeName name="concesionario.model.ConcesionarioUQ"/>
-<fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
-<fullyQualifiedTypeName name="concesionario.controllers.InicioSesionController"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="concesionario.application.Aplicacion"/>
-<fullyQualifiedTypeName name="javafx.scene.Parent"/>
-<fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
-<fullyQualifiedTypeName name="javafx.scene.Scene"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="concesionario.exceptions.AdministradorException"/>
 <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
@@ -19,4 +13,18 @@
 <fullyQualifiedTypeName name="java.net.PasswordAuthentication"/>
 <fullyQualifiedTypeName name="concesionario.exceptions.EmpleadoException"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.AnchorPane"/>
+<fullyQualifiedTypeName name="javafx.fxml.FXMLLoader"/>
+<fullyQualifiedTypeName name="javafx.scene.Parent"/>
+<fullyQualifiedTypeName name="javafx.application.Application"/>
+<fullyQualifiedTypeName name="javafx.stage.Stage"/>
+<fullyQualifiedTypeName name="concesionario.InicioSesionController"/>
+<fullyQualifiedTypeName name="javafx.scene.Scene"/>
+<fullyQualifiedTypeName name="concesionario.controllers.InicioSesionController"/>
+<fullyQualifiedTypeName name="javafx.event.ActionEvent"/>
+<fullyQualifiedTypeName name="concesionario.controllers.AdministradorController"/>
+<fullyQualifiedTypeName name="concesionario.application.Aplicacion"/>
+<fullyQualifiedTypeName name="javafx.scene.control.TextField"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+<fullyQualifiedTypeName name="javafx.scene.control.Alert"/>
 </qualifiedTypeNameHistroy>

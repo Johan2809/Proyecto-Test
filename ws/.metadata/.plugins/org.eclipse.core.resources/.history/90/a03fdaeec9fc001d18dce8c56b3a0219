@@ -1,0 +1,60 @@
+package concesionario.controllers;
+
+import concesionario.application.Aplicacion;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+public class InicioSesionController {
+    private Stage stage;
+    private Aplicacion Aplicacion; // Nuevo
+
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
+    }
+
+    public void setAplicacion(Aplicacion aplicacion) { // Nuevo
+        this.Aplicacion = aplicacion;
+    }
+    @FXML
+    private Button btnIngresar;
+
+    @FXML
+    private TextField txtUsuario;
+
+    @FXML
+    private TextField txtContrasenia;
+
+    @FXML
+    private Button btnRecuperarContrasenia;
+
+	@FXML
+	private Button btnIngresarComoCliente;
+
+    @FXML
+    void IngresarComoCliente(ActionEvent event) {
+
+    }
+    @FXML
+    void Ingresar(ActionEvent event){
+        String usuario = txtUsuario.getText();
+        String contrasenia = txtContrasenia.getText();
+
+        if (usuario.equals("admin") && contrasenia.equals("123")) {
+            // Acceso como administrador
+        	 Aplicacion.mostrarAdministrador("/concesionario/views/AdministradorView.fxml");
+        } else if (usuario.equals("empleado1") && contrasenia.equals("123")) {
+            // Acceso como empleado
+            mostrarInterfazEmpleado();
+        } else {
+            mostrarAlerta("Credenciales incorrectas. Por favor, intenta nuevamente.");
+        }
+    }
+    @FXML
+    void recuperarContrasenia(ActionEvent event) {
+
+    }
+
+}

@@ -1,90 +1,70 @@
 package concesionario.controllers;
 
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import javax.swing.JOptionPane;
 
 import concesionario.application.Aplicacion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class InicioSesionController {
+    private Stage stage;
+    private Aplicacion Aplicacion; // Nuevo
 
-    @FXML
-    private ResourceBundle resources;
+    public void setStage(Stage primaryStage) {
+        this.stage = primaryStage;
+    }
 
+    public void setAplicacion(Aplicacion aplicacion) { // Nuevo
+        this.Aplicacion = aplicacion;
+    }
     @FXML
-    private URL location;
-
-    @FXML
-    private Button btnIniciarSesion;
+    private Button btnIngresar;
 
     @FXML
     private TextField txtUsuario;
 
     @FXML
-    private PasswordField txtContrasenia;
-
-	private Aplicacion aplicacion;
-
-
+    private TextField txtContrasenia;
 
     @FXML
-//    void iniciarSesionEvent(ActionEvent event) {
-//    	iniciarSesionAction();
-//    }
-//
-////    private void iniciarSesionAction() {
-
-//    	String usuario = "";
-//    	String contrasenia = "";
-
-//    	usuario = txtUsuario.getText();
-//    	contrasenia = txtContrasenia.getText();
-
-//  	if(datosValidos(usuario,contrasenia)){
-//
-//    		boolean usuarioValido = aplicacion.verificarUsuario(usuario,contrasenia);
-//    		if(usuarioValido){
-//    			aplicacion.mostrarVentanaInicioSesion();
-//    		}else{
-//    			mostrarMensaje("Notificaci�n Inicio sesion", "Usuario no existe", "Los datos ingresados no corresponde a un usuario valido", AlertType.INFORMATION);
-//
-//    		}
-//    	}else{
-//			mostrarMensaje("Notificaci�n Inicio sesion", "Datos Incompletos", "Debe ingresar los datos correctamente, despues de 3 intentos se bloqueara el usuario", AlertType.WARNING);
-//
-//    	}
-//
-//	}
-    public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
-
-		Alert alert = new Alert(alertType);
-		alert.setTitle(titulo);
-		alert.setHeaderText(header);
-		alert.setContentText(contenido);
-		alert.showAndWait();
-	}
-	private boolean datosValidos(String usuario, String contrasenia) {
-		if(usuario.equals("") || contrasenia.equals("")){
-			return false;
-		}
-		return true;
-	}
+    private Button btnRecuperarContrasenia;
 
 	@FXML
-    void initialize() {
+	private Button btnIngresarComoCliente;
+
+    @FXML
+    void IngresarComoCliente(ActionEvent event) {
 
     }
+    @FXML
+    void Ingresar(ActionEvent event){
+        String usuario = txtUsuario.getText();
+        String contrasenia = txtContrasenia.getText();
 
-	public void setAplicacion(Aplicacion aplicacion) {
-		this.aplicacion=aplicacion;
+        if (usuario.equals("admin") && contrasenia.equals("123")) {
+            // Acceso como administrador
+        	 Aplicacion.mostrarAdministrador("/concesionario/views/AdministradorView.fxml");
+        } else if (usuario.equals("empleado1") && contrasenia.equals("123")) {
+            // Acceso como empleado
+            JOptionPane.showMessageDialog(null, "Aun no mi ciela");
+        } else {
+            mostrarAlerta("Credenciales incorrectas. Por favor, intenta nuevamente.");
+        }
+    }
+    private void mostrarAlerta(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+    @FXML
+    void recuperarContrasenia(ActionEvent event) {
 
-	}
+    }
 
 }

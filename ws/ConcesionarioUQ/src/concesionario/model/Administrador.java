@@ -77,68 +77,6 @@ public class Administrador {
 
 	}
 
-
-//	public void recuperarContrasena(String usuario, String respuesta) throws EmpleadoException {
-//		// Buscamos al empleado en la lista de empleados
-//		Empleado empleado = buscarEmpleadoPorUsuario(usuario);
-//		if (empleado == null) {
-//			// Si el empleado no está registrado, lanzamos una excepción
-//			throw new EmpleadoException("El empleado no está registrado");
-//		}
-//		// Verificamos que la respuesta a la pregunta de seguridad sea correcta
-//		if (!empleado.getRespuestaSeguridad().equals(respuesta)) {
-//			// Si la respuesta es incorrecta, lanzamos una excepción
-//			throw new EmpleadoException("La respuesta a la pregunta de seguridad es incorrecta");
-//		}
-//	}
-//
-//	public void recuperarContrasenaPorEmail(String correoElectronico) throws EmpleadoException {
-//		Empleado empleadoEncontrado = buscarEmpleadoPorEmail(correoElectronico);
-//		if (empleadoEncontrado == null) {
-//			throw new EmpleadoException("No existe un empleado con este correo electrónico");
-//		}
-//
-//	}
-//
-//	private Empleado buscarEmpleadoPorEmail(String correoElectronico) {
-//
-//		return null;
-//	}
-//
-//	// public void enviarCorreo(String destinatario, String asunto, String
-//	// cuerpo) throws EmpleadoException {
-//	// Properties propiedades = new Properties();
-//	// propiedades.put("mail.smtp.host", "smtp.gmail.com");
-//	// propiedades.put("mail.smtp.port", "587");
-//	// propiedades.put("mail.smtp.auth", "true");
-//	// propiedades.put("mail.smtp.starttls.enable", "true");
-//	//
-//	// Session session = Session.getInstance(propiedades, new
-//	// javax.mail.Authenticator() {
-//	// protected PasswordAuthentication getPasswordAuthentication() {
-//	// return new PasswordAuthentication("correo@gmail.com", "contraseña");
-//	// }
-//	// });
-//	//
-//	// Message mensaje = new MimeMessage(session);
-//	// mensaje.setFrom(new InternetAddress("correo@gmail.com"));
-//	// mensaje.setRecipients(Message.RecipientType.TO,
-//	// InternetAddress.parse(destinatario));
-//	// mensaje.setSubject(asunto);
-//	// mensaje.setText(cuerpo);
-//	//
-//	// Transport.send(mensaje);
-//	// }
-//
-//	private Empleado buscarEmpleadoPorUsuario(String usuario) {
-//		for (Empleado empleado : listaEmpleados) {
-//			if (empleado.getUsuario().equals(usuario)) {
-//				return empleado;
-//			}
-//		}
-//		return null;
-//	}
-
 	public String registrarEmpleado(String nombre, String apellido, String usuario, String contrasenia, String idEmpleado,
             String correoElectronico, String respuestaSeguridad, String contrasenaAdministrador) throws AdministradorException {
 		// Verificar identidad del administrador

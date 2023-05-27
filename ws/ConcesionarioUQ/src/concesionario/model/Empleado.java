@@ -7,33 +7,33 @@ import concesionario.exceptions.EmpleadoException;
 import concesionario.exceptions.VehiculoException;
 
 public class Empleado {
-    private String nombre;
-    private String apellido;
-    private String usuario;
-    private String contrasenia;
-    private String correoElectronico;
-    private String idEmpleado;
-    private String respuestaSeguridad;
-    private boolean cuentaBloqueada;
-    private ArrayList<Vehiculo> listaVehiculos;
-    private ArrayList<Cliente> listaClientes;
-    private ArrayList<Transaccion> listaTransacciones;
+	private String nombre;
+	private String apellido;
+	private String usuario;
+	private String contrasenia;
+	private String correoElectronico;
+	private String idEmpleado;
+	private String respuestaSeguridad;
+	private boolean cuentaBloqueada;
+	private ArrayList<Vehiculo> listaVehiculos;
+	private ArrayList<Cliente> listaClientes;
+	private ArrayList<Transaccion> listaTransacciones;
 
-    public Empleado(String nombre, String apellido, String usuario, String contrasenia, String idEmpleado,
-                    String correoElectronico, String respuestaSeguridad) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.usuario = usuario;
-        this.contrasenia = contrasenia;
-        this.idEmpleado = idEmpleado;
-        this.correoElectronico = correoElectronico;
-        this.respuestaSeguridad = respuestaSeguridad;
-        this.listaVehiculos = new ArrayList<Vehiculo>();
-        this.listaClientes = new ArrayList<Cliente>();
-        this.listaTransacciones = new ArrayList<Transaccion>();
-    }
+	public Empleado(String nombre, String apellido, String usuario, String contrasenia, String idEmpleado,
+			String correoElectronico, String respuestaSeguridad) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.usuario = usuario;
+		this.contrasenia = contrasenia;
+		this.idEmpleado = idEmpleado;
+		this.correoElectronico = correoElectronico;
+		this.respuestaSeguridad = respuestaSeguridad;
+		this.listaVehiculos = new ArrayList<Vehiculo>();
+		this.listaClientes = new ArrayList<Cliente>();
+		this.listaTransacciones = new ArrayList<Transaccion>();
+	}
 
-    public String getNombre() {
+	public String getNombre() {
 		return nombre;
 	}
 
@@ -122,43 +122,48 @@ public class Empleado {
 	}
 
 	public void registrarVehiculo(Vehiculo vehiculo) {
-        listaVehiculos.add(vehiculo);
-    }
+		listaVehiculos.add(vehiculo);
+	}
 
-    public void registrarCliente(Cliente cliente) {
-        listaClientes.add(cliente);
-    }
+	public void registrarCliente(Cliente cliente) {
+		listaClientes.add(cliente);
+	}
 
-    public void alquilarVehiculo(Vehiculo vehiculo, Cliente cliente) {
-        if (listaVehiculos.contains(vehiculo)) {
-            vehiculo.alquilar(cliente);
-        } else {
-            System.out.println("El vehículo no se encuentra en el inventario");
-        }
-    }
+	// ALQUILAR VEHICULO
+	public void alquilarVehiculo(Vehiculo vehiculo, Cliente cliente) {
+		if (listaVehiculos.contains(vehiculo)) {
+			vehiculo.alquilar(cliente);
+		} else {
+			System.out.println("El vehículo no se encuentra en el inventario");
+		}
+	}
 
-    public void venderVehiculo(Vehiculo vehiculo, Cliente cliente) {
-        if (listaVehiculos.contains(vehiculo)) {
-            vehiculo.vender(cliente);
-            listaVehiculos.remove(vehiculo);
-        } else {
-            System.out.println("El vehículo no se encuentra en el inventario");
-        }
-    }
+	// VENDER VEHICULO
+	public void venderVehiculo(Vehiculo vehiculo, Cliente cliente) {
+		if (listaVehiculos.contains(vehiculo)) {
+			vehiculo.vender(cliente);
+			listaVehiculos.remove(vehiculo);
+		} else {
+			System.out.println("El vehículo no se encuentra en el inventario");
+		}
+	}
 
-    public void comprarVehiculo(Vehiculo vehiculo, Cliente cliente) {
-        if (vehiculo.revisionTecnicaAprobada()) {
-            listaVehiculos.add(vehiculo);
-            cliente.getListaVehiculos().remove(vehiculo);
-        } else {
-            System.out.println("El vehículo no ha pasado la revisión técnica");
-        }
-    }
+	// COMPRAR VEHICULO
+	public void comprarVehiculo(Vehiculo vehiculo, Cliente cliente) {
+		if (vehiculo.revisionTecnicaAprobada()) {
+			listaVehiculos.add(vehiculo);
+		} else {
+			System.out.println("El vehículo no ha pasado la revisión técnica");
+		}
+	}
 
-    public void registrarTransaccion(Transaccion transaccion) {
-        listaTransacciones.add(transaccion);
-//		System.out.println("Empleado " + nombre + " realizó una " + TipoTransaccion + " del vehículo " + vehiculo.getModelo() + " al cliente " + cliente.getNombre());
-    }
+	// REGISTRAR TRANSACCION
+	public void registrarTransaccion(Transaccion transaccion) {
+		listaTransacciones.add(transaccion);
+		// System.out.println("Empleado " + nombre + " realizó una " +
+		// TipoTransaccion + " del vehículo " + vehiculo.getModelo() + " al
+		// cliente " + cliente.getNombre());
+	}
 
 	// CRUD VEHICULO
 	public String registroVehiculo(String marca, boolean esNuevo, String modelo, int cambios,
@@ -166,7 +171,7 @@ public class Empleado {
 			boolean aireAcondicionado, int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros,
 			boolean abs, String numeroChasis) throws EmpleadoException {
 		String mensaje = "El vehiculo ha sido registrado";
-		String accion = mensaje+ " Y sera para la venta";
+		String accion = mensaje + " Y sera para la venta";
 		Vehiculo nuevoVehiculo = new Vehiculo(marca, esNuevo, modelo, cambios, tipoTransmision, tipoCombustible,
 				velocidadMaxima, cilindraje, aireAcondicionado, nPuertas, camaraReversa, nBolsasDeAire, nPasajeros, abs,
 				numeroChasis);
@@ -221,6 +226,7 @@ public class Empleado {
 		return "El vehiculo ha sido actualizado";
 	}
 
+	// CRUD CLIENTE
 	public String registrarClientes(String nombre, String apellido, String usuario, String contrasena,
 			String correoElectronico, String identificacion) throws EmpleadoException {
 

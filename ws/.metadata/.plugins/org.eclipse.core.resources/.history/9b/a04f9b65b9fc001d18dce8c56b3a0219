@@ -1,0 +1,22 @@
+package concesionario.controllers;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+public class InicioSesionController {
+
+	public void setStage(Stage primaryStage) {
+	}
+
+    @FXML
+    private Button btnIngresarComoCliente;
+
+    @FXML
+    void IngresarComoCliente(ActionEvent event) {
+
+    }
+
+}
+
