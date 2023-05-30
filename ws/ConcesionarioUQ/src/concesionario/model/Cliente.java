@@ -7,17 +7,17 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	private String usuario;
-	private String contrasena;
+	private String contrasenia;
 	private String correoElectronico;
 	private String identificacion;
 
-	public Cliente(String nombre, String apellido, String usuario, String contrasena, String correoElectronico,
+	public Cliente(String nombre, String apellido, String usuario, String contrasenia, String correoElectronico,
 			String identificacion) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.usuario = usuario;
-		this.contrasena = contrasena;
+		this.contrasenia = contrasenia;
 		this.correoElectronico = correoElectronico;
 		this.identificacion = identificacion;
 	}
@@ -47,11 +47,11 @@ public class Cliente {
 	}
 
 	public String getContrasena() {
-		return contrasena;
+		return contrasenia;
 	}
 
 	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+		this.contrasenia = contrasena;
 	}
 
 	public String getCorreoElectronico() {
@@ -71,10 +71,7 @@ public class Cliente {
 	}
 
 	public ArrayList<Vehiculo> getListaVehiculos() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 }

@@ -19,13 +19,13 @@ public class Empleado {
 	private ArrayList<Cliente> listaClientes;
 	private ArrayList<Transaccion> listaTransacciones;
 
-	public Empleado(String nombre, String apellido, String usuario, String contrasenia, String idEmpleado,
+	public Empleado(String nombre, String apellido, String idEmpleado, String usuario, String contrasenia,
 			String correoElectronico, String respuestaSeguridad) {
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.idEmpleado = idEmpleado;
 		this.usuario = usuario;
 		this.contrasenia = contrasenia;
-		this.idEmpleado = idEmpleado;
 		this.correoElectronico = correoElectronico;
 		this.respuestaSeguridad = respuestaSeguridad;
 		this.listaVehiculos = new ArrayList<Vehiculo>();
@@ -227,7 +227,7 @@ public class Empleado {
 	}
 
 	// CRUD CLIENTE
-	public String registrarClientes(String nombre, String apellido, String usuario, String contrasena,
+	public String registrarClientes(String nombre, String apellido, String usuario, String contrasenia,
 			String correoElectronico, String identificacion) throws EmpleadoException {
 
 		String mensaje = "El cliente ha sido registrado";
@@ -235,7 +235,7 @@ public class Empleado {
 		if (ClienteEncontrado == true) {
 			throw new EmpleadoException("El cliente ya existe");
 		} else {
-			Cliente nuevoCliente = new Cliente(nombre, apellido, usuario, contrasena, correoElectronico,
+			Cliente nuevoCliente = new Cliente(nombre, apellido, usuario, contrasenia, correoElectronico,
 					identificacion);
 			listaClientes.add(nuevoCliente);
 		}
@@ -269,7 +269,7 @@ public class Empleado {
 		return clienteteEncontrado;
 	}
 
-	public String actualizarCliente(String nombre, String apellido, String usuario, String contrasena,
+	public String actualizarCliente(String nombre, String apellido, String usuario, String contrasenia,
 			String correoElectronico, String identificacion) throws Exception {
 		Cliente clienteEncontrado = buscarCliente(identificacion);
 		if (clienteEncontrado == null) {
@@ -278,11 +278,17 @@ public class Empleado {
 		clienteEncontrado.setNombre(nombre);
 		clienteEncontrado.setApellido(apellido);
 		clienteEncontrado.setUsuario(usuario);
-		clienteEncontrado.setContrasena(contrasena);
+		clienteEncontrado.setContrasena(contrasenia);
 		clienteEncontrado.setCorreoElectronico(correoElectronico);
 		clienteEncontrado.setIdentificacion(identificacion);
 
 		return " El cliente ha sido actualizado ";
+	}
+
+
+	public void setBloqueado(boolean b) {
+		// TODO Auto-generated method stub
+
 	}
 
 }

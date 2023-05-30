@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="913.0" prefWidth="908.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="concesionario.controllers.AdministradorController">
+   <children>
+      <TabPane layoutX="3.0" layoutY="-3.0" prefHeight="913.0" prefWidth="902.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Empleados">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="839.0" prefWidth="902.0">
+                     <children>
+                        <SplitPane layoutX="-6.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="937.0" prefWidth="902.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="937.0" prefWidth="996.0">
+                                 <children>
+                                    <Separator layoutX="22.0" layoutY="28.0" prefHeight="0.0" prefWidth="852.0" />
+                                    <Label layoutX="14.0" layoutY="4.0" text="Informacion del Empleado" textFill="#4227c9">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="20.0" layoutY="46.0" text="Nombre :" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtNombreEmpleado" layoutX="411.0" layoutY="47.0" prefHeight="25.0" prefWidth="316.0" />
+                                    <TextField fx:id="txtApellidoEmpleado" layoutX="407.0" layoutY="100.0" prefHeight="25.0" prefWidth="316.0" />
+                                    <Label layoutX="17.0" layoutY="75.0" text="Apellidos :" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="25.0" layoutY="109.0" text="Id:" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtIdEmpleado" layoutX="407.0" layoutY="153.0" prefHeight="25.0" prefWidth="316.0" />
+                                    <Separator layoutY="380.0" prefHeight="5.0" prefWidth="908.0" />
+                                    <Button fx:id="btnAgregarEmpleado" layoutX="140.0" layoutY="382.0" mnemonicParsing="false" onAction="#agregarEmpleadoEvent" prefHeight="21.0" prefWidth="96.0" text="Agregar" />
+                                    <Button fx:id="btnBloquearEmpleado" layoutX="250.0" layoutY="382.0" mnemonicParsing="false" onAction="#bloquearEmpleadoEvent" prefHeight="25.0" prefWidth="96.0" text="Bloquear" />
+                                    <TextField fx:id="txtUsuarioEmpleado" layoutX="411.0" layoutY="204.0" prefHeight="25.0" prefWidth="316.0" />
+                                    <Label layoutX="21.0" layoutY="139.0" prefHeight="20.0" prefWidth="59.0" text="Usuario :" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="12.0" layoutY="172.0" text="Contraseña :" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtContraseniaEmpleado" layoutX="407.0" layoutY="251.0" prefHeight="25.0" prefWidth="316.0" />
+                                  <AnchorPane layoutY="421.0" minHeight="0.0" minWidth="0.0" prefHeight="415.0" prefWidth="857.0">
+                                       <children>
+                                          <Label layoutX="29.0" layoutY="14.0" text="Listado de Empleados" textFill="#4227c9">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <TableView fx:id="tableEmpleados" layoutX="7.0" layoutY="34.0" prefHeight="326.0" prefWidth="846.0">
+                                            <columns>
+                                              <TableColumn fx:id="columnNombreEmpleado" prefWidth="106.0" text="Nombre" />
+                                              <TableColumn fx:id="columnApellidosEmpleado" prefWidth="82.0" text="Apellido" />
+                                                <TableColumn fx:id="columnIdEmpleado" prefWidth="133.0" text="Identificacion" />
+                                                <TableColumn fx:id="columnUsuarioEmpleado" prefWidth="101.0" text="Usuario" />
+                                                <TableColumn fx:id="columnContraseniaEmpleado" prefWidth="120.0" text="Contraseña" />
+                                                <TableColumn fx:id="columnCorreoEmpleado" prefWidth="131.0" text="Correo" />
+                                                <TableColumn fx:id="columnRespuestaSeguridadEmpleado" prefWidth="147.0" text="R.Seguridad" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                    <Label layoutX="17.0" layoutY="203.0" text="Correo" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="241.0" text="Respuesta seguridad" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="9.0" layoutY="231.0" textFill="#4227c9">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtCorreoEmpleado" layoutX="407.0" layoutY="296.0" prefHeight="25.0" prefWidth="316.0" />
+                                    <TextField fx:id="txtRespuSeguridadEmpleado" layoutX="407.0" layoutY="341.0" prefHeight="39.0" prefWidth="324.0" />
+                                    <Button fx:id="btnEliminarEmpleado" layoutX="359.0" layoutY="382.0" mnemonicParsing="false" onAction="#eliminarEmpleadoEvent" prefHeight="25.0" prefWidth="96.0" text="Eliminar" />
+                                    <Button fx:id="btnActualizarEmpleado" layoutX="17.0" layoutY="382.0" mnemonicParsing="false" onAction="#actualizarEmpleadoEvent" prefHeight="25.0" prefWidth="96.0" text="Actualizar" />
+                                    <Button fx:id="btnNuevoEmpleado" layoutX="371.0" layoutY="816.0" mnemonicParsing="false" onAction="#nuevoEmpleadoEvent" prefHeight="25.0" prefWidth="96.0" text="Nuevo" />
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Transacciones">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView layoutX="129.0" layoutY="202.0" prefHeight="280.0" prefWidth="236.0">
+                          <columns>
+                            <TableColumn fx:id="columCodigoTransaccion" prefWidth="75.0" text="Codigo " />
+                            <TableColumn fx:id="columFechaTransaccion" prefWidth="75.0" text="Fecha" />
+                              <TableColumn fx:id="columTipoTransaccion" prefWidth="75.0" text="Tipo" />
+                          </columns>
+                        </TableView>
+                        <Label layoutX="183.0" layoutY="28.0" text="Tabla transacciones" textFill="#4227c9">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <DatePicker layoutX="225.0" layoutY="107.0" />
+                        <Label layoutX="57.0" layoutY="109.0" text="Fecha de transaccion " textFill="#4227c9">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

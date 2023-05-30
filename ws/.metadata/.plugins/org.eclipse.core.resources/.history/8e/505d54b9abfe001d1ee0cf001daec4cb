@@ -1,0 +1,120 @@
+package concesionario.controllers;
+
+import concesionario.application.Aplicacion;
+import concesionario.model.Cliente;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+
+public class EmpleadoController {
+
+	Aplicacion Aplicacion;
+	private Aplicacion aplicacion;
+	Cliente clienteSeleccionado;
+
+	public void setAplicacion(Aplicacion aplicacion) {
+		this.Aplicacion = aplicacion;
+	}
+
+    @FXML
+    private TextField txtContraseniaCliente;
+
+    @FXML
+    private TextField txtCorreoCliente;
+
+    @FXML
+    private Button btnGestionarVehiculos;
+
+    @FXML
+    private Button btnNuevoCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnApellidosCliente;
+
+    @FXML
+    private TableView<Cliente> tableEstudiantes;
+
+    @FXML
+    private Button btnActualizarCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnNombreCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columUsuarioCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnIdentificacionCliente;
+
+    @FXML
+    private TextField txtUsuarioCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columContraseniaCliente;
+
+    @FXML
+    private Button btnEliminarCliente;
+
+    @FXML
+    private TextField txtNombreCliente;
+
+    @FXML
+    private TextField txtIdCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columCorreoCliente;
+
+    @FXML
+    private TextField txtApellidoCliente;
+
+    @FXML
+    private Button btnAgregarCliente;
+
+
+
+    @FXML
+    void agregarClienteEvent(ActionEvent event) {
+    	agregarCliente();
+    }
+
+
+
+    @FXML
+    void actualizarClienteEvent(ActionEvent event) {
+    	actualizarCliente();
+    }
+
+
+
+	@FXML
+    void eliminarClienteEvent(ActionEvent event) {
+		eliminarCliente();
+    }
+
+	@FXML
+    void nuevoClienteEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void gestionarVehiculos(ActionEvent event) {
+    	Aplicacion.mostrarGestionVehiculos("/concesionario/views/GestionVehiculosView.fxml");
+
+    }
+    private void agregarCliente() {
+		// TODO Auto-generated method stub
+
+	}
+    private void actualizarCliente() {
+		// TODO Auto-generated method stub
+
+	}
+    private void eliminarCliente() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

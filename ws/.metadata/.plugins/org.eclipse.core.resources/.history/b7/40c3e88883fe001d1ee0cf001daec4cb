@@ -1,0 +1,47 @@
+package concesionario.controller;
+
+import java.util.List;
+
+import concesionario.model.Administrador;
+import concesionario.model.Empleado;
+import concesionario.exceptions.EmpleadoException;
+
+public class AdministradorController {
+    private Administrador administrador;
+
+    public AdministradorController(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    public AdministradorController() {
+        this.administrador = new Administrador();
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    public List<Empleado> getListaEmpleados() {
+        return administrador.getListaEmpleados();
+    }
+
+    public Empleado registrarEmpleado(String nombre, String apellido, String idEmpleado, String usuario,
+            String contrasenia, String correoElectronico, String respuestaSeguridad) throws EmpleadoException {
+        return administrador.registrarEmpleado(nombre, apellido, idEmpleado, usuario, contrasenia, correoElectronico,
+                respuestaSeguridad);
+    }
+
+    public void actualizarEmpleado(String nombre, String apellido, String idEmpleado, String usuario,
+            String contrasenia, String correoElectronico, String respuestaSeguridad) throws EmpleadoException {
+        administrador.actualizarEmpleado(nombre, apellido, idEmpleado, usuario, contrasenia, correoElectronico,
+                respuestaSeguridad);
+    }
+
+    public void eliminarEmpleado(String idEmpleado) throws EmpleadoException {
+        administrador.eliminarEmpleado(idEmpleado);
+    }
+
+    public void bloquearEmpleado(String idEmpleado) throws EmpleadoException {
+        administrador.bloquearEmpleado(idEmpleado);
+    }
+}

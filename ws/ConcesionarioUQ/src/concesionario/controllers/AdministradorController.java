@@ -1,118 +1,275 @@
 package concesionario.controllers;
 
+import java.util.List;
+
 import concesionario.application.Aplicacion;
+import concesionario.exceptions.AdministradorException;
+import concesionario.exceptions.EmpleadoException;
+import concesionario.model.Administrador;
+import concesionario.model.Empleado;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class AdministradorController {
 
 	private Stage stage;
+	private Aplicacion aplicacion;
+	private Administrador administrador;
+	private Empleado empleado;
+	Empleado empleadoSeleccionado;
+	private ObservableList<Empleado> listaEmpleadosData = FXCollections.observableArrayList();
+
+
 	public void setStage(Stage primaryStage) {
 	    this.stage = primaryStage;
 	}
 
-    @FXML
-    private TextField txtNombreEmpleado;
+	public void setAplicacion(Aplicacion aplicacion) {
+	    this.aplicacion = aplicacion;
+	}
 
-    @FXML
-    private TextField txtCorreoEmpleado;
+	public void setAdministrador(Administrador administrador) {
+	    this.administrador = administrador;
+	}
 
-    @FXML
-    private TextField txtRespuSeguridadEmpleado;
+	@FXML
+	private TextField txtNombreEmpleado;
 
-    @FXML
-    private Button btnNuevoEmpleado;
+	@FXML
+	private TextField txtApellidoEmpleado;
 
-    @FXML
-    private TextField txtContraseniaEmpleado;
+	@FXML
+	private TextField txtIdEmpleado;
 
-    @FXML
-    private Button btnAgregarEmpleado;
+	@FXML
+	private TextField txtUsuarioEmpleado;
 
-    @FXML
-    private TableView<?> tableEstudiantes;
+	@FXML
+	private TextField txtContraseniaEmpleado;
 
-    @FXML
-    private TextField txtApellidoEmpleado;
+	@FXML
+	private TextField txtCorreoEmpleado;
 
-    @FXML
-    private TableColumn<?, ?> columnNombreEmpleado;
+	@FXML
+	private TextField txtRespuestaSeguridadEmpleado;
 
-    @FXML
-    private TableColumn<?, ?> columnIdEmpleado;
+	@FXML
+	private TableColumn<Empleado, String> columnNombreEmpleado;
 
-    @FXML
-    private TableColumn<?, ?> columCodigoTransaccion;
+	@FXML
+	private TableColumn<Empleado, String> columnApellidosEmpleado;
 
-    @FXML
-    private TableColumn<?, ?> columTipoTransaccion;
+	@FXML
+	private TableColumn<Empleado, String> columnIdEmpleado;
 
-    @FXML
-    private TextField txtContrasenia1;
+	@FXML
+	private TableColumn<Empleado, String> columnUsuarioEmpleado;
 
-    @FXML
-    private Button btnEliminarEmpleado;
+	@FXML
+	private TableColumn<Empleado, String> columnContraseniaEmpleado;
 
-    @FXML
-    private Button btnActualizarEmpleado;
+	@FXML
+	private TableColumn<Empleado, String> columnCorreoEmpleado;
 
-    @FXML
-    private TextField txtContrasenia2;
+	@FXML
+	private TableColumn<Empleado, String> columnRespuestaSeguridadEmpleado;
 
-    @FXML
-    private TableColumn<?, ?> columFechaTransaccion;
+	@FXML
+	private Button btnAgregarEmpleado;
 
-    @FXML
-    private TextField txtUsuarioEmpleado;
+	@FXML
+	private TableView<Empleado> tableEmpleados;
 
-    @FXML
-    private TableColumn<?, ?> columnApellidosEmpleado;
+	@FXML
+	private Button btnEliminarEmpleado;
 
-    @FXML
-    private Button btnBloquearEmpleado;
+	@FXML
+	private Button btnActualizarEmpleado;
 
-    @FXML
-    private TextField txtIdEmpleado;
+	 @FXML
+	 private Button btnBloquearEmpleado;
 
-	private Aplicacion aplicacion;
+	@FXML
+	void agregarEmpleadoEvent(ActionEvent event) throws EmpleadoException {
+		agregarEmpleado();
+	}
+
+	@FXML
+	void actualizarEmpleadoEvent(ActionEvent event) throws EmpleadoException {
+		actualizarEmpleado();
+	}
+
+	@FXML
+	void eliminarEmpleadoEvent(ActionEvent event) {
+		eliminarEmpleado();
+	}
+
+	 @FXML
+	  void bloquearEmpleadoEvent(ActionEvent event) {
+		 bloquearEmpleado();
+	    }
 
 
+	private void bloquearEmpleado() {
+		if(empleadoSeleccionado == null){
+			mostrarMensaje("Notificacion", "Seleccione empleado", "Debe seleccionar un empleado", AlertType.ERROR);
+		}
+	    Empleado empleadoSeleccionado = tableEmpleados.getSelectionModel().getSelectedItem();
+	    if (empleadoSeleccionado != null) {
+	        empleadoSeleccionado.setBloqueado(true);
+	    }
+	}
 
-    @FXML
-    void agregarEmpleadoEvent(ActionEvent event) {
+	private void eliminarEmpleado() {
+		if(empleadoSeleccionado == null){
+			mostrarMensaje("Notificacion", "Seleccione empleado", "Debe seleccionar un empleado", AlertType.ERROR);
+		}else{
+			boolean eliminado = aplicacion.eliminarEmpleado(empleadoSeleccionado.getIdEmpleado());
+			if(eliminado){
+				listaEmpleadosData.remove(empleadoSeleccionado);
+				empleadoSeleccionado = null;
+				limpiarDatos();
+				tableEmpleados.refresh();
+				tableEmpleados.getSelectionModel().clearSelection();
+				mostrarMensaje("Notificacion", "Empleado eliminado", "El empleado ha sido eliminado", AlertType.ERROR);
+			}else{
+				mostrarMensaje("Notificacion ", "Empleado no eliminado", "El empleado No ha sido eliminado", AlertType.ERROR);
 
-    }
+			}
+		}
+	}
 
-    @FXML
-    void bloquearEmpleadoEvent(ActionEvent event) {
+	private void limpiarDatos() {
+		txtNombreEmpleado.setText("");
+		txtApellidoEmpleado.setText("");
+		txtIdEmpleado.setText("");
+		txtUsuarioEmpleado.setText("");
+		txtContraseniaEmpleado.setText("");
+		txtCorreoEmpleado.setText("");
+		txtRespuestaSeguridadEmpleado.setText("");
+	}
 
-    }
+	private void agregarEmpleado() {
+	    String nombre = txtNombreEmpleado.getText();
+	    String apellido = txtApellidoEmpleado.getText();
+	    String idEmpleado = txtIdEmpleado.getText();
+	    String usuario = txtUsuarioEmpleado.getText();
+	    String contrasenia = txtContraseniaEmpleado.getText();
+	    String correoElectronico = txtCorreoEmpleado.getText();
+	    String respuestaSeguridad = txtRespuestaSeguridadEmpleado.getText();
 
+		if(datosValidos(nombre, apellido, idEmpleado,usuario,contrasenia,correoElectronico,respuestaSeguridad) == true){
 
+			//3. Registrar el cliente
+			Empleado empleado = null;
 
-    @FXML
-    void nuevoEmpleadoEvent(ActionEvent event) {
+			try {
+				empleado = aplicacion.crearEmpleado(nombre, apellido, idEmpleado,usuario,contrasenia,correoElectronico,respuestaSeguridad);
 
-    }
+				listaEmpleadosData.add(empleado);
 
-    @FXML
-    void eliminarEmpleadoEvent(ActionEvent event) {
+				mostrarMensaje("Notificacion", "Empleado registrado", "El empleado se ha registrado con extio", AlertType.INFORMATION);
 
-    }
+			} catch (EmpleadoException e) {
+				mostrarMensaje("Notificacion", "Un empleado con la misma identificacion ya se encuentra registrado", idEmpleado, AlertType.ERROR);
+			}
+		}
+		else{
+			mostrarMensaje("Notificacion", "Informacion invalida", "llene todos los campos para registrar un empleado", AlertType.ERROR);
 
-    @FXML
-    void actualizarEmpleadoEvent(ActionEvent event) {
-
-    }
-
-	public void setAplicacion(Aplicacion aplicacion){
-		this.aplicacion = aplicacion;
+		}
 
 	}
+	private void actualizarEmpleado() throws EmpleadoException {
+		  String nombre = txtNombreEmpleado.getText();
+		    String apellido = txtApellidoEmpleado.getText();
+		    String idEmpleado = txtIdEmpleado.getText();
+		    String usuario = txtUsuarioEmpleado.getText();
+		    String contrasenia = txtContraseniaEmpleado.getText();
+		    String correoElectronico = txtCorreoEmpleado.getText();
+		    String respuestaSeguridad = txtRespuestaSeguridadEmpleado.getText();
+
+			if(empleadoSeleccionado == null){
+				mostrarMensaje("Notificacion", "Seleccione empleado", "Debe seleccionar un empleado", AlertType.ERROR);
+			}else{
+				//2. Validar la informaci�n
+				if(datosValidos(nombre, apellido, idEmpleado,usuario,contrasenia,correoElectronico,respuestaSeguridad) == true){
+					aplicacion.actualizarEmpleado(nombre, apellido, idEmpleado,usuario,contrasenia,correoElectronico,respuestaSeguridad);
+					tableEmpleados.refresh();
+				}else{
+					mostrarMensaje("Notificaci�n", "Amigo no actualizado", "Datos invalidos", AlertType.ERROR);
+
+				}
+
+			}
+	}
+
+	public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(titulo);
+    	alert.setHeaderText(header);
+    	alert.setContentText(contenido);
+    	alert.showAndWait();
+	}
+
+	private boolean datosValidos(String nombre, String apellido, String idEmpleado, String usuario, String contrasenia,
+		    String correoElectronico, String respuestaSeguridad) {
+
+		    return !nombre.isEmpty() && !apellido.isEmpty() && !idEmpleado.isEmpty() &&
+		        !usuario.isEmpty() && !contrasenia.isEmpty() && !correoElectronico.isEmpty() &&
+		        !respuestaSeguridad.isEmpty();
+		}
+
+	@FXML
+	void initialize() {
+	    // Configurar las columnas de la tabla
+	    this.columnNombreEmpleado.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+	    this.columnApellidosEmpleado.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+	    this.columnIdEmpleado.setCellValueFactory(new PropertyValueFactory<>("idEmpleado"));
+	    this.columnUsuarioEmpleado.setCellValueFactory(new PropertyValueFactory<>("usuario"));
+	    this.columnContraseniaEmpleado.setCellValueFactory(new PropertyValueFactory<>("contrasenia"));
+	    this.columnCorreoEmpleado.setCellValueFactory(new PropertyValueFactory<>("correoElectronico"));
+	    this.columnRespuestaSeguridadEmpleado.setCellValueFactory(new PropertyValueFactory<>("respuestaSeguridad"));
+
+	    // Agregar valores iniciales a la lista
+	    listaEmpleadosData.addAll(
+	        new Empleado("Nombre1", "Apellido1", "ID1", "Usuario1", "Contraseña1", "correo1@example.com", "Respuesta1"),
+	        new Empleado("Nombre2", "Apellido2", "ID2", "Usuario2", "Contraseña2", "correo2@example.com", "Respuesta2"),
+	        new Empleado("Nombre3", "Apellido3", "ID3", "Usuario3", "Contraseña3", "correo3@example.com", "Respuesta3")
+	    );
+
+	    // Asignar la lista a la tabla
+	    tableEmpleados.setItems(listaEmpleadosData);
+	    tableEmpleados.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+	        empleadoSeleccionado = newSelection;
+	        mostrarInformacionEmpleado(empleadoSeleccionado);
+	    });
+	}
+
+	private void mostrarInformacionEmpleado(Empleado empleadoSeleccionado) {
+		txtNombreEmpleado.setText(empleadoSeleccionado.getNombre());
+		txtApellidoEmpleado.setText(empleadoSeleccionado.getApellido());
+		txtIdEmpleado.setText(empleadoSeleccionado.getIdEmpleado());
+		txtUsuarioEmpleado.setText(empleadoSeleccionado.getUsuario());
+		txtContraseniaEmpleado.setText(empleadoSeleccionado.getContrasenia());
+		txtCorreoEmpleado.setText(empleadoSeleccionado.getCorreoElectronico());
+		txtRespuestaSeguridadEmpleado.setText(empleadoSeleccionado.getRespuestaSeguridad());
+	}
+
+	private ObservableList<Empleado> getListaEmpleadosData() {
+		listaEmpleadosData.addAll(aplicacion.obtenerEmpleados());
+		return listaEmpleadosData;
+	}
+
 
 }

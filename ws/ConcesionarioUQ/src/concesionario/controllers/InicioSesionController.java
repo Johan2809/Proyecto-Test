@@ -1,6 +1,5 @@
 package concesionario.controllers;
 
-import javax.swing.JOptionPane;
 
 import concesionario.application.Aplicacion;
 import javafx.event.ActionEvent;
@@ -11,60 +10,64 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class InicioSesionController {
-    private Stage stage;
-    private Aplicacion Aplicacion; // Nuevo
+	private Stage stage;
+	private Aplicacion Aplicacion; // Nuevo
 
-    public void setStage(Stage primaryStage) {
-        this.stage = primaryStage;
-    }
+	public void setStage(Stage primaryStage) {
+		this.stage = primaryStage;
+	}
 
-    public void setAplicacion(Aplicacion aplicacion) { // Nuevo
-        this.Aplicacion = aplicacion;
-    }
-    @FXML
-    private Button btnIngresar;
+	public void setAplicacion(Aplicacion aplicacion) { // Nuevo
+		this.Aplicacion = aplicacion;
+	}
 
-    @FXML
-    private TextField txtUsuario;
+	@FXML
+	private Button btnIngresar;
 
-    @FXML
-    private TextField txtContrasenia;
+	@FXML
+	private TextField txtUsuario;
 
-    @FXML
-    private Button btnRecuperarContrasenia;
+	@FXML
+	private TextField txtContrasenia;
+
+	@FXML
+	private Button btnRecuperarContrasenia;
 
 	@FXML
 	private Button btnIngresarComoCliente;
 
-    @FXML
-    void IngresarComoCliente(ActionEvent event) {
+	@FXML
+	void IngresarComoCliente(ActionEvent event) {
 
-    }
-    @FXML
-    void Ingresar(ActionEvent event){
-        String usuario = txtUsuario.getText();
-        String contrasenia = txtContrasenia.getText();
+	}
 
-        if (usuario.equals("admin") && contrasenia.equals("123")) {
-            // Acceso como administrador
-        	 Aplicacion.mostrarAdministrador("/concesionario/views/AdministradorView.fxml");
-        } else if (usuario.equals("empleado1") && contrasenia.equals("123")) {
-            // Acceso como empleado
-            JOptionPane.showMessageDialog(null, "Aun no mi ciela");
-        } else {
-            mostrarAlerta("Credenciales incorrectas. Por favor, intenta nuevamente.");
-        }
-    }
-    private void mostrarAlerta(String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error");
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
-    @FXML
-    void recuperarContrasenia(ActionEvent event) {
+	@FXML
+	void Ingresar(ActionEvent event) {
+		String usuario = txtUsuario.getText();
+		String contrasenia = txtContrasenia.getText();
 
-    }
+		if (usuario.equals("admin") && contrasenia.equals("123")) {
+			// Acceso como administrador
+			Aplicacion.mostrarAdministrador("/concesionario/views/AdministradorView.fxml");
+		} else if (usuario.equals("empleado1") && contrasenia.equals("123")) {
+			// Acceso como empleado
+			Aplicacion.mostrarEmpleado("/concesionario/views/EmpleadoView.fxml");
+		} else {
+			mostrarAlerta("Credenciales incorrectas. Por favor, intenta nuevamente.");
+		}
+	}
+
+	private void mostrarAlerta(String mensaje) {
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+		alert.setTitle("Error");
+		alert.setHeaderText(null);
+		alert.setContentText(mensaje);
+		alert.showAndWait();
+	}
+
+	@FXML
+	void recuperarContrasenia(ActionEvent event) {
+
+	}
 
 }

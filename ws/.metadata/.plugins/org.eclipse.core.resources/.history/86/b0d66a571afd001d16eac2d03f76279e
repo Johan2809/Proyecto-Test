@@ -1,0 +1,158 @@
+package concesionario.controllers;
+
+import concesionario.application.Aplicacion;
+import concesionario.exceptions.AdministradorException;
+import concesionario.exceptions.EmpleadoException;
+import concesionario.model.Administrador;
+import concesionario.model.Empleado;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+public class AdministradorController {
+
+	private Stage stage;
+	private Aplicacion aplicacion;
+	private Administrador administrador;
+	private Empleado empleado;
+
+	@FXML
+	private TextField txtNombreEmpleado;
+
+	@FXML
+	private TextField txtApellidoEmpleado;
+
+	@FXML
+	private TextField txtIdEmpleado;
+
+	@FXML
+	private TextField txtUsuarioEmpleado;
+
+	@FXML
+	private TextField txtContraseniaEmpleado;
+
+	@FXML
+	private TextField txtCorreoEmpleado;
+
+	@FXML
+	private TextField txtRespuSeguridadEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnNombreEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnApellidosEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnIdEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnUsuarioEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnContraseniaEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnCorreoEmpleado;
+
+	@FXML
+	private TableColumn<Empleado, String> columnRespuestaSeguridadEmpleado;
+
+	@FXML
+	private Button btnNuevoEmpleado;
+
+	@FXML
+	private Button btnAgregarEmpleado;
+
+	@FXML
+	private TableView<Empleado> tableEmpleados;
+
+	@FXML
+	private Button btnEliminarEmpleado;
+
+	@FXML
+	private Button btnActualizarEmpleado;
+
+	@FXML
+	void agregarEmpleadoEvent(ActionEvent event) throws EmpleadoException {
+	    String nombre = txtNombreEmpleado.getText();
+	    String apellido = txtApellidoEmpleado.getText();
+	    String idEmpleado = txtIdEmpleado.getText();
+	    String usuario = txtUsuarioEmpleado.getText();
+	    String contrasenia = txtContraseniaEmpleado.getText();
+	    String correoElectronico = txtCorreoEmpleado.getText();
+	    String respuestaSeguridad = txtRespuSeguridadEmpleado.getText();
+
+	    Empleado nuevoEmpleado = new Empleado(nombre, apellido, idEmpleado, usuario, contrasenia, correoElectronico, respuestaSeguridad);
+		listaEmpleados.add(nuevoEmpleado);
+	}
+
+	@FXML
+	void bloquearEmpleadoEvent(ActionEvent event) {
+	    // Lógica para bloquear un empleado
+	}
+
+	@FXML
+	void nuevoEmpleadoEvent(ActionEvent event) {
+	    // Lógica para crear un nuevo empleado
+	}
+
+	@FXML
+	void eliminarEmpleadoEvent(ActionEvent event) {
+	    // Lógica para eliminar un empleado
+	}
+
+	@FXML
+	void actualizarEmpleadoEvent(ActionEvent event) {
+	    String nombre = txtNombreEmpleado.getText();
+	    String apellido = txtApellidoEmpleado.getText();
+	    String idEmpleado = txtIdEmpleado.getText();
+	    String usuario = txtUsuarioEmpleado.getText();
+	    String contrasenia = txtContraseniaEmpleado.getText();
+	    String correoElectronico = txtCorreoEmpleado.getText();
+	    String respuestaSeguridad = txtRespuSeguridadEmpleado.getText();
+
+	    try {
+	        administrador.actualizarEmpleado(nombre, apellido, idEmpleado, usuario, contrasenia, correoElectronico, respuestaSeguridad);
+	    } catch (EmpleadoException e) {
+	        e.printStackTrace();
+	    }
+	}
+
+	private ObservableList<Empleado> listaEmpleados = FXCollections.observableArrayList();
+
+	public void setStage(Stage primaryStage) {
+	    this.stage = primaryStage;
+	}
+
+	public void setAplicacion(Aplicacion aplicacion) {
+	    this.aplicacion = aplicacion;
+	}
+
+	public void setAdministrador(Administrador administrador) {
+	    this.administrador = administrador;
+	}
+
+	@FXML
+	void initialize() {
+	    // Configurar las columnas de la tabla
+	    this.columnNombreEmpleado.setCellValueFactory(new PropertyValueFactory<>("nombres"));
+	    this.columnApellidosEmpleado.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+	    this.columnIdEmpleado.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
+	    this.columnUsuarioEmpleado.setCellValueFactory(new PropertyValueFactory<>("usuario"));
+	    this.columnContraseniaEmpleado.setCellValueFactory(new PropertyValueFactory<>("contraseña"));
+	    this.columnCorreoEmpleado.setCellValueFactory(new PropertyValueFactory<>("correo"));
+	    this.columnRespuestaSeguridadEmpleado.setCellValueFactory(new PropertyValueFactory<>("respuesta"));
+
+	    // Asignar la lista a la tabla
+	    tableEmpleados.setItems(listaEmpleados);
+	}
+
+}

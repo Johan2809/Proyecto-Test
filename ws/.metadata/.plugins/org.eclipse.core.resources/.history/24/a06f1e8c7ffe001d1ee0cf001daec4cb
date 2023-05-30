@@ -1,0 +1,183 @@
+package concesionario.model;
+
+import java.util.ArrayList;
+
+import concesionario.exceptions.EmpleadoException;
+
+public class Administrador {
+    private String nombre;
+    private String apellido;
+    private String usuario;
+    private String contrasena;
+    private Empleado empleado;
+    private ArrayList<Empleado> listaEmpleados;
+
+    public Administrador(String nombre, String apellido, String usuario, String contrasena, Empleado empleado,
+            ArrayList<Empleado> listaEmpleados) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.empleado = empleado;
+        this.listaEmpleados = listaEmpleados;
+    }
+
+    public Administrador() {
+
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public Empleado getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(Empleado empleado) {
+        this.empleado = empleado;
+    }
+
+    /*
+     * Método para ver los reportes de los negocios realizados por cada uno de
+     * los empleados en un periodo de tiempo dado
+     */
+    public void verReportes(String fechaInicio, String fechaFin) {
+
+    }
+    private void inicializarDatos() {
+		Empleado empleado= new Empleado("nombre", "apellido", "identificacion", "usuario", "contraseña","correo", "Respuesta Seguridad");
+		empleado.setNombre("Juan");
+		empleado.setApellido("Perez");
+		empleado.setUsuario("123");
+		empleado.setContrasenia("Calarca");
+		empleado.setCorreoElectronico("Calarca");
+		empleado.setRespuestaSeguridad("Calarca");
+		listaEmpleados.add(empleado);
+
+		empleado.setNombre("Johan");
+		empleado.setApellido("Palma");
+		empleado.setUsuario("jp");
+		empleado.setContrasenia("Cpiper");
+		empleado.setCorreoElectronico("Calarca");
+		empleado.setRespuestaSeguridad("Calarca");
+		listaEmpleados.add(empleado);
+
+		empleado.setNombre("Juan");
+		empleado.setApellido("Perez");
+		empleado.setUsuario("123");
+		empleado.setContrasenia("Calarca");
+		empleado.setCorreoElectronico("Calarca");
+		empleado.setRespuestaSeguridad("Calarca");
+		listaEmpleados.add(empleado);
+	}
+	public ArrayList<Empleado> getListaEmpleados() {
+		return listaEmpleados;
+	}
+    public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
+    }
+
+    public Empleado registrarEmpleado(String nombre, String apellido, String idEmpleado, String usuario, String contrasenia,
+            String correoElectronico, String respuestaSeguridad)
+            throws EmpleadoException {
+        Empleado empleado= new Empleado(nombre, apellido, idEmpleado, usuario, contrasenia, correoElectronico, respuestaSeguridad);
+        empleado.setNombre(nombre);
+        empleado.setApellido(apellido);
+        empleado.setIdEmpleado(idEmpleado);
+        empleado.setUsuario(usuario);
+        empleado.setContrasenia(contrasenia);
+        empleado.setCorreoElectronico(correoElectronico);
+        empleado.setRespuestaSeguridad(respuestaSeguridad);;
+
+            listaEmpleados.add(empleado);
+            return empleado;
+        }
+
+    private boolean verificarEmpleado(String idEmpleado) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado.getIdEmpleado().equals(idEmpleado)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void actualizarEmpleado(String nombre, String apellido, String idEmpleado, String usuario, String contrasenia,
+            String correoElectronico, String respuestaSeguridad) throws EmpleadoException {
+    for (Empleado empleadoEncontrado : listaEmpleados) {
+		if(empleado.getIdEmpleado().equals(idEmpleado)){
+	        empleadoEncontrado.setNombre(nombre);
+	        empleadoEncontrado.setApellido(apellido);
+	        empleadoEncontrado.setUsuario(usuario);
+	        empleadoEncontrado.setContrasenia(contrasenia);
+	        empleadoEncontrado.setCorreoElectronico(correoElectronico);
+	        empleadoEncontrado.setRespuestaSeguridad(respuestaSeguridad);
+		}
+	}
+
+
+    }
+
+    private Empleado buscarEmpleado(String idEmpleado) {
+        for (Empleado empleado : listaEmpleados) {
+            if (empleado.getIdEmpleado().equals(idEmpleado)) {
+                return empleado;
+            }
+        }
+        return null;
+    }
+
+    public void eliminarEmpleado(String idEmpleado) throws EmpleadoException {
+        Empleado empleadoEncontrado = buscarEmpleado(idEmpleado);
+        if (empleadoEncontrado == null) {
+            throw new EmpleadoException("El empleado no está registrado");
+        }
+        listaEmpleados.remove(empleadoEncontrado);
+    }
+
+    public void bloquearEmpleado(String idEmpleado) throws EmpleadoException {
+        Empleado empleadoEncontrado = buscarEmpleado(idEmpleado);
+        if (empleadoEncontrado == null) {
+            throw new EmpleadoException("El empleado no está registrado");
+        }
+        empleadoEncontrado.setBloqueado(true);
+    }
+
+//    public void generarCredenciales(Empleado empleado) throws AdministradorException {
+//        if (empleado.isBloqueado()) {
+//            throw new AdministradorException("No se pueden generar las credenciales para un empleado bloqueado");
+//        }
+
+//        // Generar las credenciales para el empleado
+//    }
+}

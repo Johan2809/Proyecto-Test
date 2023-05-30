@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="VehiculosController">
+    <!-- Recuadro de vehículo 1 -->
+    <AnchorPane prefWidth="400" prefHeight="300" style="-fx-border-color: black; -fx-border-width: 1px;">
+        <ImageView fx:id="imagen1" fitWidth="300" fitHeight="200" preserveRatio="true" layoutX="50" layoutY="20" />
+        <Label fx:id="descripcion1" wrapText="true" layoutX="50" layoutY="230" />
+    </AnchorPane>
+
+    <!-- Recuadro de vehículo 2 -->
+    <AnchorPane prefWidth="400" prefHeight="300" style="-fx-border-color: black; -fx-border-width: 1px;" layoutX="420">
+        <ImageView fx:id="imagen2" fitWidth="300" fitHeight="200" preserveRatio="true" layoutX="50" layoutY="20" />
+        <Label fx:id="descripcion2" wrapText="true" layoutX="50" layoutY="230" />
+    </AnchorPane>
+
+    <!-- Recuadro de vehículo 3 -->
+    <AnchorPane prefWidth="400" prefHeight="300" style="-fx-border-color: black; -fx-border-width: 1px;" layoutY="320">
+        <ImageView fx:id="imagen3" fitWidth="300" fitHeight="200" preserveRatio="true" layoutX="50" layoutY="20" />
+        <Label fx:id="descripcion3" wrapText="true" layoutX="50" layoutY="230" />
+    </AnchorPane>
+</AnchorPane>
