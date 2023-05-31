@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="concesionario.controllers.GestionarVehiculosController">
+   <center>
+      <AnchorPane prefHeight="607.0" prefWidth="719.0" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane layoutX="23.0" layoutY="52.0" prefHeight="525.0" prefWidth="674.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Motos">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="75.0" layoutY="44.0" text="Marca">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="74.0" layoutY="78.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="71.0" layoutY="114.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="67.0" layoutY="151.0" text="Cambios ">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="64.0" layoutY="190.0" text="Vel Max">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="67.0" layoutY="224.0" text="Cilindraje">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Button fx:id="btnBuscarMoto" layoutX="295.0" layoutY="279.0" mnemonicParsing="false" onAction="#buscarMotoEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="txtCilindrajeMoto" layoutX="194.0" layoutY="220.0" promptText="ingrese el cilindraje" />
+                              <Button fx:id="btnAgregarMoto" layoutX="25.0" layoutY="279.0" mnemonicParsing="false" onAction="#agregarMotoEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarMoto" layoutX="108.0" layoutY="279.0" mnemonicParsing="false" onAction="#eliminarMotoEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarMoto" layoutX="202.0" layoutY="279.0" mnemonicParsing="false" onAction="#actualizarMotoEvent" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Separator layoutX="345.0" layoutY="23.0" orientation="VERTICAL" prefHeight="235.0" prefWidth="2.0" />
+                              <Separator layoutX="92.0" layoutY="258.0" prefHeight="0.0" prefWidth="503.0" />
+                              <Button layoutX="151.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button layoutX="64.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button layoutX="230.0" layoutY="414.0" mnemonicParsing="false" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Label layoutX="25.0" layoutY="15.0" text="Moto" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="36.0" layoutY="370.0" prefHeight="12.0" prefWidth="285.0" />
+                              <ComboBox fx:id="cbMarcaMoto" layoutX="193.0" layoutY="40.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEstadoMoto" layoutX="193.0" layoutY="74.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbModeloMoto" layoutX="193.0" layoutY="110.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCambiosMoto" layoutX="193.0" layoutY="147.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxMoto" layoutX="193.0" layoutY="187.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnLimpiarCampos" layoutX="128.0" layoutY="329.0" mnemonicParsing="false" onAction="#limpiarMotoEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TableView fx:id="tableMoto" layoutX="365.0" layoutY="316.0" prefHeight="170.0" prefWidth="298.0">
+                                 <columns>
+                            		  <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                    <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnSubirImagenM" layoutX="488.0" layoutY="196.0" mnemonicParsing="false" onAction="#subirImagenMotoEvent" text="Subir imagen" />
+                              <SplitPane layoutX="444.0" layoutY="24.0" prefHeight="152.0" prefWidth="161.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenMoto" fitHeight="149.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Sedan">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="46.0" layoutY="29.0" text="Marca">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="46.0" layoutY="56.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="46.0" layoutY="82.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="46.0" layoutY="107.0" text="Cambios">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="46.0" layoutY="134.0" text="Num Pasajeros">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="46.0" layoutY="161.0" text="Num Puertas">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="38.0" layoutY="189.0" text="Capacidad Maletero">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="41.0" layoutY="246.0" text="Aire acondicionado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="37.0" layoutY="280.0" text="Camara Reversa">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="48.0" layoutY="312.0" text="Vel Crucero">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="39.0" layoutY="216.0" text="Num Bolsas Aire">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="59.0" layoutY="344.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="52.0" layoutY="373.0" text="Sensores ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <TextField fx:id="txtModeloSedan" layoutX="201.0" layoutY="78.0" onAction="#modeloSedanEvent" promptText="ingrese el modelo" />
+                              <TextField fx:id="txtCapacidadMaleteroSedan" layoutX="201.0" layoutY="184.0" promptText="ingrese capacidad de maletero " />
+                              <ComboBox fx:id="cbABSSedan" layoutX="201.0" layoutY="340.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAireAcondicionadoSedan" layoutX="201.0" layoutY="242.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCamaraReversaSedan" layoutX="201.0" layoutY="276.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelCruceroSedan" layoutX="201.0" layoutY="308.0" prefWidth="150.0" promptText="Elija.." />
+                              <ComboBox fx:id="cbSensoresSedan" layoutX="201.0" layoutY="369.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnComprarSedan" layoutX="576.0" layoutY="257.0" mnemonicParsing="false" onAction="#comprarSedanEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnVenderSedan" layoutX="392.0" layoutY="257.0" mnemonicParsing="false" onAction="#venderSedanEvent" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarSedan" layoutX="285.0" layoutY="429.0" mnemonicParsing="false" onAction="#eliminarSedanEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarSedan" layoutX="209.0" layoutY="429.0" mnemonicParsing="false" onAction="#buscarSedanEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAgregarSedan" layoutX="19.0" layoutY="429.0" mnemonicParsing="false" onAction="#agregarSedanEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarSedan" layoutX="108.0" layoutY="429.0" mnemonicParsing="false" onAction="#actualizarSedanEvent" style="-fx-background-color: #2C5175;" text="Actualizar " textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarSedan" layoutX="479.0" layoutY="257.0" mnemonicParsing="false" onAction="#alquilarSedanEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <ComboBox fx:id="cbEstadoSedan" layoutX="202.0" layoutY="52.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCambiosSedan" layoutX="202.0" layoutY="103.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPasajerosSedan" layoutX="201.0" layoutY="130.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPuertasSedan" layoutX="202.0" layoutY="157.0" prefWidth="150.0" promptText="Elija" />
+                              <ComboBox fx:id="cbNumBolsasAireSedan" layoutX="202.0" layoutY="212.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbMarcaSedan" layoutX="202.0" layoutY="25.0" prefWidth="150.0" promptText="Elija ..." />
+                              <Label layoutX="14.0" layoutY="1.0" text="Sedan" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnLimpiarCampos" layoutX="132.0" layoutY="462.0" mnemonicParsing="false" onAction="#limpiarSedanEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TableView fx:id="tableSedan" layoutX="374.0" layoutY="293.0" prefHeight="194.0" prefWidth="300.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                    <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnSubirImagenS" layoutX="481.0" layoutY="204.0" mnemonicParsing="false" onAction="#subirImagenSedanEvent" text="Subir imagen" />
+                              <SplitPane layoutX="437.0" layoutY="33.0" prefHeight="149.0" prefWidth="175.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenSedan" fitHeight="148.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Deportivos">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="29.0" layoutY="18.0" text="Marca ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="31.0" layoutY="41.0" prefHeight="26.0" prefWidth="70.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="28.0" layoutY="72.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="26.0" layoutY="101.0" text="Cambios">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="26.0" layoutY="128.0" text="Vel Max">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="30.0" layoutY="156.0" text="Cilindraje">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="21.0" layoutY="185.0" text="Num Pasajeros">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="17.0" layoutY="214.0" text="Num Puertas">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="23.0" layoutY="242.0" text="Bolsas Aire">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="30.0" layoutY="270.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="17.0" layoutY="302.0" text="Sensores">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutY="331.0" text="Sensor Trafico Crusado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="14.0" layoutY="358.0" text="Caballos Fuerza">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="15.0" layoutY="390.0" text="Tiempo 100km/h">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <TableView fx:id="tableDeportivo" layoutX="360.0" layoutY="262.0" prefHeight="194.0" prefWidth="300.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                  <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                </columns>
+                              </TableView>
+                              <ComboBox fx:id="cbMarcaDeportivo" layoutX="174.0" layoutY="14.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEstadoDeportivo" layoutX="174.0" layoutY="41.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCambiosDeportivo" layoutX="174.0" layoutY="97.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxDeportivo" layoutX="174.0" layoutY="124.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPasajerosDeportivo" layoutX="174.0" layoutY="181.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPuertasDeportivo" layoutX="174.0" layoutY="210.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbBolsasAireDeportivo" layoutX="174.0" layoutY="238.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbABSdeportivo" layoutX="174.0" layoutY="266.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbSensoresDeportivo" layoutX="174.0" layoutY="298.0" prefWidth="150.0" promptText="Elija..." />
+                              <TextField fx:id="txtModeloDeportivo" layoutX="175.0" layoutY="68.0" promptText="ingrese el modelo" />
+                              <ComboBox fx:id="cbSensorTraficoDeportivo" layoutX="174.0" layoutY="327.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCaballosFuerza" layoutX="174.0" layoutY="354.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbTiempo100kmDeportivo" layoutX="174.0" layoutY="386.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnAgregarDeportivo" layoutX="26.0" layoutY="423.0" mnemonicParsing="false" onAction="#agregarDeportivoEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarDeportivo" layoutX="94.0" layoutY="423.0" mnemonicParsing="false" onAction="#actualizarDeportivoEvent" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarDeportivo" layoutX="174.0" layoutY="423.0" mnemonicParsing="false" onAction="#buscarDeportivoEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarDeportivo" layoutX="232.0" layoutY="423.0" mnemonicParsing="false" onAction="#eliminarDeportivoEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnVenderDeportivo" layoutX="374.0" layoutY="224.0" mnemonicParsing="false" onAction="#venderDeportivoEvent" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarDeportivo" layoutX="478.0" layoutY="224.0" mnemonicParsing="false" onAction="#alquilarDeportivoEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnComprarDeportivo" layoutX="579.0" layoutY="221.0" mnemonicParsing="false" onAction="#comprarDeportivoEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Label layoutX="7.0" layoutY="1.0" text="Deportivo" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnLimpiarDeportivo" layoutX="105.0" layoutY="460.0" mnemonicParsing="false" onAction="#limpiarDeportivoEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="txtCilindrajeDeportivo" layoutX="175.0" layoutY="152.0" promptText="ingrese el Cilindraje" />
+                              <Button fx:id="btnSubirImagenD" layoutX="467.0" layoutY="169.0" mnemonicParsing="false" onAction="#subirImagenDeportivoEvent" text="Subir imagen" />
+                              <SplitPane layoutX="409.0" layoutY="10.0" prefHeight="145.0" prefWidth="202.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenDeportivo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Camionetas">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="31.0" layoutY="22.0" text="Marca ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="31.0" layoutY="51.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="28.0" layoutY="78.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="28.0" layoutY="105.0" text="Vel Max">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="19.0" layoutY="303.0" text="Aire Acondicionado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="35.0" layoutY="273.0" text="Maletero">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="39.0" layoutY="244.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="17.0" layoutY="218.0" text="Num Bolsas Aire">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="16.0" layoutY="189.0" text="Num Puertas">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="13.0" layoutY="163.0" text="Num Pasajero">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="25.0" layoutY="133.0" text="Cilindraje">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="25.0" layoutY="332.0" text="Camara Reversa">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="41.0" layoutY="363.0" text="4x4">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="31.0" layoutY="393.0" text="Caja Carga">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <ComboBox fx:id="cbMarcaCamioneta" layoutX="183.0" layoutY="18.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumBolsasAire" layoutX="183.0" layoutY="214.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCamareReversa" layoutX="183.0" layoutY="328.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAireAcondicionado" layoutX="183.0" layoutY="299.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCapMaletero" layoutX="183.0" layoutY="269.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbABScamioneta" layoutX="183.0" layoutY="240.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxCamioneta" layoutX="183.0" layoutY="101.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEstadoCamioneta" layoutX="183.0" layoutY="47.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cb4x4Camioneta" layoutX="183.0" layoutY="359.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCajaCarga" layoutX="183.0" layoutY="389.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnAgregarCamioneta" layoutX="36.0" layoutY="423.0" mnemonicParsing="false" onAction="#agregarCamionetaEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarCamioneta" layoutX="99.0" layoutY="423.0" mnemonicParsing="false" onAction="#actualizarCamionetaEvent" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarCamioneta" layoutX="174.0" layoutY="423.0" mnemonicParsing="false" onAction="#buscarCamionetaEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarCamioneta" layoutX="232.0" layoutY="423.0" mnemonicParsing="false" onAction="#eliminarCamionetaEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnVenderCamioneta" layoutX="378.0" layoutY="225.0" mnemonicParsing="false" onAction="#venderCamioneta" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarCamioneta" layoutX="476.0" layoutY="225.0" mnemonicParsing="false" onAction="#alquilarCamionetaEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnComprarCamioneta" layoutX="577.0" layoutY="225.0" mnemonicParsing="false" onAction="#comprarCamionetaEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Label layoutX="15.0" layoutY="1.0" text="Camionetas" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tableCamionetas" layoutX="355.0" layoutY="263.0" prefHeight="200.0" prefWidth="306.0">
+                                 <columns>
+                                    <TableColumn fx:id="columMarca" prefWidth="75.0" text="Marca" />
+                                    <TableColumn fx:id="columEstado" prefWidth="75.0" text="Estado" />
+                                    <TableColumn fx:id="columModelo" prefWidth="75.0" text="Modelo" />
+                                    <TableColumn fx:id="columCilindraje" prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnLimpiarCamioneta" layoutX="123.0" layoutY="457.0" mnemonicParsing="false" onAction="#limpiarCamionetaEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="txtModeloCamioneta" layoutX="184.0" layoutY="74.0" promptText="ingrese el Modelo" />
+                              <TextField fx:id="txtCilindrajeCamioneta" layoutX="184.0" layoutY="129.0" promptText="ingrese  el cilindraje" />
+                              <ComboBox fx:id="cbNumPasajerosCamioneta" layoutX="184.0" layoutY="159.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPuertasCamioneta" layoutX="183.0" layoutY="185.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnSubirImagenC" layoutX="484.0" layoutY="185.0" mnemonicParsing="false" onAction="#subirImagenCamionetaEvent" text="Subir imagen" />
+                              <SplitPane layoutX="426.0" layoutY="26.0" prefHeight="140.0" prefWidth="164.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenCamioneta" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Pick ups">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="44.0" layoutY="41.0" text="Marca">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="51.0" layoutY="324.0" text="4x4">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="38.0" layoutY="355.0" text="Caja Carga">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="51.0" layoutY="295.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="26.0" layoutY="264.0" text="Aire Acondicionado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="32.0" layoutY="237.0" text="Num Puertas">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="28.0" layoutY="210.0" text="Num Pasajeros">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="42.0" layoutY="182.0" text="Cilindraje">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="45.0" layoutY="153.0" text="Vel Max">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="43.0" layoutY="125.0" text="Cambios">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="50.0" layoutY="97.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="43.0" layoutY="69.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <ComboBox fx:id="cbMarcaPickUps" layoutX="187.0" layoutY="37.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEstadoPickUp" layoutX="187.0" layoutY="65.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCambiosPickUp" layoutX="187.0" layoutY="121.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPasajerosPickUp" layoutX="187.0" layoutY="206.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxPickUp" layoutX="187.0" layoutY="149.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPuertasPickUp" layoutX="187.0" layoutY="233.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAireAcondicionadoPickUp" layoutX="187.0" layoutY="260.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAbsPickUp" layoutX="187.0" layoutY="291.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cb4x4PickUp" layoutX="187.0" layoutY="320.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCajaCargaPickUp" layoutX="187.0" layoutY="351.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnAgregarPickUp" layoutX="21.0" layoutY="418.0" mnemonicParsing="false" onAction="#agregarPickUpEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizaPickUp" layoutX="96.0" layoutY="418.0" mnemonicParsing="false" onAction="#actualizarPickUpEvent" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarPickUp" layoutX="185.0" layoutY="418.0" mnemonicParsing="false" onAction="#buscarPickUpEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarPickUp" layoutX="257.0" layoutY="418.0" mnemonicParsing="false" onAction="#eliminarPickUpEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnvenderPickUp" layoutX="394.0" layoutY="216.0" mnemonicParsing="false" onAction="#venderPickUpEvent" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarPickUp" layoutX="477.0" layoutY="216.0" mnemonicParsing="false" onAction="#alquilarPickUpEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnComprarPickUp" layoutX="570.0" layoutY="216.0" mnemonicParsing="false" onAction="#comprarPickUpEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Label layoutX="8.0" layoutY="1.0" text="Pick Ups" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tablePickUp" layoutX="352.0" layoutY="255.0" prefHeight="200.0" prefWidth="306.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                    <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnLimpiarPickUp" layoutX="113.0" layoutY="455.0" mnemonicParsing="false" onAction="#limpiarPickUpEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="txtCilindrajePickUp" layoutX="188.0" layoutY="178.0" promptText="Ingrese el Cilindraje" />
+                              <TextField fx:id="txtModeloPickUp" layoutX="188.0" layoutY="93.0" promptText="ingrese el Modelo" />
+                              <Button fx:id="btnSubirImagenP" layoutX="466.0" layoutY="162.0" mnemonicParsing="false" onAction="#subirImagenPickUpEvent" text="Subir imagen" />
+                              <SplitPane layoutX="410.0" layoutY="18.0" prefHeight="111.0" prefWidth="200.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenPickUp" fitHeight="129.0" fitWidth="194.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Vans">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="37.0" layoutY="44.0" text="Marca">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="21.0" layoutY="287.0" text="Camara de reversa">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="18.0" layoutY="253.0" text="Aire Acondicionado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="36.0" layoutY="224.0" text="Maletero">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="36.0" layoutY="193.0" text="Num Puertas">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="38.0" layoutY="160.0" text="Vel Max">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="31.0" layoutY="132.0" text="Num Pasajeros">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="37.0" layoutY="101.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="34.0" layoutY="72.0" text="Estado ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="25.0" layoutY="321.0" text="Num Bolsas Aire ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="50.0" layoutY="353.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <ComboBox fx:id="cbMarcaVans" layoutX="187.0" layoutY="40.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEstadoVans" layoutX="187.0" layoutY="68.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPasajerosVans" layoutX="187.0" layoutY="128.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxVans" layoutX="187.0" layoutY="156.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPuertasVans" layoutX="187.0" layoutY="189.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCapMaletero" layoutX="187.0" layoutY="220.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAireAcondicionadoVans" layoutX="187.0" layoutY="249.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCamaraReversaVans" layoutX="187.0" layoutY="283.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumBolsasAireVans" layoutX="187.0" layoutY="317.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAbsVans" layoutX="187.0" layoutY="349.0" prefWidth="150.0" promptText="Elija..." />
+                              <Label layoutX="11.0" layoutY="1.0" text="Vans" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btnAgreagarVans" layoutX="19.0" layoutY="414.0" mnemonicParsing="false" onAction="#agregarVansEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarVans" layoutX="99.0" layoutY="414.0" mnemonicParsing="false" onAction="#actualizarVansEvent" prefHeight="27.0" prefWidth="73.0" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarVans" layoutX="187.0" layoutY="414.0" mnemonicParsing="false" onAction="#buscarVansEvent" prefHeight="25.0" prefWidth="60.0" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="cbEliminarVans" layoutX="262.0" layoutY="414.0" mnemonicParsing="false" onAction="#eliminarVansEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnVenderVans" layoutX="369.0" layoutY="209.0" mnemonicParsing="false" onAction="#venderVansEvent" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarVans" layoutX="476.0" layoutY="209.0" mnemonicParsing="false" onAction="#alquilarVansEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnComprarVans" layoutX="580.0" layoutY="209.0" mnemonicParsing="false" onAction="#comprarVansEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TableView fx:id="tableVans" layoutX="355.0" layoutY="249.0" prefHeight="200.0" prefWidth="306.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                    <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnLimpiarVans" layoutX="116.0" layoutY="457.0" mnemonicParsing="false" onAction="#limpiarVansEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="txtModeloVans" layoutX="188.0" layoutY="97.0" promptText="ingrese el Modelo" />
+                              <Button fx:id="btnSubirImagenV" layoutX="465.0" layoutY="166.0" mnemonicParsing="false" onAction="#subirImagenVansEvent" text="Subir imagen" />
+                              <SplitPane layoutX="408.0" layoutY="19.0" prefHeight="129.0" prefWidth="195.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenVans" fitHeight="137.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Buses ">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="25.0" layoutY="255.0" text="AireAcondicionado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="22.0" layoutY="232.0" text="Capacidad Matero">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="32.0" layoutY="207.0" text="Numero Puertas">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="36.0" layoutY="179.0" text="Num Pasajeros">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="45.0" layoutY="153.0" text="Cilindraje">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="54.0" layoutY="127.0" text="Vel Max">
+                                 <font>
+                                    <Font name="Elephant" size="12.0" />
+                                 </font></Label>
+                              <Label layoutX="52.0" layoutY="103.0" text="Cambios">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="49.0" layoutY="77.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="52.0" layoutY="51.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="49.0" layoutY="24.0" text="Marca ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="60.0" layoutY="334.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="32.0" layoutY="309.0" text="Num Bolsas Aire">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="33.0" layoutY="282.0" text="Camara Reversa">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="30.0" layoutY="383.0" text="Salidas Emergencia">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="45.0" layoutY="357.0" text="Num Ejes">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <ComboBox fx:id="cbMaracaBus" layoutX="187.0" layoutY="20.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEsatadoBus" layoutX="187.0" layoutY="47.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCambiosBus" layoutX="187.0" layoutY="99.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxBus" layoutX="188.0" layoutY="122.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPasajerosBus" layoutX="187.0" layoutY="175.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumPuertasBus" layoutX="187.0" layoutY="203.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCapacidadMaleteroBus" layoutX="187.0" layoutY="228.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAireAcondicionadoBus" layoutX="187.0" layoutY="251.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCamaraReversaBus" layoutX="187.0" layoutY="278.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumBolsasAireBus" layoutX="187.0" layoutY="305.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAbsBus" layoutX="187.0" layoutY="330.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumEjesBus" layoutX="187.0" layoutY="353.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbSalidasEmergenciaBus" layoutX="187.0" layoutY="379.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnAgregarBus" layoutX="16.0" layoutY="431.0" mnemonicParsing="false" onAction="#agragarBusEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi Cond" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarBus" layoutX="102.0" layoutY="431.0" mnemonicParsing="false" onAction="#actualizarBusEvent" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarBus" layoutX="196.0" layoutY="431.0" mnemonicParsing="false" onAction="#buscarBusEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarBus" layoutX="262.0" layoutY="431.0" mnemonicParsing="false" onAction="#eliminarBusEvent" style="-fx-background-color: #2C5175;" text="Elliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnVenderBus" layoutX="379.0" layoutY="195.0" mnemonicParsing="false" onAction="#venderBusEvent" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarBus" layoutX="479.0" layoutY="195.0" mnemonicParsing="false" onAction="#alquilarBusEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnComprarBus" layoutX="576.0" layoutY="195.0" mnemonicParsing="false" onAction="#comprarBusEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Label layoutX="10.0" layoutY="1.0" text="Buses" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tableBuses" layoutX="354.0" layoutY="243.0" prefHeight="200.0" prefWidth="306.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                    <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnLimpiarBus" layoutX="129.0" layoutY="470.0" mnemonicParsing="false" onAction="#limpiarBusEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="cbModeloBus" layoutX="188.0" layoutY="73.0" promptText="ingrese el Modelo" />
+                              <TextField fx:id="txtCilindrajeBus" layoutX="188.0" layoutY="149.0" promptText="ingrese el Cilindraje" />
+                              <Button fx:id="btnSubirImagenB" layoutX="468.0" layoutY="149.0" mnemonicParsing="false" onAction="#subirImagenBusEvent" text="Subir imagen" />
+                              <SplitPane layoutX="407.0" layoutY="12.0" prefHeight="102.0" prefWidth="200.0">
+                                 <items>
+                                    <ImageView fx:id="vistaImagenBus" fitHeight="117.0" fitWidth="183.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab fx:id="vistaImagenCamiones" text="Camiones">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="44.0" layoutY="135.0" text="Vel Maxima">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="61.0" layoutY="108.0" text="Cambios">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="60.0" layoutY="81.0" text="Modelo">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="63.0" layoutY="54.0" text="Estado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="63.0" layoutY="27.0" text="Marca">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="49.0" layoutY="303.0" text="Num Ejes ">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="65.0" layoutY="274.0" text="ABS">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="45.0" layoutY="246.0" text="Frenos Aire">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="32.0" layoutY="216.0" text="Aire Acondicionado">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="36.0" layoutY="190.0" text="Capacidad carga">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="50.0" layoutY="163.0" text="Cilindraje">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <Label layoutX="46.0" layoutY="330.0" text="Tipo Camion">
+                                 <font>
+                                    <Font name="Elephant" size="13.0" />
+                                 </font></Label>
+                              <ComboBox fx:id="cbMarcaCamion" layoutX="187.0" layoutY="23.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbEstadoCamion" layoutX="187.0" layoutY="50.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCambiosCamion" layoutX="187.0" layoutY="104.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbVelMaxCamion" layoutX="187.0" layoutY="131.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbCapacidadCargaCamion" layoutX="187.0" layoutY="186.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAireAcondicionadoCamion" layoutX="187.0" layoutY="212.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbFrenosAireCamion" layoutX="187.0" layoutY="242.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbAbsCamion" layoutX="187.0" layoutY="270.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbNumEjesCamion" layoutX="187.0" layoutY="299.0" prefWidth="150.0" promptText="Elija..." />
+                              <ComboBox fx:id="cbTipoCamion" layoutX="187.0" layoutY="326.0" prefWidth="150.0" promptText="Elija..." />
+                              <Button fx:id="btnAgregarCamion" layoutX="34.0" layoutY="403.0" mnemonicParsing="false" onAction="#agregarCamionEvent" style="-fx-background-color: #2C5175;" text="Agregar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnActualizarCamion" layoutX="107.0" layoutY="403.0" mnemonicParsing="false" onAction="#actualizarCamionEvent" style="-fx-background-color: #2C5175;" text="Actualizar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnBuscarCamion" layoutX="187.0" layoutY="403.0" mnemonicParsing="false" onAction="#buscarCamionEvent" style="-fx-background-color: #2C5175;" text="Buscar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnEliminarCamion" layoutX="256.0" layoutY="403.0" mnemonicParsing="false" onAction="#eliminarCamionEvent" style="-fx-background-color: #2C5175;" text="Eliminar" textFill="WHITE">
+                                 <font>
+                                    <Font name="Franklin Gothic Demi" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnVenderBus" layoutX="372.0" layoutY="242.0" mnemonicParsing="false" onAction="#venderBusEvent" style="-fx-background-color: #F8C471;" text="Vender">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnAlquilarCamiones" layoutX="480.0" layoutY="243.0" mnemonicParsing="false" onAction="#alquilarCamionesEvent" style="-fx-background-color: #F8C471;" text="Alquilar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Button fx:id="btnComprarCamion" layoutX="585.0" layoutY="242.0" mnemonicParsing="false" onAction="#comprarCamionEvent" style="-fx-background-color: #F8C471;" text="Comprar">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <Label layoutX="12.0" layoutY="1.0" text="Camiones" textFill="#423ad7">
+                                 <font>
+                                    <Font name="Sitka Small" size="17.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="tableCamiones" layoutX="355.0" layoutY="283.0" prefHeight="200.0" prefWidth="306.0">
+                                 <columns>
+                                    <TableColumn prefWidth="75.0" text="Marca" />
+                                    <TableColumn prefWidth="75.0" text="Estado" />
+                                    <TableColumn prefWidth="75.0" text="Modelo" />
+                                    <TableColumn prefWidth="75.0" text="Cilindraje" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnLimpiarCamion" layoutX="124.0" layoutY="446.0" mnemonicParsing="false" onAction="#limpiarCamionEvent" style="-fx-background-color: #2C5190;" text="Limpiar Campos" textFill="WHITE">
+                                 <font>
+                                    <Font name="Sitka Small" size="12.0" />
+                                 </font></Button>
+                              <TextField fx:id="txtModeloCamion" layoutX="188.0" layoutY="77.0" promptText="ingrese el Modelo" />
+                              <TextField fx:id="txtCilindrajeCamion" layoutX="188.0" layoutY="159.0" promptText="ingrese el Cilindraje" />
+                              <Button fx:id="btnSubirImagenCa" layoutX="465.0" layoutY="196.0" mnemonicParsing="false" onAction="#subirImagenCamionEvent" text="Subir imagen" />
+                              <SplitPane layoutX="408.0" layoutY="17.0" prefHeight="157.0" prefWidth="200.0">
+                                 <items>
+                                    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                 </items>
+                              </SplitPane>
+                           </children></AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <Label layoutX="304.0" layoutY="14.0" text="Gestion de Vehiculos">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

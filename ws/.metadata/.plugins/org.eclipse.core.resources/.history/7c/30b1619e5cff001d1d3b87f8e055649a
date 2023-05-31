@@ -1,6 +1,5 @@
 package concesionario.controllers;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,7 +10,6 @@ import concesionario.model.Vehiculo;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Tab;
@@ -20,12 +18,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 
-public class GestionarVehiculosController {
+public class GestionarVehiculosController implement initializable {
 
 	private Aplicacion aplicacion;
 
@@ -644,150 +639,19 @@ public class GestionarVehiculosController {
     void agregarDeportivoEvent(ActionEvent event) {
 
     }
-    public void initialize() {
-        // Crea las columnas
-        TableColumn<Moto, String> marcaColumn = new TableColumn<>("Marca");
-        TableColumn<Moto, String> estadoColumn = new TableColumn<>("Estado");
-        TableColumn<Moto, String> modeloColumn = new TableColumn<>("Modelo");
-        TableColumn<Moto, Integer> cilindrajeColumn = new TableColumn<>("Cilindraje");
-
-        // Asigna las propiedades de las columnas a los atributos de la clase Moto
-        marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
-        estadoColumn.setCellValueFactory(new PropertyValueFactory<>("estado"));
-        modeloColumn.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-        cilindrajeColumn.setCellValueFactory(new PropertyValueFactory<>("cilindraje"));
-
-        // Agrega las columnas a la TableView
-        tableMoto.getColumns().addAll(marcaColumn, estadoColumn, modeloColumn, cilindrajeColumn);
-
-        // Configura la tabla para que se ajuste al contenido de las columnas
-        tableMoto.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-
-        // Agrega algunas motos preexistentes a la TableView
-//        Moto moto1 = new Moto("Marca1", "Estado1", "Modelo1", 100);
-//        Moto moto2 = new Moto("Marca2", "Estado2", "Modelo2", 200);
-
-//        tableMoto.getItems().addAll(moto1, moto2);
-//    }
-
-
-    	cbMarcaMoto.getItems().addAll("Yamaha","BMW");
-    	cbMarcaCamion.getItems().addAll("VOLVO","IVECO");
-    	cbMaracaBus.getItems().addAll("Setra","Man Truck");
-    	cbMarcaCamioneta.getItems().addAll("Renault"," Mazda", "Chevrolet");
-    	cbMarcaDeportivo.getItems().addAll("Ferrari","Lamborghini");
-    	cbMarcaPickUps.getItems().addAll("Chevrolet Cheyenne","Ford Ranger");
-    	cbMarcaSedan.getItems().addAll("Hyundai Elantra","Mazda3");
-    	cbMarcaVans.getItems().addAll("Nissan NV350 URVAN","Renault Kangoo de carga");
-
-    	cbEsatadoBus.getItems().addAll("Nuevo","Usado");
-    	cbEstadoCamion.getItems().addAll("Nuevo","Usado");
-    	cbEstadoCamioneta.getItems().addAll("Nuevo","Usado");
-    	cbEstadoDeportivo.getItems().addAll("Nuevo","Usado");
-    	cbEstadoMoto.getItems().addAll("Nuevo","Usado");
-    	cbEstadoPickUp.getItems().addAll("Nuevo","Usado");
-    	cbEstadoSedan.getItems().addAll("Nuevo","Usado");
-    	cbEstadoVans.getItems().addAll("Nuevo","Usado");
-
-    	cbCambiosBus.getItems().addAll(1,2,3,4,5,6);
-    	cbCambiosCamion.getItems().addAll(1,2,3,4,5,6,7);
-    	cbCambiosDeportivo.getItems().addAll(1,2,3,4,5);
-    	cbCambiosMoto.getItems().addAll(1,2,3,4,5);
-    	cbCambiosPickUp.getItems().addAll(1,2,3,4,5);
-    	cbCambiosSedan.getItems().addAll(1,2,3,4,5);
-
-    	cbNumPasajerosDeportivo.getItems().addAll(1,2,3,4,5);
-    	cbNumPasajerosBus.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
-    	cbNumPasajerosCamioneta.getItems().addAll(1,2,3,4,5);
-    	cbNumPasajerosPickUp.getItems().addAll(1,2,3,4,5);
-    	cbNumPasajerosSedan.getItems().addAll(1,2,3,4,5);
-    	cbNumPasajerosVans.getItems().addAll(1,2,3,4,5);
-
-    	cbNumPuertasBus.getItems().addAll(1,2,3,4,5);
-    	cbNumPuertasCamioneta.getItems().addAll(1,2,3,4,5);
-    	cbNumPuertasDeportivo.getItems().addAll(1,2,3,4,5);
-    	cbNumPuertasPickUp.getItems().addAll(1,2,3,4,5);
-    	cbNumPuertasSedan.getItems().addAll(1,2,3,4,5);
-    	cbNumPuertasVans.getItems().addAll(1,2,3,4,5);
-
-    	cbBolsasAireDeportivo.getItems().addAll(1,2,3,4,5);
-
-    	cbAbsBus.getItems().addAll("si","no");
-    	cbAbsCamion.getItems().addAll("si","no");
-    	cbABScamioneta.getItems().addAll("si","no");
-    	cbABSdeportivo.getItems().addAll("si","no");
-    	cbAbsPickUp.getItems().addAll("si","no");
-    	cbABSSedan.getItems().addAll("si","no");
-    	cbAbsVans.getItems().addAll("si","no");
-
-    	cbSensoresDeportivo.getItems().addAll("si","no");
-    	cbSensoresSedan.getItems().addAll("si","no");
-    	cbSensorTraficoDeportivo.getItems().addAll("si","no");
-
-    	cbTiempo100kmDeportivo.getItems().addAll();
-
-    	cbCapMaletero.getItems().addAll("100 litros","200 litros","300 litros");
-
-    	cb4x4Camioneta.getItems().addAll("si","no");
-    	cb4x4PickUp.getItems().addAll("si","no");
-
-    	cbCajaCarga.getItems().addAll("si","no");
-    	cbCajaCargaPickUp.getItems().addAll("si","no");
-
-    	cbTipoCamion.getItems().addAll("Tráilers","no");
-
-    	cbNumEjesBus.getItems().addAll(1,2,3,4,5);
-    	cbNumEjesCamion.getItems().addAll(1,2,3,4,5);
-
-    	cbNumBolsasAire.getItems().addAll(1,2,3,4,5);
-    	cbNumBolsasAireBus.getItems().addAll(1,2,3,4,5);
-    	cbNumBolsasAireSedan.getItems().addAll(1,2,3,4,5);
-    	cbNumBolsasAireVans.getItems().addAll(1,2,3,4,5);
-
-    	cbAireAcondicionado.getItems().addAll("si","no");
-    	cbAireAcondicionadoBus.getItems().addAll("si","no");
-    	cbAireAcondicionadoCamion.getItems().addAll("si","no");
-    	cbAireAcondicionadoPickUp.getItems().addAll("si","no");
-    	cbAireAcondicionadoSedan.getItems().addAll("si","no");
-    	cbAireAcondicionadoVans.getItems().addAll("si","no");
-
-    	cbCamaraReversaBus.getItems().addAll("si","no");
-    	cbCamaraReversaSedan.getItems().addAll("si","no");
-    	cbCamaraReversaVans.getItems().addAll("si","no");
-
-    	cbVelCruceroSedan.getItems().addAll("si","no");
-
-    	cbVelMaxBus.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
-    	cbVelMaxCamion.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
-    	cbVelMaxCamioneta.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
-    	cbVelMaxDeportivo.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
-    	cbVelMaxMoto.getItems().addAll(80,90,100,120,120);
-    	cbVelMaxPickUp.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
-    	cbVelMaxVans.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
-
-    	cbModeloMoto.getItems().addAll("2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023");
-
-
-    }
-
-    public void setAplicacion(Aplicacion aplicacion) {
-        this.aplicacion = aplicacion;
-    }
 
     @FXML
     void agregarMotoEvent(ActionEvent event) {
-//        String marca = cbMarcaMoto.getValue();
-//        String estado = cbEstadoMoto.getValue();
-//        String modelo = cbModeloMoto.getValue();
-//        Integer cambios = cbCambiosMoto.getValue();
-//        Integer velocidadMaxima = cbVelMaxMoto.getValue();
-//
-//        Moto moto = new Moto(marca, estado, modelo, cambios, velocidadMaxima);
-//
-//        // Agrega la moto a la TableView
-//        tableMoto.getItems().add(moto);
-    }
+        String marca = cbMarcaMoto.getValue();
+        String estado = cbEstadoMoto.getValue();
+        String modelo = cbModeloMoto.getValue();
+        Integer cambios = cbCambiosMoto.getValue();
+        Integer velocidadMaxima = cbVelMaxMoto.getValue();
 
+        Moto moto = new Moto(marca, false, modelo, cambios, null, null, velocidadMaxima, 0,false, 0, false, 0, 0, false, null);
+
+        tableMoto.getItems().add(moto);
+    }
     @FXML
     private TableColumn<Moto, String> marcaColumn;
 
@@ -800,7 +664,22 @@ public class GestionarVehiculosController {
     @FXML
     private TableColumn<Moto, Integer> cilindrajeColumn;
 
+    public void initializeMoto() {
+        // Asigna las propiedades de las columnas a los atributos de la clase Moto
+        marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        estadoColumn.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        modeloColumn.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        cilindrajeColumn.setCellValueFactory(new PropertyValueFactory<>("cilindraje"));
 
+        // Configura la tabla para que se ajuste al contenido de las columnas
+        tableMoto.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+        // Agrega algunas motos preexistentes a la TableView
+        Moto moto1 = new Moto("Marca1", false, "Modelo1", 0, null, null, 200,120, false, 0, false, 0, 0, false, null);
+        Moto moto2 = new Moto("Marca2", false, "Modelo2", 2000, null, null, 0, 0, false, 0, false, 0, 0, false, null);
+
+        tableMoto.getItems().addAll(moto1, moto2);
+    }
 
     @FXML
     void agregarPickUpEvent(ActionEvent event) {
@@ -1035,19 +914,11 @@ public class GestionarVehiculosController {
     void subirImagenDeportivoEvent(ActionEvent event) {
 
     }
-/////////////////////////
+
     @FXML
     void subirImagenMotoEvent(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleccionar imagen");
-        fileChooser.getExtensionFilters().add(new ExtensionFilter("Archivos de imagen", "*.jpg", "*.jpeg", "*.png"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            vistaImagenMoto.setImage(image);
-        }
-    }
 
+    }
 
     @FXML
     void subirImagenPickUpEvent(ActionEvent event) {
@@ -1095,8 +966,107 @@ public class GestionarVehiculosController {
     }
 
 
+	@FXML
+    void initialize() {
 
-	public void setAplicacion1(Aplicacion aplicacion) {
+    	cbMarcaMoto.getItems().addAll("Yamaha","BMW");
+    	cbMarcaCamion.getItems().addAll("VOLVO","IVECO");
+    	cbMaracaBus.getItems().addAll("Setra","Man Truck");
+    	cbMarcaCamioneta.getItems().addAll("Renault"," Mazda", "Chevrolet");
+    	cbMarcaDeportivo.getItems().addAll("Ferrari","Lamborghini");
+    	cbMarcaPickUps.getItems().addAll("Chevrolet Cheyenne","Ford Ranger");
+    	cbMarcaSedan.getItems().addAll("Hyundai Elantra","Mazda3");
+    	cbMarcaVans.getItems().addAll("Nissan NV350 URVAN","Renault Kangoo de carga");
+
+    	cbEsatadoBus.getItems().addAll("Nuevo","Usado");
+    	cbEstadoCamion.getItems().addAll("Nuevo","Usado");
+    	cbEstadoCamioneta.getItems().addAll("Nuevo","Usado");
+    	cbEstadoDeportivo.getItems().addAll("Nuevo","Usado");
+    	cbEstadoMoto.getItems().addAll("Nuevo","Usado");
+    	cbEstadoPickUp.getItems().addAll("Nuevo","Usado");
+    	cbEstadoSedan.getItems().addAll("Nuevo","Usado");
+    	cbEstadoVans.getItems().addAll("Nuevo","Usado");
+
+    	cbCambiosBus.getItems().addAll(1,2,3,4,5,6);
+    	cbCambiosCamion.getItems().addAll(1,2,3,4,5,6,7);
+    	cbCambiosDeportivo.getItems().addAll(1,2,3,4,5);
+    	cbCambiosMoto.getItems().addAll(1,2,3,4,5);
+    	cbCambiosPickUp.getItems().addAll(1,2,3,4,5);
+    	cbCambiosSedan.getItems().addAll(1,2,3,4,5);
+
+    	cbNumPasajerosDeportivo.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosBus.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
+    	cbNumPasajerosCamioneta.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosPickUp.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosSedan.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosVans.getItems().addAll(1,2,3,4,5);
+
+    	cbNumPuertasBus.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasCamioneta.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasDeportivo.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasPickUp.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasSedan.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasVans.getItems().addAll(1,2,3,4,5);
+
+    	cbBolsasAireDeportivo.getItems().addAll(1,2,3,4,5);
+
+    	cbAbsBus.getItems().addAll("si","no");
+    	cbAbsCamion.getItems().addAll("si","no");
+    	cbABScamioneta.getItems().addAll("si","no");
+    	cbABSdeportivo.getItems().addAll("si","no");
+    	cbAbsPickUp.getItems().addAll("si","no");
+    	cbABSSedan.getItems().addAll("si","no");
+    	cbAbsVans.getItems().addAll("si","no");
+
+    	cbSensoresDeportivo.getItems().addAll("si","no");
+    	cbSensoresSedan.getItems().addAll("si","no");
+    	cbSensorTraficoDeportivo.getItems().addAll("si","no");
+
+    	cbTiempo100kmDeportivo.getItems().addAll();
+
+    	cbCapMaletero.getItems().addAll("100 litros","200 litros","300 litros");
+
+    	cb4x4Camioneta.getItems().addAll("si","no");
+    	cb4x4PickUp.getItems().addAll("si","no");
+
+    	cbCajaCarga.getItems().addAll("si","no");
+    	cbCajaCargaPickUp.getItems().addAll("si","no");
+
+    	cbTipoCamion.getItems().addAll("Tráilers","no");
+
+    	cbNumEjesBus.getItems().addAll(1,2,3,4,5);
+    	cbNumEjesCamion.getItems().addAll(1,2,3,4,5);
+
+    	cbNumBolsasAire.getItems().addAll(1,2,3,4,5);
+    	cbNumBolsasAireBus.getItems().addAll(1,2,3,4,5);
+    	cbNumBolsasAireSedan.getItems().addAll(1,2,3,4,5);
+    	cbNumBolsasAireVans.getItems().addAll(1,2,3,4,5);
+
+    	cbAireAcondicionado.getItems().addAll("si","no");
+    	cbAireAcondicionadoBus.getItems().addAll("si","no");
+    	cbAireAcondicionadoCamion.getItems().addAll("si","no");
+    	cbAireAcondicionadoPickUp.getItems().addAll("si","no");
+    	cbAireAcondicionadoSedan.getItems().addAll("si","no");
+    	cbAireAcondicionadoVans.getItems().addAll("si","no");
+
+    	cbCamaraReversaBus.getItems().addAll("si","no");
+    	cbCamaraReversaSedan.getItems().addAll("si","no");
+    	cbCamaraReversaVans.getItems().addAll("si","no");
+
+    	cbVelCruceroSedan.getItems().addAll("si","no");
+
+    	cbVelMaxBus.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxCamion.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxCamioneta.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxDeportivo.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxMoto.getItems().addAll(80,90,100,120,120);
+    	cbVelMaxPickUp.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxVans.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+
+    	cbModeloMoto.getItems().addAll("2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023");
+    }
+
+	public void setAplicacion(Aplicacion aplicacion) {
 		this.aplicacion=aplicacion;
 
 	}
