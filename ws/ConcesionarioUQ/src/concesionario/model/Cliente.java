@@ -1,123 +1,93 @@
 package concesionario.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Cliente {
-/**
- * atributos
- */
-	private String nombre;
-	private String apellido;
-	private String idCliente;
-	private String usuario;
-	private String contrasenia;
-	private String correoElectronico;
-	private List<Transaccion> listaTransaccion;
-	private Empleado empleado;
+    private String nombre;
+    private String apellido;
+    private String idCliente;
+    private String usuario;
+    private String contrasenia;
+    private String correoElectronico;
+    private List<Vehiculo> listaVehiculos;
+    private List<Transaccion> listaTransacciones;
+    private Empleado empleado;
 
-/**
- * constructor vacio
- */
-	public Cliente() {
-		super();
-	}
+    public Cliente() {
+        super();
+        this.listaVehiculos = new ArrayList<>();
+        this.listaTransacciones = new ArrayList<>();
+    }
 
-/**
- * constructor
- * @param nombre
- * @param apellido
- * @param idCliente
- * @param usuario
- * @param contrasenia
- * @param correoElectronico
- */
-	public Cliente(String nombre, String apellido,String idCliente, String usuario, String contrasenia, String correoElectronico) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.idCliente = idCliente;
-		this.usuario = usuario;
-		this.contrasenia = contrasenia;
-		this.correoElectronico = correoElectronico;
+    public Cliente(String nombre, String apellido, String idCliente, String usuario, String contrasenia, String correoElectronico) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.idCliente = idCliente;
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
+        this.correoElectronico = correoElectronico;
+        this.listaVehiculos = new ArrayList<>();
+        this.listaTransacciones = new ArrayList<>();
+    }
 
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-/**
- * getters y setters
- * @return
- */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getApellido() {
+        return apellido;
+    }
 
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public String getIdCliente() {
+        return idCliente;
+    }
 
+    public void setIdCliente(String idCliente) {
+        this.idCliente = idCliente;
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    public String getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    public String getContrasenia() {
+        return contrasenia;
+    }
 
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 
-	public String getIdCliente() {
-		return idCliente;
-	}
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
 
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
 
-	public void setIdCliente(String idCliente) {
-		this.idCliente = idCliente;
-	}
+    public List<Vehiculo> getListaVehiculos() {
+        return listaVehiculos;
+    }
 
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-
-	public String getContrasenia() {
-		return contrasenia;
-	}
-
-
-	public void setContrasenia(String contrasenia) {
-		this.contrasenia = contrasenia;
-	}
-
-
-	public String getCorreoElectronico() {
-		return correoElectronico;
-	}
-
-
-	public void setCorreoElectronico(String correoElectronico) {
-		this.correoElectronico = correoElectronico;
-	}
-
-
-	public ArrayList<Vehiculo> getListaVehiculos() {
-		return null;
-	}
-
-
-	public void agregarVenta(Vehiculo vehiculo, double precioVenta) {
-	        // Agregar el vehículo y el precio de venta al historial de ventas del cliente
-	        getListaVehiculos().add(vehiculo);
-	        listaTransaccion.addAll(precioVenta);
-	    }
-
+    public void agregarVenta(Vehiculo vehiculo, double precioVenta) {
+        listaVehiculos.add(vehiculo);
+        Transaccion transaccion = new Transaccion(vehiculo, precioVenta);
+        listaTransacciones.add(transaccion);
+    }
 }
+

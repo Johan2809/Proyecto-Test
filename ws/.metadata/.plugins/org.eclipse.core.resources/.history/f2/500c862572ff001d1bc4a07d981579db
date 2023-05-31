@@ -184,6 +184,11 @@ public class Vehiculo {
 		this.numeroChasis = numeroChasis;
 	}
 
+	public boolean pasarRevisionTecnica() {
+
+		return false;
+	}
+
 	public boolean revisionTecnicaAprobada() {
 	    return true;
 	}
@@ -232,27 +237,12 @@ public class Vehiculo {
 	}
 
 	public void alquilar(Cliente cliente) {
-	    System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido alquilado por " + cliente.getNombre());
-	    asignarCliente(cliente);
+		// TODO Auto-generated method stub
+
 	}
+	public void comprar(Cliente cliente){
+		if(revisionTecnicaAprobada()){
 
-	public void comprar(Cliente cliente) {
-	    if (!revisionTecnicaAprobada()) {
-	        System.out.println("El vehículo no puede ser comprado, no ha aprobado la revisión técnica.");
-	        return;
-	    }
-
-	    System.out.println("Realizando compra del vehículo " + this.getMarca() + " " + this.getModelo() + " por parte de " + cliente.getNombre());
-
-	    asignarCliente(cliente);
-
-	    double precioVenta = calcularPrecioVenta();
-
-	    registrarVenta(cliente, precioVenta);
-
-	    this.setEsNuevo(false);
-
-	    System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido comprado por " + cliente.getNombre() + " por un precio de $" + precioVenta);
+		}
 	}
-
 }

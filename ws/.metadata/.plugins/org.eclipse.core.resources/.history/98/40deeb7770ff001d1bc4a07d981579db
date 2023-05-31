@@ -3,7 +3,7 @@ package concesionario.model;
 public class Transaccion {
     private Double precio;
 
-    public Transaccion(Vehiculo vehiculo, Double precio) {
+    public Transaccion(Double precio) {
         this.precio = precio;
     }
 

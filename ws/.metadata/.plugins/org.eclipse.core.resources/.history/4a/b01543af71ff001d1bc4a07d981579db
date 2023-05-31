@@ -59,6 +59,57 @@ public class Vehiculo {
 		this.abs = abs;
 		this.numeroChasis = numeroChasis;
 	}
+	public boolean revisionTecnicaAprobada() {
+	    return true;
+	}
+
+	public void vender(Cliente cliente) {
+		if (clienteAsignado != null) {
+		    realizarVenta(clienteAsignado);
+		} else {
+		    System.out.println("No se puede realizar la venta, no hay cliente asignado.");
+		}
+
+	}
+
+	private void realizarVenta(Cliente cliente) {
+	    if (!this.isEsNuevo()) {
+	        System.out.println("El vehículo no está disponible para la venta, ya ha sido vendido anteriormente.");
+	        return;
+	    }
+
+	    if (!revisionTecnicaAprobada()) {
+	        System.out.println("El vehículo no puede ser vendido, no ha aprobado la revisión técnica.");
+	        return;
+	    }
+
+	    System.out.println("Realizando venta del vehículo " + this.getMarca() + " " + this.getModelo());
+
+	    asignarCliente(cliente);
+
+	    double precioVenta = calcularPrecioVenta();
+
+	    registrarVenta(cliente, precioVenta);
+
+	    this.setEsNuevo(false);
+
+	    System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido vendido a " + cliente.getNombre() + " por un precio de $" + precioVenta);
+	}
+
+	private double calcularPrecioVenta() {
+	    double precioBase = 10000.0;
+	    double factorDescuento = 0.9;
+	    return precioBase * factorDescuento;
+	}
+
+	private void registrarVenta(Cliente cliente, double precioVenta) {
+	    System.out.println("Registrando la venta del vehículo " + this.getMarca() + " " + this.getModelo() + " al cliente " + cliente.getNombre() + " por un precio de $" + precioVenta);
+	    cliente.agregarVenta(this, precioVenta);
+	}
+
+	private void asignarCliente(Cliente cliente) {
+	    this.clienteAsignado = cliente;
+	}
 
 /**
  * getters y setters
@@ -184,75 +235,14 @@ public class Vehiculo {
 		this.numeroChasis = numeroChasis;
 	}
 
-	public boolean revisionTecnicaAprobada() {
-	    return true;
+	public boolean pasarRevisionTecnica() {
+
+		return false;
 	}
 
-	public void vender(Cliente cliente) {
-		if (clienteAsignado != null) {
-		    realizarVenta(clienteAsignado);
-		} else {
-		    System.out.println("No se puede realizar la venta, no hay cliente asignado.");
-		}
-
-	}
-
-	private void realizarVenta(Cliente cliente) {
-	    if (!revisionTecnicaAprobada()) {
-	        System.out.println("El vehículo no puede ser vendido, no ha aprobado la revisión técnica.");
-	        return;
-	    }
-
-	    System.out.println("Realizando venta del vehículo " + this.getMarca() + " " + this.getModelo());
-
-	    asignarCliente(cliente);
-
-	    double precioVenta = calcularPrecioVenta();
-
-	    registrarVenta(cliente, precioVenta);
-
-	    this.setEsNuevo(false);
-
-	    System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido vendido a " + cliente.getNombre() + " por un precio de $" + precioVenta);
-	}
-
-	private double calcularPrecioVenta() {
-	    double precioBase = 10000.0;
-	    double factorDescuento = 0.9;
-	    return precioBase * factorDescuento;
-	}
-
-	private void registrarVenta(Cliente cliente, double precioVenta) {
-	    System.out.println("Registrando la venta del vehículo " + this.getMarca() + " " + this.getModelo() + " al cliente " + cliente.getNombre() + " por un precio de $" + precioVenta);
-	    cliente.agregarVenta(this, precioVenta);
-	}
-
-	private void asignarCliente(Cliente cliente) {
-	    this.clienteAsignado = cliente;
-	}
 
 	public void alquilar(Cliente cliente) {
-	    System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido alquilado por " + cliente.getNombre());
-	    asignarCliente(cliente);
+		// TODO Auto-generated method stub
+
 	}
-
-	public void comprar(Cliente cliente) {
-	    if (!revisionTecnicaAprobada()) {
-	        System.out.println("El vehículo no puede ser comprado, no ha aprobado la revisión técnica.");
-	        return;
-	    }
-
-	    System.out.println("Realizando compra del vehículo " + this.getMarca() + " " + this.getModelo() + " por parte de " + cliente.getNombre());
-
-	    asignarCliente(cliente);
-
-	    double precioVenta = calcularPrecioVenta();
-
-	    registrarVenta(cliente, precioVenta);
-
-	    this.setEsNuevo(false);
-
-	    System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido comprado por " + cliente.getNombre() + " por un precio de $" + precioVenta);
-	}
-
 }
