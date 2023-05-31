@@ -1,0 +1,235 @@
+package concesionario.controllers;
+
+import concesionario.application.Aplicacion;
+import concesionario.exceptions.ClienteException;
+import concesionario.exceptions.EmpleadoException;
+import concesionario.model.Cliente;
+import concesionario.model.Empleado;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+public class EmpleadoController {
+
+	Aplicacion Aplicacion;
+	private Aplicacion aplicacion;
+
+	Cliente clienteSeleccionado;
+	private ObservableList<Cliente> listaClientesData = FXCollections.observableArrayList();
+
+	public void setAplicacion(Aplicacion aplicacion) {
+		this.Aplicacion = aplicacion;
+	}
+
+    @FXML
+    private TextField txtContraseniaCliente;
+
+    @FXML
+    private TextField txtCorreoCliente;
+
+    @FXML
+    private Button btnGestionarVehiculos;
+
+    @FXML
+    private Button btnNuevoCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnApellidosCliente;
+
+    @FXML
+    private TableView<Cliente> tableClientes;
+
+    @FXML
+    private Button btnActualizarCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnNombreCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnUsuarioCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnIdentificacionCliente;
+
+    @FXML
+    private TextField txtUsuarioCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnContraseniaCliente;
+
+    @FXML
+    private Button btnEliminarCliente;
+
+    @FXML
+    private TextField txtNombreCliente;
+
+    @FXML
+    private TextField txtIdCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnCorreoCliente;
+
+    @FXML
+    private TextField txtApellidoCliente;
+
+    @FXML
+    private Button btnAgregarCliente;
+
+    @FXML
+    void agregarClienteEvent(ActionEvent event) throws ClienteException {
+        setAplicacion(Aplicacion);
+        agregarCliente();
+    }
+
+
+    @FXML
+    void actualizarClienteEvent(ActionEvent event) throws ClienteException {
+	    clienteSeleccionado = new Cliente(); // O cualquier otra forma de inicialización
+	    actualizarCliente();
+    }
+
+
+
+	@FXML
+    void eliminarClienteEvent(ActionEvent event) {
+		eliminarCliente();
+    }
+
+	@FXML
+    void nuevoClienteEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void gestionarVehiculos(ActionEvent event) {
+    	Aplicacion.mostrarGestionVehiculos("/concesionario/views/GestionVehiculosView.fxml");
+
+
+
+    }
+    private void agregarCliente() {
+	    String nombre = txtNombreCliente.getText();
+	    String apellido = txtApellidoCliente.getText();
+	    String idCliente = txtIdCliente.getText();
+	    String usuario = txtUsuarioCliente.getText();
+	    String contrasenia = txtContraseniaCliente.getText();
+	    String correoElectronico = txtCorreoCliente.getText();
+
+		if(datosValidos(nombre, apellido, idCliente, usuario, contrasenia, correoElectronico) == true){
+
+			//3. Registrar el cliente
+			Cliente cliente = null;
+
+			try {
+				cliente = aplicacion.crearCliente(nombre, apellido, idCliente,usuario,contrasenia,correoElectronico);
+
+				listaClientesData.add(cliente);
+
+				mostrarMensaje("Notificacion", "Cliente registrado", "El cliente se ha registrado con extio", AlertType.INFORMATION);
+
+			} catch (ClienteException e) {
+				mostrarMensaje("Notificacion", "Un cliente con la misma identificacion ya se encuentra registrado", idCliente, AlertType.ERROR);
+			}
+		}
+		else{
+			mostrarMensaje("Notificacion", "Informacion invalida", "llene todos los campos para registrar un empleado", AlertType.ERROR);
+
+		}
+
+	}
+	public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(titulo);
+    	alert.setHeaderText(header);
+    	alert.setContentText(contenido);
+    	alert.showAndWait();
+	}
+
+
+	private boolean datosValidos(String nombre, String apellido, String idCliente, String usuario, String contrasenia,
+		    String correoElectronico) {
+
+		    return !nombre.isEmpty() && !apellido.isEmpty() && !idCliente.isEmpty() &&
+		        !usuario.isEmpty() && !contrasenia.isEmpty() && !correoElectronico.isEmpty();
+		}
+
+
+
+	private void actualizarCliente() throws ClienteException {
+	  	String nombre = txtNombreCliente.getText();
+	    String apellido = txtApellidoCliente.getText();
+	    String idCliente= txtIdCliente.getText();
+	    String usuario = txtUsuarioCliente.getText();
+	    String contrasenia = txtContraseniaCliente.getText();
+	    String correoElectronico = txtCorreoCliente.getText();
+
+		if(clienteSeleccionado == null){
+			mostrarMensaje("Notificacion", "Seleccione empleado", "Debe seleccionar un empleado", AlertType.ERROR);
+		}else{
+			//2. Validar la informaci�n
+			if(datosValidos(nombre, apellido, idCliente,usuario,contrasenia,correoElectronico) == true){
+				aplicacion.actualizarCliente(nombre, apellido, idCliente,usuario,contrasenia,correoElectronico);
+				tableClientes.refresh();
+			}else{
+				mostrarMensaje("Notificaci�n", "Amigo no actualizado", "Datos invalidos", AlertType.ERROR);
+
+			}
+
+
+		}
+
+	}
+    private void eliminarCliente() {
+		// TODO Auto-generated method stub
+
+	}
+    @FXML
+    void initialize() {
+        // Configurar las columnas de la tabla
+        this.columnNombreCliente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        this.columnApellidosCliente.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        this.columnIdentificacionCliente.setCellValueFactory(new PropertyValueFactory<>("idEmpleado"));
+        this.columnUsuarioCliente.setCellValueFactory(new PropertyValueFactory<>("usuario"));
+        this.columnContraseniaCliente.setCellValueFactory(new PropertyValueFactory<>("contrasenia"));
+        this.columnCorreoCliente.setCellValueFactory(new PropertyValueFactory<>("correoCliente"));
+
+        // Agregar valores iniciales a la lista
+        listaClientesData.addAll(
+            new Cliente("Nombre1", "Apellido1", "ID1", "Usuario1", "Contraseña1", "correo1@example.com"),
+            new Cliente("Nombre2", "Apellido2", "ID2", "Usuario2", "Contraseña2", "correo2@example.com"),
+            new Cliente("Nombre3", "Apellido3", "ID3", "Usuario3", "Contraseña3", "correo3@example.com")
+        );
+
+        // Asignar la lista a la tabla
+        tableClientes.setItems(listaClientesData);
+        tableClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            clienteSeleccionado = newSelection;
+            mostrarInformacionCliente(clienteSeleccionado);
+        });
+    }
+
+
+	private void mostrarInformacionCliente(Cliente clienteSeleccionado) {
+		txtNombreCliente.setText(clienteSeleccionado.getNombre());
+		txtApellidoCliente.setText(clienteSeleccionado.getApellido());
+		txtIdCliente.setText(clienteSeleccionado.getIdCliente());
+		txtUsuarioCliente.setText(clienteSeleccionado.getUsuario());
+		txtContraseniaCliente.setText(clienteSeleccionado.getContrasenia());
+		txtCorreoCliente.setText(clienteSeleccionado.getCorreoElectronico());
+	}
+
+	private ObservableList<Cliente> getListaClientesData() {
+		listaClientesData.addAll(aplicacion.obtenerClientes());
+		return listaClientesData;
+	}
+
+
+}

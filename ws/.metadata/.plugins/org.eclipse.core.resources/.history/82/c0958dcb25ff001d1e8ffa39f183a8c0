@@ -1,0 +1,228 @@
+package concesionario.controllers;
+
+import concesionario.application.Aplicacion;
+import concesionario.exceptions.ClienteException;
+import concesionario.model.Cliente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
+
+public class EmpleadoController {
+
+    private Aplicacion aplicacion;
+    Aplicacion Aplicacion;
+    private Cliente clienteSeleccionado;
+
+    @FXML
+    private TextField txtContraseniaCliente;
+
+    @FXML
+    private TextField txtCorreoCliente;
+
+    @FXML
+    private Button btnGestionarVehiculos;
+
+    @FXML
+    private Button btnNuevoCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnApellidosCliente;
+
+    @FXML
+    private TableView<Cliente> tableClientes;
+
+    @FXML
+    private Button btnActualizarCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnNombreCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnUsuarioCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnIdentificacionCliente;
+
+    @FXML
+    private TextField txtUsuarioCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnContraseniaCliente;
+
+    @FXML
+    private Button btnEliminarCliente;
+
+    @FXML
+    private TextField txtNombreCliente;
+
+    @FXML
+    private TextField txtIdCliente;
+
+    @FXML
+    private TableColumn<Cliente, String> columnCorreoCliente;
+
+    @FXML
+    private TextField txtApellidoCliente;
+
+    @FXML
+    private Button btnAgregarCliente;
+
+    public void setAplicacion(Aplicacion aplicacion) {
+        this.aplicacion = aplicacion;
+    }
+
+    @FXML
+    void agregarClienteEvent(ActionEvent event) throws ClienteException {
+        setAplicacion(aplicacion); // Establecer la instancia de Aplicacion en el controlador
+        clienteSeleccionado = new Cliente();
+        agregarCliente();
+    }
+
+    @FXML
+    void actualizarClienteEvent(ActionEvent event) throws ClienteException {
+        actualizarCliente();
+    }
+
+    @FXML
+    void eliminarClienteEvent(ActionEvent event) {
+        eliminarCliente();
+    }
+
+    @FXML
+    void nuevoClienteEvent(ActionEvent event) {
+       limpiarTabla();
+    }
+
+    @FXML
+    void gestionarVehiculos(ActionEvent event) {
+        aplicacion.mostrarGestionVehiculos("/concesionario/views/GestionVehiculosView.fxml");
+    }
+
+    private void agregarCliente() {
+        String nombre = txtNombreCliente.getText();
+        String apellido = txtApellidoCliente.getText();
+        String idCliente = txtIdCliente.getText();
+        String usuario = txtUsuarioCliente.getText();
+        String contrasenia = txtContraseniaCliente.getText();
+        String correoElectronico = txtCorreoCliente.getText();
+
+        if (datosValidos(nombre, apellido, idCliente, usuario, contrasenia, correoElectronico)) {
+            try {
+                Cliente cliente = Aplicacion.crearCliente(nombre, apellido, idCliente, usuario, contrasenia, correoElectronico);
+                listaClientesData.add(cliente);
+                mostrarMensaje("Notificación", "Cliente registrado", "El cliente se ha registrado con éxito", AlertType.INFORMATION);
+                limpiarTabla();
+            } catch (ClienteException e) {
+                mostrarMensaje("Notificación", "Cliente duplicado", "Ya existe un cliente con la misma identificación", AlertType.ERROR);
+            }
+        } else {
+            mostrarMensaje("Notificación", "Información inválida", "Llene todos los campos para registrar un cliente", AlertType.ERROR);
+        }
+    }
+    private ObservableList<Cliente> listaClientesData = FXCollections.observableArrayList();
+
+
+    private boolean datosValidos(String nombre, String apellido, String idCliente, String usuario, String contrasenia, String correoElectronico) {
+        return !nombre.isEmpty() && !apellido.isEmpty() && !idCliente.isEmpty() && !usuario.isEmpty() && !contrasenia.isEmpty() && !correoElectronico.isEmpty();
+    }
+
+    private void actualizarCliente() throws ClienteException {
+        String nombre = txtNombreCliente.getText();
+        String apellido = txtApellidoCliente.getText();
+        String idCliente = txtIdCliente.getText();
+        String usuario = txtUsuarioCliente.getText();
+        String contrasenia = txtContraseniaCliente.getText();
+        String correoElectronico = txtCorreoCliente.getText();
+
+        if (clienteSeleccionado == null) {
+            mostrarMensaje("Notificación", "Seleccione cliente", "Debe seleccionar un cliente", AlertType.ERROR);
+        } else {
+            if (datosValidos(nombre, apellido, idCliente, usuario, contrasenia, correoElectronico)) {
+                clienteSeleccionado.setNombre(nombre);
+                clienteSeleccionado.setApellido(apellido);
+                clienteSeleccionado.setIdCliente(idCliente);
+                clienteSeleccionado.setUsuario(usuario);
+                clienteSeleccionado.setContrasenia(contrasenia);
+                clienteSeleccionado.setCorreoElectronico(correoElectronico);
+                tableClientes.refresh();
+                mostrarMensaje("Notificación", "Cliente actualizado", "El cliente se ha actualizado con éxito", AlertType.INFORMATION);
+               limpiarTabla();
+            } else {
+                mostrarMensaje("Notificación", "Cliente no actualizado", "Datos inválidos", AlertType.ERROR);
+            }
+        }
+    }
+
+    private void eliminarCliente() {
+        Cliente cliente = tableClientes.getSelectionModel().getSelectedItem();
+        if (cliente != null) {
+            listaClientesData.remove(cliente);
+            limpiarTabla();
+        } else {
+            mostrarMensaje("Notificación", "Seleccione cliente", "Debe seleccionar un cliente para eliminarlo", AlertType.ERROR);
+        }
+    }
+
+    private void limpiarTabla() {
+        txtNombreCliente.clear();
+        txtApellidoCliente.clear();
+        txtIdCliente.clear();
+        txtUsuarioCliente.clear();
+        txtContraseniaCliente.clear();
+        txtCorreoCliente.clear();
+        tableClientes.getSelectionModel().clearSelection();
+        clienteSeleccionado = null;
+    }
+
+    private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+    @FXML
+    void initialize() {
+        // Configurar las columnas de la tabla
+        columnNombreCliente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnApellidosCliente.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        columnIdentificacionCliente.setCellValueFactory(new PropertyValueFactory<>("idCliente"));
+        columnUsuarioCliente.setCellValueFactory(new PropertyValueFactory<>("usuario"));
+        columnContraseniaCliente.setCellValueFactory(new PropertyValueFactory<>("contrasenia"));
+        columnCorreoCliente.setCellValueFactory(new PropertyValueFactory<>("correoElectronico"));
+
+        // Agregar valores iniciales a la lista
+        listaClientesData.addAll(
+                new Cliente("Nombre1", "Apellido1", "ID1", "Usuario1", "Contraseña1", "correo1@example.com"),
+                new Cliente("Nombre2", "Apellido2", "ID2", "Usuario2", "Contraseña2", "correo2@example.com"),
+                new Cliente("Nombre3", "Apellido3", "ID3", "Usuario3", "Contraseña3", "correo3@example.com"));
+
+        // Asignar la lista a la tabla
+        tableClientes.setItems(listaClientesData);
+        tableClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            clienteSeleccionado = newSelection;
+            mostrarInformacionCliente(clienteSeleccionado);
+        });
+    }
+
+    private void mostrarInformacionCliente(Cliente clienteSeleccionado) {
+        if (clienteSeleccionado != null) {
+            txtNombreCliente.setText(clienteSeleccionado.getNombre());
+            txtApellidoCliente.setText(clienteSeleccionado.getApellido());
+            txtIdCliente.setText(clienteSeleccionado.getIdCliente());
+            txtUsuarioCliente.setText(clienteSeleccionado.getUsuario());
+            txtContraseniaCliente.setText(clienteSeleccionado.getContrasenia());
+            txtCorreoCliente.setText(clienteSeleccionado.getCorreoElectronico());
+        }
+    }
+
+    public void setListaClientesData(ObservableList<Cliente> listaClientesData) {
+        this.listaClientesData = listaClientesData;
+    }
+}
+

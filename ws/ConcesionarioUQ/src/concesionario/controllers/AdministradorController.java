@@ -1,9 +1,6 @@
 package concesionario.controllers;
 
-import java.util.List;
-
 import concesionario.application.Aplicacion;
-import concesionario.exceptions.AdministradorException;
 import concesionario.exceptions.EmpleadoException;
 import concesionario.model.Administrador;
 import concesionario.model.Empleado;
@@ -191,7 +188,7 @@ public class AdministradorController {
 
 	}
 	private void actualizarEmpleado() throws EmpleadoException {
-		  String nombre = txtNombreEmpleado.getText();
+		  	String nombre = txtNombreEmpleado.getText();
 		    String apellido = txtApellidoEmpleado.getText();
 		    String idEmpleado = txtIdEmpleado.getText();
 		    String usuario = txtUsuarioEmpleado.getText();
@@ -202,7 +199,7 @@ public class AdministradorController {
 			if(empleadoSeleccionado == null){
 				mostrarMensaje("Notificacion", "Seleccione empleado", "Debe seleccionar un empleado", AlertType.ERROR);
 			}else{
-				//2. Validar la informaci�n
+				//2. Validar la informacion
 				if(datosValidos(nombre, apellido, idEmpleado,usuario,contrasenia,correoElectronico,respuestaSeguridad) == true){
 					aplicacion.actualizarEmpleado(nombre, apellido, idEmpleado,usuario,contrasenia,correoElectronico,respuestaSeguridad);
 					tableEmpleados.refresh();
@@ -243,9 +240,9 @@ public class AdministradorController {
 
 	    // Agregar valores iniciales a la lista
 	    listaEmpleadosData.addAll(
-	        new Empleado("Nombre1", "Apellido1", "ID1", "Usuario1", "Contraseña1", "correo1@example.com", "Respuesta1"),
-	        new Empleado("Nombre2", "Apellido2", "ID2", "Usuario2", "Contraseña2", "correo2@example.com", "Respuesta2"),
-	        new Empleado("Nombre3", "Apellido3", "ID3", "Usuario3", "Contraseña3", "correo3@example.com", "Respuesta3")
+	        new Empleado("Nombre1", "Apellido1", "ID1", "Usuario1", "Contraseña1", "correo1@example.com", "Respuesta1", null),
+	        new Empleado("Nombre2", "Apellido2", "ID2", "Usuario2", "Contraseña2", "correo2@example.com", "Respuesta2", null),
+	        new Empleado("Nombre3", "Apellido3", "ID3", "Usuario3", "Contraseña3", "correo3@example.com", "Respuesta3", null)
 	    );
 
 	    // Asignar la lista a la tabla

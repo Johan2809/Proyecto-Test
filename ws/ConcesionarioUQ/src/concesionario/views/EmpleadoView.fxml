@@ -17,19 +17,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="concesionario.controllers.EmpleadoController">
+<AnchorPane prefHeight="620.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="concesionario.controllers.EmpleadoController">
 	<children>
-		<TabPane layoutY="-8.0" prefHeight="758.0" prefWidth="887.0" tabClosingPolicy="UNAVAILABLE">
+		<TabPane layoutX="-4.0" layoutY="-8.0" prefHeight="646.0" prefWidth="839.0" tabClosingPolicy="UNAVAILABLE">
 			<tabs>
 				<Tab text="Clientes">
 					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="713.0" prefWidth="828.0">
+						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="417.0" prefWidth="661.0">
 							<children>
-								<SplitPane dividerPositions="0.5914893617021276" layoutX="-5.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="743.0" prefWidth="851.0">
+								<SplitPane dividerPositions="0.6020761245674741" layoutX="14.0" layoutY="7.0" orientation="VERTICAL" prefHeight="584.0" prefWidth="821.0">
 									<items>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="885.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="0.0" prefWidth="849.0">
 											<children>
-												<Separator layoutY="29.0" prefHeight="5.0" prefWidth="863.0" />
+												<Separator layoutX="-6.0" layoutY="34.0" prefHeight="0.0" prefWidth="869.0" />
 												<Label layoutX="14.0" layoutY="6.0" text="Informacion del Cliente" textFill="#4227c9">
 													<font>
 														<Font name="System Bold" size="14.0" />
@@ -54,16 +54,16 @@
 												</Label>
 												<TextField fx:id="txtIdCliente" layoutX="186.0" layoutY="143.0" prefHeight="39.0" prefWidth="447.0" />
 												<Separator layoutX="14.0" layoutY="346.0" prefHeight="0.0" prefWidth="673.0" />
-												<Button fx:id="btnAgregarCliente" layoutX="28.0" layoutY="363.0" mnemonicParsing="false" onAction="#agregarClienteEvent" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2C5175;" text="Agregar" textAlignment="CENTER" textFill="WHITE">
+												<Button fx:id="btnAgregarCliente" layoutX="651.0" layoutY="46.0" mnemonicParsing="false" onAction="#agregarClienteEvent" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #2C5175;" text="Agregar" textAlignment="CENTER" textFill="WHITE">
 													<font>
 														<Font name="Franklin Gothic Demi" size="18.0" />
 													</font>
 												</Button>
-												<Button fx:id="btnNuevoCliente" layoutX="505.0" layoutY="364.0" mnemonicParsing="false" onAction="#nuevoClienteEvent" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: #2C5175;" text="Nuevo" textAlignment="CENTER" textFill="WHITE">
+												<Button fx:id="btnNuevoCliente" layoutX="656.0" layoutY="153.0" mnemonicParsing="false" onAction="#nuevoClienteEvent" prefHeight="39.0" prefWidth="141.0" style="-fx-background-color: #2C5175;" text="Nuevo" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font></Button>
-												<Button fx:id="btnActualizarCliente" layoutX="267.0" layoutY="363.0" mnemonicParsing="false" onAction="#actualizarClienteEvent" prefHeight="39.0" prefWidth="193.0" style="-fx-background-color: #2C5175;" text="Actualizar" textAlignment="CENTER" textFill="WHITE">
+												<Button fx:id="btnActualizarCliente" layoutX="672.0" layoutY="103.0" mnemonicParsing="false" onAction="#actualizarClienteEvent" prefHeight="39.0" prefWidth="139.0" style="-fx-background-color: #2C5175;" text="Actualizar" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font></Button>
@@ -85,21 +85,23 @@
 													</font>
 												</Label>
 												<TextField fx:id="txtCorreoCliente" layoutX="184.0" layoutY="290.0" prefHeight="39.0" prefWidth="455.0" />
+                                    <Button fx:id="btnvolver" layoutX="657.0" layoutY="281.0" mnemonicParsing="false" onAction="#volverEvent" text="Volver al inicio" />
+                                    <Button fx:id="btnGestionarVehiculos" layoutX="646.0" layoutY="205.0" mnemonicParsing="false" onAction="#gestionarVehiculos" prefHeight="39.0" prefWidth="165.0" text="GestionarVehiculos" />
 											</children>
 										</AnchorPane>
-										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="531.0" prefWidth="603.0">
+										<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="327.0" prefWidth="762.0">
 											<children>
-												<TableView fx:id="tableClientes" layoutX="8.0" layoutY="24.0" prefHeight="191.0" prefWidth="852.0">
+												<TableView fx:id="tableClientes" layoutX="8.0" layoutY="24.0" prefHeight="141.0" prefWidth="835.0">
 													<columns>
-														<TableColumn fx:id="columnNombreCliente" prefWidth="130.0" text="Nombre" />
-														<TableColumn fx:id="columnApellidosCliente" minWidth="8.0" prefWidth="135.0" text="Apellidos" />
-														<TableColumn fx:id="columnIdentificacionCliente" minWidth="0.0" prefWidth="188.0" text="Identificacion" />
-														<TableColumn fx:id="columUsuarioCliente" prefWidth="123.0" text="Usuario" />
-														<TableColumn fx:id="columContraseniaCliente" prefWidth="149.0" text="contraseña" />
-														<TableColumn fx:id="columCorreoCliente" prefWidth="126.0" text="Correo " />
+														<TableColumn fx:id="columnNombreCliente" prefWidth="104.0" text="Nombre" />
+														<TableColumn fx:id="columnApellidosCliente" minWidth="8.0" prefWidth="131.0" text="Apellidos" />
+														<TableColumn fx:id="columnIdentificacionCliente" minWidth="0.0" prefWidth="168.0" text="Identificacion" />
+														<TableColumn fx:id="columnUsuarioCliente" prefWidth="120.0" text="Usuario" />
+														<TableColumn fx:id="columnContraseniaCliente" prefWidth="98.0" text="contraseña" />
+														<TableColumn fx:id="columnCorreoCliente" prefWidth="230.0" text="Correo " />
 													</columns>
 												</TableView>
-												<Button fx:id="btnEliminarCliente" layoutX="298.0" layoutY="235.0" mnemonicParsing="false" onAction="#eliminarClienteEvent" prefHeight="34.0" prefWidth="243.0" style="-fx-background-color: #2C5175;" text="Eliminar" textAlignment="CENTER" textFill="WHITE">
+												<Button fx:id="btnEliminarCliente" layoutX="303.0" layoutY="166.0" mnemonicParsing="false" onAction="#eliminarClienteEvent" prefHeight="34.0" prefWidth="243.0" style="-fx-background-color: #2C5175;" text="Eliminar" textAlignment="CENTER" textFill="WHITE">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font></Button>
@@ -112,20 +114,6 @@
 										</AnchorPane>
 									</items>
 								</SplitPane>
-							</children>
-						</AnchorPane>
-					</content>
-				</Tab>
-				<Tab text="Vehiculos">
-					<content>
-						<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-							<children>
-								<Label layoutX="169.0" layoutY="4.0" text="Registro de vehiculos" textFill="#4227c9">
-									<font>
-										<Font name="System Bold" size="14.0" />
-									</font>
-								</Label>
-								<Button fx:id="btnGestionarVehiculos" layoutX="225.0" layoutY="203.0" mnemonicParsing="false" onAction="#gestionarVehiculos" prefHeight="164.0" prefWidth="505.0" text="GestionarVehiculos" />
 							</children>
 						</AnchorPane>
 					</content>

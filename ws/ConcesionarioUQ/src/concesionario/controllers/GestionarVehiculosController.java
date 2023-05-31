@@ -1,1045 +1,587 @@
 package concesionario.controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import concesionario.application.Aplicacion;
+import concesionario.model.Cliente;
+import concesionario.model.Moto;
+import concesionario.model.Vehiculo;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 
 public class GestionarVehiculosController {
+
+	private Aplicacion aplicacion;
+
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private Button btnActualizaPickUp;
 
     @FXML
-    private ComboBox<?> cbTiempo100kmDeportivo;
-
-    @FXML
-    private ComboBox<?> cbEstadoVans;
-
-    @FXML
-    private ComboBox<?> cbMarcaVans;
-
-    @FXML
-    private ComboBox<?> cbCambiosDeportivo;
-
-    @FXML
-    private ComboBox<?> cbAbsPickUp;
-
-    @FXML
-    private ComboBox<?> cb4x4Camioneta;
-
-    @FXML
-    private ComboBox<?> cbEstadoMoto;
-
-    @FXML
-    private ComboBox<?> cb4x4PickUp;
-
-    @FXML
-    private ComboBox<?> cbNumBolsasAireBus;
-
-    @FXML
-    private ComboBox<?> cbEstadoCamioneta;
-
-    @FXML
-    private ComboBox<?> cbVelMaxPickUp;
-
-    @FXML
-    private Button btnActualizarSedan;
-
-    @FXML
-    private ComboBox<?> cbAbsCamion;
-
-    @FXML
-    private Button btnActualizarDeportivo;
-
-    @FXML
-    private TextField txtCilindrajeDeportivo;
-
-    @FXML
-    private Button btnAgregarPickUp;
-
-    @FXML
-    private ComboBox<?> cbSensorTraficoDeportivo;
-
-    @FXML
-    private Button btnEliminarDeportivo;
-
-    @FXML
-    private ComboBox<?> cbVelCruceroSedan;
-
-    @FXML
-    private ComboBox<?> cbCajaCargaPickUp;
-
-    @FXML
-    private ComboBox<?> cbAireAcondicionado;
-
-    @FXML
-    private ComboBox<?> cbAbsVans;
-
-    @FXML
-    private ComboBox<?> cbEstadoDeportivo;
-
-    @FXML
-    private Button btnBuscarBus;
-
-    @FXML
-    private ComboBox<?> cbMarcaSedan;
-
-    @FXML
-    private Button cbEliminarVans;
-
-    @FXML
-    private ComboBox<?> cbEsatadoBus;
-
-    @FXML
-    private ComboBox<?> cbMarcaMoto;
-
-    @FXML
-    private ComboBox<?> cbCaballosFuerza;
-
-    @FXML
-    private Button btnBuscarCamioneta;
-
-    @FXML
-    private ComboBox<?> cbMarcaPickUps;
-
-    @FXML
-    private TextField txtModeloSedan;
-
-    @FXML
-    private Button btnAgregarCamion;
-
-    @FXML
-    private ComboBox<?> cbNumBolsasAireSedan;
-
-    @FXML
-    private TableColumn<?, ?> columCilindraje;
-
-    @FXML
-    private ComboBox<?> cbNumPasajerosPickUp;
-
-    @FXML
-    private ComboBox<?> cbMarcaDeportivo;
-
-    @FXML
-    private ComboBox<?> cbAireAcondicionadoPickUp;
-
-    @FXML
-    private ComboBox<?> cbTipoCamion;
-
-    @FXML
-    private ComboBox<?> cbAbsBus;
-
-    @FXML
-    private ComboBox<?> cbNumEjesCamion;
-
-    @FXML
-    private TableColumn<?, ?> columModelo;
-
-    @FXML
-    private ComboBox<?> cbAireAcondicionadoSedan;
-
-    @FXML
-    private Button btnAgregarCamioneta;
-
-    @FXML
-    private ComboBox<?> cbCamaraReversaVans;
-
-    @FXML
-    private ComboBox<?> cbCapMaletero;
-
-    @FXML
-    private TextField txtModeloPickUp;
-
-    @FXML
-    private Button btnBuscarPickUp;
-
-    @FXML
-    private TextField txtCilindrajePickUp;
-
-    @FXML
-    private Button btnAgregarDeportivo;
-
-    @FXML
-    private ComboBox<?> cbSensoresDeportivo;
-
-    @FXML
-    private Button btnBuscarSedan;
-
-    @FXML
-    private ComboBox<?> cbNumBolsasAire;
-
-    @FXML
-    private ComboBox<?> cbCajaCarga;
-
-    @FXML
-    private TextField txtCapacidadMaleteroSedan;
-
-    @FXML
-    private ComboBox<?> cbAireAcondicionadoVans;
-
-    @FXML
     private Button btnActualizarBus;
-
-    @FXML
-    private ComboBox<?> cbCamareReversa;
-
-    @FXML
-    private ComboBox<?> cbNumPasajerosVans;
-
-    @FXML
-    private Button btnBuscarCamion;
-
-    @FXML
-    private ComboBox<?> cbSensoresSedan;
-
-    @FXML
-    private ComboBox<?> cbNumPasajerosBus;
-
-    @FXML
-    private ComboBox<?> cbCamaraReversaBus;
-
-    @FXML
-    private TextField txtCilindrajeCamion;
-
-    @FXML
-    private TextField txtModeloCamioneta;
-
-    @FXML
-    private Button btnEliminarPickUp;
-
-    @FXML
-    private Button btnAgregarBus;
-
-    @FXML
-    private ComboBox<?> cbCambiosMoto;
-
-    @FXML
-    private ComboBox<?> cbCapacidadCargaCamion;
-
-    @FXML
-    private ComboBox<?> cbMarcaCamioneta;
-
-    @FXML
-    private ComboBox<?> cbNumPuertasBus;
-
-    @FXML
-    private ComboBox<?> cbEstadoPickUp;
-
-    @FXML
-    private ComboBox<?> cbCambiosPickUp;
-
-    @FXML
-    private TextField txtModeloVans;
-
-    @FXML
-    private ComboBox<?> cbMarcaCamion;
-
-    @FXML
-    private Button btnEliminarCamion;
-
-    @FXML
-    private ComboBox<?> cbABSSedan;
-
-    @FXML
-    private ComboBox<?> cbNumPuertasPickUp;
-
-    @FXML
-    private ComboBox<?> cbVelMaxBus;
-
-    @FXML
-    private TextField cbModeloBus;
-
-    @FXML
-    private ComboBox<?> cbNumPasajeros;
-
-    @FXML
-    private TableColumn<?, ?> columMarca;
-
-    @FXML
-    private ComboBox<?> cbNumPasajerosSedan;
-
-    @FXML
-    private ComboBox<?> cbVelMaxCamioneta;
-
-    @FXML
-    private ComboBox<?> cbNumBolsasAireVans;
-
-    @FXML
-    private ComboBox<?> cbCamaraReversaSedan;
-
-    @FXML
-    private ComboBox<?> cbEstadoCamion;
-
-    @FXML
-    private Button btnEliminarCamioneta;
-
-    @FXML
-    private ComboBox<?> cbNumPuertasVans;
-
-    @FXML
-    private ComboBox<?> cbModeloMoto;
-
-    @FXML
-    private Button btnAgregarMoto;
-
-    @FXML
-    private ComboBox<?> cbNumEjesBus;
-
-    @FXML
-    private ComboBox<?> cbVelMaxCamion;
-
-    @FXML
-    private ComboBox<?> cbCambiosBus;
-
-    @FXML
-    private ComboBox<?> cbNumPasajerosCamioneta;
-
-    @FXML
-    private ComboBox<?> cbFrenosAireCamion;
-
-    @FXML
-    private Button btnBuscarDeportivo;
-
-    @FXML
-    private ComboBox<?> cbCambiosCamion;
-
-    @FXML
-    private Button btnBuscarMoto;
-
-    @FXML
-    private TextField txtCilindrajeCamioneta;
-
-    @FXML
-    private TextField txtCilindrajeBus;
-
-    @FXML
-    private ComboBox<?> cbNumPuertasCamioneta;
-
-    @FXML
-    private TextField txtModeloCamion;
-
-    @FXML
-    private ComboBox<?> cbBolsasAireDeportivo;
-
-    @FXML
-    private ComboBox<?> cbVelMaxDeportivo;
-
-    @FXML
-    private ComboBox<?> cbNumPuertasDeportivo;
-
-    @FXML
-    private ComboBox<?> cbCambiosSedan;
-
-    @FXML
-    private Button btnActualizarCamioneta;
-
-    @FXML
-    private Button btnActualizarVans;
-
-    @FXML
-    private ComboBox<?> cbCapacidadMaleteroBus;
-
-    @FXML
-    private Button btnLimpiarCampos;
-
-    @FXML
-    private Button btnEliminarSedan;
-
-    @FXML
-    private Button btnAgregarSedan;
-
-    @FXML
-    private ComboBox<?> cbMaracaBus;
-
-    @FXML
-    private Button btnLimpiar;
-
-    @FXML
-    private ComboBox<?> cbVelMaxVans;
-
-    @FXML
-    private ComboBox<?> cbEstadoSedan;
-
-    @FXML
-    private Button btnBuscarVans;
-
-    @FXML
-    private ComboBox<?> cbVelMaxMoto;
-
-    @FXML
-    private ComboBox<?> cbSalidasEmergenciaBus;
-
-    @FXML
-    private ComboBox<?> cbABSdeportivo;
-
-    @FXML
-    private ComboBox<?> cbAireAcondicionadoBus;
 
     @FXML
     private Button btnActualizarCamion;
 
     @FXML
-    private TextField txtModeloDeportivo;
+    private Button btnActualizarCamioneta;
 
     @FXML
-    private ComboBox<?> cbAireAcondicionadoCamion;
+    private Button btnActualizarDeportivo;
 
     @FXML
     private Button btnActualizarMoto;
 
     @FXML
-    private Button btnEliminarBus;
+    private Button btnActualizarSedan;
 
     @FXML
-    private ComboBox<?> cbNumPuertasSedan;
+    private Button btnActualizarVans;
 
     @FXML
     private Button btnAgreagarVans;
 
     @FXML
-    private ComboBox<?> cbABScamioneta;
+    private Button btnAgregarBus;
+
+    @FXML
+    private Button btnAgregarCamion;
+
+    @FXML
+    private Button btnAgregarCamioneta;
+
+    @FXML
+    private Button btnAgregarDeportivo;
+
+    @FXML
+    private Button btnAgregarMoto;
+
+    @FXML
+    private Button btnAgregarPickUp;
+
+    @FXML
+    private Button btnAgregarSedan;
+
+    @FXML
+    private Button btnAlquilarBus;
+
+    @FXML
+    private Button btnAlquilarCamiones;
+
+    @FXML
+    private Button btnAlquilarCamioneta;
+
+    @FXML
+    private Button btnAlquilarDeportivo;
+
+    @FXML
+    private Button btnAlquilarPickUp;
+
+    @FXML
+    private Button btnAlquilarSedan;
+
+    @FXML
+    private Button btnAlquilarVans;
+
+    @FXML
+    private Button btnBuscarBus;
+
+    @FXML
+    private Button btnBuscarCamion;
+
+    @FXML
+    private Button btnBuscarCamioneta;
+
+    @FXML
+    private Button btnBuscarDeportivo;
+
+    @FXML
+    private Button btnBuscarMoto;
+
+    @FXML
+    private Button btnBuscarPickUp;
+
+    @FXML
+    private Button btnBuscarSedan;
+
+    @FXML
+    private Button btnBuscarVans;
+
+    @FXML
+    private Button btnComprarBus;
+
+    @FXML
+    private Button btnComprarCamion;
+
+    @FXML
+    private Button btnComprarCamioneta;
+
+    @FXML
+    private Button btnComprarDeportivo;
+
+    @FXML
+    private Button btnComprarPickUp;
+
+    @FXML
+    private Button btnComprarSedan;
+
+    @FXML
+    private Button btnComprarVans;
+
+    @FXML
+    private Button btnEliminarBus;
+
+    @FXML
+    private Button btnEliminarCamion;
+
+    @FXML
+    private Button btnEliminarCamioneta;
+
+    @FXML
+    private Button btnEliminarDeportivo;
 
     @FXML
     private Button btnEliminarMoto;
 
     @FXML
-    private TextField txtCilindrajeMoto;
+    private Button btnEliminarPickUp;
+
+    @FXML
+    private Button btnEliminarSedan;
+
+    @FXML
+    private Button btnLimpiarBus;
+
+    @FXML
+    private Button btnLimpiarCamion;
+
+    @FXML
+    private Button btnLimpiarCamioneta;
+
+    @FXML
+    private Button btnLimpiarCampos;
+
+    @FXML
+    private Button btnLimpiarDeportivo;
+
+    @FXML
+    private Button btnLimpiarPickUp;
+
+    @FXML
+    private Button btnLimpiarVans;
+
+    @FXML
+    private Button btnSubirImagenB;
+
+    @FXML
+    private Button btnSubirImagenC;
+
+    @FXML
+    private Button btnSubirImagenCa;
+
+    @FXML
+    private Button btnSubirImagenD;
+
+    @FXML
+    private Button btnSubirImagenM;
+
+    @FXML
+    private Button btnSubirImagenP;
+
+    @FXML
+    private Button btnSubirImagenS;
+
+    @FXML
+    private Button btnSubirImagenV;
+
+    @FXML
+    private Button btnVenderBus;
+
+    @FXML
+    private Button btnVenderCamioneta;
+
+    @FXML
+    private Button btnVenderDeportivo;
+
+    @FXML
+    private Button btnVenderSedan;
+
+    @FXML
+    private Button btnVenderVans;
+
+    @FXML
+    private Button btnvenderPickUp;
+
+    @FXML
+    private ComboBox<String> cb4x4Camioneta;
+
+    @FXML
+    private ComboBox<String> cb4x4PickUp;
+
+    @FXML
+    private ComboBox<String> cbABSSedan;
+
+    @FXML
+    private ComboBox<String> cbABScamioneta;
+
+    @FXML
+    private ComboBox<String> cbABSdeportivo;
+
+    @FXML
+    private ComboBox<String> cbAbsBus;
+
+    @FXML
+    private ComboBox<String> cbAbsCamion;
+
+    @FXML
+    private ComboBox<String> cbAbsPickUp;
+
+    @FXML
+    private ComboBox<String> cbAbsVans;
+
+    @FXML
+    private ComboBox<String> cbAireAcondicionado;
+
+    @FXML
+    private ComboBox<String> cbAireAcondicionadoBus;
+
+    @FXML
+    private ComboBox<String> cbAireAcondicionadoCamion;
+
+    @FXML
+    private ComboBox<String> cbAireAcondicionadoPickUp;
+
+    @FXML
+    private ComboBox<String> cbAireAcondicionadoSedan;
+
+    @FXML
+    private ComboBox<String> cbAireAcondicionadoVans;
+
+    @FXML
+    private ComboBox<Integer> cbBolsasAireDeportivo;
+
+    @FXML
+    private ComboBox<Integer> cbCaballosFuerza;
+
+    @FXML
+    private ComboBox<String> cbCajaCarga;
+
+    @FXML
+    private ComboBox<String> cbCajaCargaPickUp;
+
+    @FXML
+    private ComboBox<String> cbCamaraReversaBus;
+
+    @FXML
+    private ComboBox<String> cbCamaraReversaSedan;
+
+    @FXML
+    private ComboBox<String> cbCamaraReversaVans;
+
+    @FXML
+    private ComboBox<String> cbCamareReversa;
+
+    @FXML
+    private ComboBox<Integer> cbCambiosBus;
+
+    @FXML
+    private ComboBox<Integer> cbCambiosCamion;
+
+    @FXML
+    private ComboBox<Integer> cbCambiosDeportivo;
+
+    @FXML
+    private ComboBox<Integer> cbCambiosMoto;
+
+    @FXML
+    private ComboBox<Integer> cbCambiosPickUp;
+
+    @FXML
+    private ComboBox<Integer> cbCambiosSedan;
+
+    @FXML
+    private ComboBox<String> cbCapMaletero;
+
+    @FXML
+    private ComboBox<Integer> cbCapacidadCargaCamion;
+
+    @FXML
+    private ComboBox<Integer> cbCapacidadMaleteroBus;
+
+    @FXML
+    private Button cbEliminarVans;
+
+    @FXML
+    private ComboBox<String> cbEsatadoBus;
+
+    @FXML
+    private ComboBox<String> cbEstadoCamion;
+
+    @FXML
+    private ComboBox<String> cbEstadoCamioneta;
+
+    @FXML
+    private ComboBox<String> cbEstadoDeportivo;
+
+    @FXML
+    private ComboBox<String> cbEstadoMoto;
+
+    @FXML
+    private ComboBox<String> cbEstadoPickUp;
+
+    @FXML
+    private ComboBox<String> cbEstadoSedan;
+
+    @FXML
+    private ComboBox<String> cbEstadoVans;
+
+    @FXML
+    private ComboBox<String> cbFrenosAireCamion;
+
+    @FXML
+    private ComboBox<String> cbMaracaBus;
+
+    @FXML
+    private ComboBox<String> cbMarcaCamion;
+
+    @FXML
+    private ComboBox<String> cbMarcaCamioneta;
+
+    @FXML
+    private ComboBox<String> cbMarcaDeportivo;
+
+    @FXML
+    private ComboBox<String> cbMarcaMoto;
+
+    @FXML
+    private ComboBox<String> cbMarcaPickUps;
+
+    @FXML
+    private ComboBox<String> cbMarcaSedan;
+
+    @FXML
+    private ComboBox<String> cbMarcaVans;
+
+    @FXML
+    private TextField cbModeloBus;
+
+    @FXML
+    private ComboBox<String> cbModeloMoto;
+
+    @FXML
+    private ComboBox<Integer> cbNumBolsasAire;
+
+    @FXML
+    private ComboBox<Integer> cbNumBolsasAireBus;
+
+    @FXML
+    private ComboBox<Integer> cbNumBolsasAireSedan;
+
+    @FXML
+    private ComboBox<Integer> cbNumBolsasAireVans;
+
+    @FXML
+    private ComboBox<Integer> cbNumEjesBus;
+
+    @FXML
+    private ComboBox<Integer> cbNumEjesCamion;
+
+    @FXML
+    private ComboBox<Integer> cbNumPasajerosDeportivo;
+
+    @FXML
+    private ComboBox<Integer> cbNumPasajerosBus;
+
+    @FXML
+    private ComboBox<Integer> cbNumPasajerosCamioneta;
+
+    @FXML
+    private ComboBox<Integer> cbNumPasajerosPickUp;
+
+    @FXML
+    private ComboBox<Integer> cbNumPasajerosSedan;
+
+    @FXML
+    private ComboBox<Integer> cbNumPasajerosVans;
+
+    @FXML
+    private ComboBox<Integer> cbNumPuertasBus;
+
+    @FXML
+    private ComboBox<Integer> cbNumPuertasCamioneta;
+
+    @FXML
+    private ComboBox<Integer> cbNumPuertasDeportivo;
+
+    @FXML
+    private ComboBox<Integer> cbNumPuertasPickUp;
+
+    @FXML
+    private ComboBox<Integer> cbNumPuertasSedan;
+
+    @FXML
+    private ComboBox<Integer> cbNumPuertasVans;
+
+    @FXML
+    private ComboBox<Integer> cbSalidasEmergenciaBus;
+
+    @FXML
+    private ComboBox<String> cbSensorTraficoDeportivo;
+
+    @FXML
+    private ComboBox<String> cbSensoresDeportivo;
+
+    @FXML
+    private ComboBox<String> cbSensoresSedan;
+
+    @FXML
+    private ComboBox<Integer> cbTiempo100kmDeportivo;
+
+    @FXML
+    private ComboBox<String> cbTipoCamion;
+
+    @FXML
+    private ComboBox<String> cbVelCruceroSedan;
+
+    @FXML
+    private ComboBox<String> cbVelMaxBus;
+
+    @FXML
+    private ComboBox<String> cbVelMaxCamion;
+
+    @FXML
+    private ComboBox<String> cbVelMaxCamioneta;
+
+    @FXML
+    private ComboBox<String> cbVelMaxDeportivo;
+
+    @FXML
+    private ComboBox<Integer> cbVelMaxMoto;
+
+    @FXML
+    private ComboBox<String> cbVelMaxPickUp;
+
+    @FXML
+    private ComboBox<String> cbVelMaxVans;
+
+    @FXML
+    private TableColumn<?, ?> columCilindraje;
 
     @FXML
     private TableColumn<?, ?> columEstado;
 
     @FXML
-    void buscarMotoEvent(ActionEvent event) {
+    private TableColumn<?, ?> columMarca;
 
-    }
-
-    @FXML
-    void agregarMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminarMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actualizarMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void marcaMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void estadoMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void modeloMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cambiosMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void velMaxMotoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void modeloSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void capacidadaMaleteroSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void ABSsedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void AireAcondicionadoSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void camaraReversaSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void velCruceroSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sensoresSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminarSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buscarSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void agregarSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actualizarSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void estadoSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cambiosSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPasajerosSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPuertasSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numBolsasAireSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void marcaSedanEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void marcaDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void estadoDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cambiosDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void velMaxDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPuertasDeportivoEve4nt(ActionEvent event) {
-
-    }
-
-    @FXML
-    void bolsasAireDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void ABSdeporivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sensoresDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void modeloDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void sensorTraficoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void caballosFuerzaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void tiempo100kmDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void agregarDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actualizarDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buscarDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminarDeportivoEvent(ActionEvent event) {
-
-    }
-
-
-
-    @FXML
-    void limpiarCamposEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void ciliandrajeDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void marcaCamionetaEvent(ActionEvent event) {
-
-    }
-
     @FXML
-    void numBolsasAireEvent(ActionEvent event) {
+    private TableColumn<?, ?> columModelo;
 
-    }
-
-    @FXML
-    void camaraReversaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void aireAcondicionadoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void capMaleteroEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void ABScamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void velMaxCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void estadoCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void camioneta4x4Event(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cajaCartaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void agregarCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actualizarCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buscarCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminarCamionetaEvent(ActionEvent event) {
-
-    }
-
-
-
-    @FXML
-    void limpiarEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void modeloCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cilindrajeCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPasajerosDeportivoEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPuertasCamionetaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void marcaPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void estadoPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cambiosPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPasajerosPickUp(ActionEvent event) {
-
-    }
-
-    @FXML
-    void velMaxPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numPuertasPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void aireAcondicionadoPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void AbsPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void PickUp4x4Event(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cajaCargaPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void agregarPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actualizarPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buscarPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminarPickUpEvent(ActionEvent event) {
-
-    }
-
-
-    @FXML
-    void limpiarPickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cilindrajePickUpEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void modeloPickUpEvent(ActionEvent event) {
-
-    }
-
     @FXML
-    void marcaVansEvent(ActionEvent event) {
+    private TableView<?> tableBuses;
 
-    }
-
     @FXML
-    void estadoVansEvent(ActionEvent event) {
-
-    }
+    private TableView<?> tableCamiones;
 
     @FXML
-    void numPasajerosVans(ActionEvent event) {
+    private TableView<?> tableCamionetas;
 
-    }
-
     @FXML
-    void velMaxVansEvent(ActionEvent event) {
-
-    }
+    private TableView<?> tableDeportivo;
 
     @FXML
-    void numPuestasVansEvent(ActionEvent event) {
+    private TableView<Moto> tableMoto;
 
-    }
-
     @FXML
-    void capmaleteroVansEvent(ActionEvent event) {
-
-    }
+    private TableView<?> tablePickUp;
 
     @FXML
-    void aireAcondicioandoVansEvent(ActionEvent event) {
+    private TableView<?> tableSedan;
 
-    }
-
     @FXML
-    void camaraReversaVansEvent(ActionEvent event) {
-
-    }
+    private TableView<?> tableVans;
 
     @FXML
-    void numBolsaAire(ActionEvent event) {
+    private TextField txtCapacidadMaleteroSedan;
 
-    }
-
     @FXML
-    void AbsVansevent(ActionEvent event) {
-
-    }
+    private TextField txtCilindrajeBus;
 
-
     @FXML
-    void agregarVansEvent(ActionEvent event) {
+    private TextField txtCilindrajeCamion;
 
-    }
-
     @FXML
-    void actualizarVansEvent(ActionEvent event) {
-
-    }
+    private TextField txtCilindrajeCamioneta;
 
     @FXML
-    void buscarVansEvent(ActionEvent event) {
+    private TextField txtCilindrajeDeportivo;
 
-    }
-
     @FXML
-    void eliminarVansEvent(ActionEvent event) {
-
-    }
+    private TextField txtCilindrajeMoto;
 
     @FXML
-    void modeloVansEvent(ActionEvent event) {
+    private TextField txtCilindrajePickUp;
 
-    }
-
     @FXML
-    void marcaBusEvent(ActionEvent event) {
-
-    }
+    private TextField txtModeloCamion;
 
     @FXML
-    void estadoBusEvent(ActionEvent event) {
+    private TextField txtModeloCamioneta;
 
-    }
-
     @FXML
-    void cambiosBusEvent(ActionEvent event) {
-
-    }
+    private TextField txtModeloDeportivo;
 
     @FXML
-    void velMaxBusEvent(ActionEvent event) {
+    private TextField txtModeloPickUp;
 
-    }
-
     @FXML
-    void numPasajerosBusEvent(ActionEvent event) {
-
-    }
+    private TextField txtModeloSedan;
 
     @FXML
-    void numPuertasBusEvent(ActionEvent event) {
+    private TextField txtModeloVans;
 
-    }
-
     @FXML
-    void capacidadMaleteroBusEvent(ActionEvent event) {
-
-    }
+    private ImageView vistaImagenBus;
 
     @FXML
-    void aireAacondicionadoEvent(ActionEvent event) {
+    private Tab vistaImagenCamiones;
 
-    }
-
     @FXML
-    void camaraReversaBusEvent(ActionEvent event) {
-
-    }
+    private ImageView vistaImagenCamioneta;
 
     @FXML
-    void numBolsasAireBusEvent(ActionEvent event) {
+    private ImageView vistaImagenDeportivo;
 
-    }
-
     @FXML
-    void AbsBusEvent(ActionEvent event) {
-
-    }
+    private ImageView vistaImagenMoto;
 
     @FXML
-    void numEjesBusEvent(ActionEvent event) {
+    private ImageView vistaImagenPickUp;
 
-    }
-
     @FXML
-    void salidasEmergenciaBusEvent(ActionEvent event) {
+    private ImageView vistaImagenSedan;
 
-    }
-
     @FXML
-    void agragarBusEvent(ActionEvent event) {
-
-    }
+    private ImageView vistaImagenVans;
 
     @FXML
     void actualizarBusEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void buscarBusEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminarBusEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void modeloBusEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cilindrajeBusEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void marcaCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void estadoCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void cambiosCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void velMaxCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void capacidadCargaEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void aireAcondicionadoCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void frenosAireCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void AbsCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void numEjesCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void tipoCamionEvent(ActionEvent event) {
-
-    }
-
-    @FXML
-    void agregarCamionEvent(ActionEvent event) {
 
     }
 
@@ -1049,28 +591,477 @@ public class GestionarVehiculosController {
     }
 
     @FXML
+    void actualizarCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarMotoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agragarBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agregarCamionEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agregarCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agregarDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agregarMotoEvent(ActionEvent event) {
+        String marca = cbMarcaMoto.getValue();
+        String estado = cbEstadoMoto.getValue();
+        String modelo = cbModeloMoto.getValue();
+        Integer cambios = cbCambiosMoto.getValue();
+        Integer velocidadMaxima = cbVelMaxMoto.getValue();
+
+        Moto moto = new Moto(marca, false, modelo, cambios, null, null, velocidadMaxima, 0,false, 0, false, 0, 0, false, null);
+
+        tableMoto.getItems().add(moto);
+    }
+    @FXML
+    private TableColumn<Moto, String> marcaColumn;
+
+    @FXML
+    private TableColumn<Moto, String> estadoColumn;
+
+    @FXML
+    private TableColumn<Moto, String> modeloColumn;
+
+    @FXML
+    private TableColumn<Moto, Integer> cilindrajeColumn;
+
+    public void initializeMoto() {
+        // Asigna las propiedades de las columnas a los atributos de la clase Moto
+        marcaColumn.setCellValueFactory(new PropertyValueFactory<>("marca"));
+        estadoColumn.setCellValueFactory(new PropertyValueFactory<>("estado"));
+        modeloColumn.setCellValueFactory(new PropertyValueFactory<>("modelo"));
+        cilindrajeColumn.setCellValueFactory(new PropertyValueFactory<>("cilindraje"));
+
+        // Configura la tabla para que se ajuste al contenido de las columnas
+        tableMoto.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    }
+
+    @FXML
+    void agregarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agregarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void agregarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarCamionesEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void alquilarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void buscarBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
     void buscarCamionEvent(ActionEvent event) {
 
     }
 
     @FXML
+    void buscarCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void buscarDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void buscarMotoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void buscarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void buscarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void buscarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarCamionEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void comprarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void eliminarBusEvent(ActionEvent event) {
+    }
+
+    private void mostrarMensaje() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@FXML
     void eliminarCamionEvent(ActionEvent event) {
 
     }
 
-
     @FXML
-    void modeloCamionEvent(ActionEvent event) {
+    void eliminarCamionetaEvent(ActionEvent event) {
 
     }
 
     @FXML
-    void cilindrajeCamionEvent(ActionEvent event) {
+    void eliminarDeportivoEvent(ActionEvent event) {
 
+    }
+
+    @FXML
+    void eliminarMotoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void eliminarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void eliminarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void eliminarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarCamionEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarMotoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void limpiarVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void modeloSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenCamionEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenCamionetaEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenMotoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void subirImagenVansEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void venderBusEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void venderCamioneta(ActionEvent event) {
+
+    }
+
+    @FXML
+    void venderDeportivoEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void venderPickUpEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void venderSedanEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void venderVansEvent(ActionEvent event) {
+
+    }
+
+
+	@FXML
+    void initialize() {
+
+    	cbMarcaMoto.getItems().addAll("Yamaha","BMW");
+    	cbMarcaCamion.getItems().addAll("VOLVO","IVECO");
+    	cbMaracaBus.getItems().addAll("Setra","Man Truck");
+    	cbMarcaCamioneta.getItems().addAll("Renault"," Mazda", "Chevrolet");
+    	cbMarcaDeportivo.getItems().addAll("Ferrari","Lamborghini");
+    	cbMarcaPickUps.getItems().addAll("Chevrolet Cheyenne","Ford Ranger");
+    	cbMarcaSedan.getItems().addAll("Hyundai Elantra","Mazda3");
+    	cbMarcaVans.getItems().addAll("Nissan NV350 URVAN","Renault Kangoo de carga");
+
+    	cbEsatadoBus.getItems().addAll("Nuevo","Usado");
+    	cbEstadoCamion.getItems().addAll("Nuevo","Usado");
+    	cbEstadoCamioneta.getItems().addAll("Nuevo","Usado");
+    	cbEstadoDeportivo.getItems().addAll("Nuevo","Usado");
+    	cbEstadoMoto.getItems().addAll("Nuevo","Usado");
+    	cbEstadoPickUp.getItems().addAll("Nuevo","Usado");
+    	cbEstadoSedan.getItems().addAll("Nuevo","Usado");
+    	cbEstadoVans.getItems().addAll("Nuevo","Usado");
+
+    	cbCambiosBus.getItems().addAll(1,2,3,4,5,6);
+    	cbCambiosCamion.getItems().addAll(1,2,3,4,5,6,7);
+    	cbCambiosDeportivo.getItems().addAll(1,2,3,4,5);
+    	cbCambiosMoto.getItems().addAll(1,2,3,4,5);
+    	cbCambiosPickUp.getItems().addAll(1,2,3,4,5);
+    	cbCambiosSedan.getItems().addAll(1,2,3,4,5);
+
+    	cbNumPasajerosDeportivo.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosBus.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
+    	cbNumPasajerosCamioneta.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosPickUp.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosSedan.getItems().addAll(1,2,3,4,5);
+    	cbNumPasajerosVans.getItems().addAll(1,2,3,4,5);
+
+    	cbNumPuertasBus.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasCamioneta.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasDeportivo.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasPickUp.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasSedan.getItems().addAll(1,2,3,4,5);
+    	cbNumPuertasVans.getItems().addAll(1,2,3,4,5);
+
+    	cbBolsasAireDeportivo.getItems().addAll(1,2,3,4,5);
+
+    	cbAbsBus.getItems().addAll("si","no");
+    	cbAbsCamion.getItems().addAll("si","no");
+    	cbABScamioneta.getItems().addAll("si","no");
+    	cbABSdeportivo.getItems().addAll("si","no");
+    	cbAbsPickUp.getItems().addAll("si","no");
+    	cbABSSedan.getItems().addAll("si","no");
+    	cbAbsVans.getItems().addAll("si","no");
+
+    	cbSensoresDeportivo.getItems().addAll("si","no");
+    	cbSensoresSedan.getItems().addAll("si","no");
+    	cbSensorTraficoDeportivo.getItems().addAll("si","no");
+
+    	cbTiempo100kmDeportivo.getItems().addAll();
+
+    	cbCapMaletero.getItems().addAll("100 litros","200 litros","300 litros");
+
+    	cb4x4Camioneta.getItems().addAll("si","no");
+    	cb4x4PickUp.getItems().addAll("si","no");
+
+    	cbCajaCarga.getItems().addAll("si","no");
+    	cbCajaCargaPickUp.getItems().addAll("si","no");
+
+    	cbTipoCamion.getItems().addAll("Tráilers","no");
+
+    	cbNumEjesBus.getItems().addAll(1,2,3,4,5);
+    	cbNumEjesCamion.getItems().addAll(1,2,3,4,5);
+
+    	cbNumBolsasAire.getItems().addAll(1,2,3,4,5);
+    	cbNumBolsasAireBus.getItems().addAll(1,2,3,4,5);
+    	cbNumBolsasAireSedan.getItems().addAll(1,2,3,4,5);
+    	cbNumBolsasAireVans.getItems().addAll(1,2,3,4,5);
+
+    	cbAireAcondicionado.getItems().addAll("si","no");
+    	cbAireAcondicionadoBus.getItems().addAll("si","no");
+    	cbAireAcondicionadoCamion.getItems().addAll("si","no");
+    	cbAireAcondicionadoPickUp.getItems().addAll("si","no");
+    	cbAireAcondicionadoSedan.getItems().addAll("si","no");
+    	cbAireAcondicionadoVans.getItems().addAll("si","no");
+
+    	cbCamaraReversaBus.getItems().addAll("si","no");
+    	cbCamaraReversaSedan.getItems().addAll("si","no");
+    	cbCamaraReversaVans.getItems().addAll("si","no");
+
+    	cbVelCruceroSedan.getItems().addAll("si","no");
+
+    	cbVelMaxBus.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxCamion.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxCamioneta.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxDeportivo.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxMoto.getItems().addAll(80,90,100,120,120);
+    	cbVelMaxPickUp.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+    	cbVelMaxVans.getItems().addAll("30km","40km","50km","60km","70km","80km","90km","100km","110km","120km","mas de 120");
+
+    	cbModeloMoto.getItems().addAll("2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023");
     }
 
 	public void setAplicacion(Aplicacion aplicacion) {
-
+		this.aplicacion=aplicacion;
 
 	}
 
