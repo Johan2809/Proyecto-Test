@@ -1,6 +1,9 @@
 package concesionario.model;
 
 public class Camion extends Vehiculo{
+	/**
+	 * atributos
+	 */
 	private double capacidadDeCarga;
 	private boolean frenosDeAire;
 	private int nEjes;

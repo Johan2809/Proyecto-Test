@@ -1,22 +1,38 @@
 package concesionario.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class Cliente {
-
+/**
+ * atributos
+ */
 	private String nombre;
 	private String apellido;
 	private String idCliente;
 	private String usuario;
 	private String contrasenia;
 	private String correoElectronico;
+	private List<Transaccion> listaTransaccion;
+	private Empleado empleado;
 
-
+/**
+ * constructor vacio
+ */
 	public Cliente() {
 		super();
 	}
 
-
+/**
+ * constructor
+ * @param nombre
+ * @param apellido
+ * @param idCliente
+ * @param usuario
+ * @param contrasenia
+ * @param correoElectronico
+ */
 	public Cliente(String nombre, String apellido,String idCliente, String usuario, String contrasenia, String correoElectronico) {
 		super();
 		this.nombre = nombre;
@@ -28,6 +44,10 @@ public class Cliente {
 
 	}
 
+/**
+ * getters y setters
+ * @return
+ */
 
 	public String getNombre() {
 		return nombre;
@@ -92,5 +112,12 @@ public class Cliente {
 	public ArrayList<Vehiculo> getListaVehiculos() {
 		return null;
 	}
+
+
+	public void agregarVenta(Vehiculo vehiculo, double precioVenta) {
+	        // Agregar el vehículo y el precio de venta al historial de ventas del cliente
+	        getListaVehiculos().add(vehiculo);
+	        listaTransaccion.addAll(precioVenta);
+	    }
 
 }

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -17,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="711.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="concesionario.controllers.AdministradorController">
+<AnchorPane prefHeight="711.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="concesionario.controllers.AdministradorController">
    <children>
       <TabPane layoutX="2.0" layoutY="8.0" prefHeight="633.0" prefWidth="841.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -35,41 +31,44 @@
                                           <Font name="System Bold" size="14.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="21.0" layoutY="27.0" text="Nombre :" textFill="#4227c9">
-                                       <font>
-                                          <Font name="Franklin Gothic Demi" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="txtNombreEmpleado" layoutX="169.0" layoutY="30.0" prefHeight="0.0" prefWidth="197.0" />
-                                    <TextField fx:id="txtApellidoEmpleado" layoutX="177.0" layoutY="74.0" prefHeight="39.0" prefWidth="201.0" />
-                                    <Label layoutX="16.0" layoutY="77.0" text="Apellidos :" textFill="#4227c9">
-                                       <font>
-                                          <Font name="Franklin Gothic Demi" size="14.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="14.0" layoutY="122.0" prefHeight="22.0" prefWidth="134.0" text="identificacion :" textFill="#4227c9">
+                                    <Label layoutX="22.0" layoutY="34.0" prefHeight="30.0" prefWidth="90.0" text="Nombre :" textFill="#4227c9">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="txtIdEmpleado" layoutX="179.0" layoutY="114.0" prefHeight="39.0" prefWidth="197.0" />
-                                    <Button fx:id="btnAgregarEmpleado" layoutX="533.0" layoutY="49.0" mnemonicParsing="false" onAction="#agregarEmpleadoEvent" prefHeight="21.0" prefWidth="96.0" text="Agregar" textFill="WHITE">
+                                    <TextField fx:id="txtNombreEmpleado" layoutX="199.0" layoutY="37.0" prefHeight="0.0" prefWidth="197.0" />
+                                    <TextField fx:id="txtApellidoEmpleado" layoutX="197.0" layoutY="74.0" prefHeight="28.0" prefWidth="201.0" />
+                                    <Label layoutX="26.0" layoutY="77.0" text="Apellidos :" textFill="#4227c9">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="22.0" layoutY="112.0" prefHeight="22.0" prefWidth="134.0" text="identificacion :" textFill="#4227c9">
+                                       <font>
+                                          <Font name="Franklin Gothic Demi" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="txtIdEmpleado" layoutX="199.0" layoutY="109.0" prefHeight="28.0" prefWidth="197.0" />
+                                    <Button fx:id="btnAgregarEmpleado" layoutX="533.0" layoutY="71.0" mnemonicParsing="false" onAction="#agregarEmpleadoEvent" prefHeight="34.0" prefWidth="114.0" style="-fx-background-color: #4FC3F7;" text="Agregar" textFill="WHITE">
+                                       <font>
+                                          <Font name="Sitka Small" size="18.0" />
                                        </font></Button>
-                                    <Button fx:id="btnBloquearEmpleado" layoutX="533.0" layoutY="251.0" mnemonicParsing="false" onAction="#bloquearEmpleadoEvent" prefHeight="25.0" prefWidth="96.0" text="Bloquear" />
-                                    <TextField fx:id="txtUsuarioEmpleado" layoutX="188.0" layoutY="153.0" prefHeight="39.0" prefWidth="200.0" />
-                                    <Label layoutX="11.0" layoutY="161.0" prefHeight="22.0" prefWidth="91.0" text="Usuario :" textFill="#4227c9">
+                                    <Button fx:id="btnBloquearEmpleado" layoutX="525.0" layoutY="238.0" mnemonicParsing="false" onAction="#bloquearEmpleadoEvent" prefHeight="35.0" prefWidth="130.0" style="-fx-background-color: #4FC3F7;" text="Bloquear" textFill="WHITE">
+                                       <font>
+                                          <Font name="Sitka Small" size="18.0" />
+                                       </font></Button>
+                                    <TextField fx:id="txtUsuarioEmpleado" layoutX="198.0" layoutY="148.0" prefHeight="26.0" prefWidth="200.0" />
+                                    <Label layoutX="26.0" layoutY="150.0" prefHeight="22.0" prefWidth="91.0" text="Usuario :" textFill="#4227c9">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="7.0" layoutY="206.0" text="Contraseña :" textFill="#4227c9">
+                                    <Label layoutX="21.0" layoutY="187.0" text="Contraseña :" textFill="#4227c9">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="txtContraseniaEmpleado" layoutX="199.0" layoutY="198.0" prefHeight="39.0" prefWidth="217.0" />
+                                    <TextField fx:id="txtContraseniaEmpleado" layoutX="199.0" layoutY="184.0" prefHeight="29.0" prefWidth="198.0" />
                                   <AnchorPane layoutX="16.0" layoutY="310.0" minHeight="0.0" minWidth="0.0" prefHeight="208.0" prefWidth="806.0">
                                        <children>
                                           <Label layoutX="4.0" layoutY="19.0" text="Listado de Empleados" textFill="#4227c9">
@@ -91,7 +90,7 @@
                                           <Separator layoutX="4.0" layoutY="16.0" prefHeight="0.0" prefWidth="849.0" />
                                        </children>
                                     </AnchorPane>
-                                    <Label layoutX="5.0" layoutY="291.0" prefHeight="22.0" prefWidth="187.0" text="Respuesta Seguridad :" textFill="#4227c9">
+                                    <Label layoutX="8.0" layoutY="276.0" prefHeight="22.0" prefWidth="187.0" text="Respuesta Seguridad :" textFill="#4227c9">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font>
@@ -101,11 +100,17 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Label>
-                                    <TextField fx:id="txtCorreoEmpleado" layoutX="204.0" layoutY="242.0" prefHeight="39.0" prefWidth="207.0" />
-                                    <TextField fx:id="txtRespuestaSeguridadEmpleado" layoutX="215.0" layoutY="283.0" prefHeight="19.0" prefWidth="225.0" />
-                                    <Button fx:id="btnEliminarEmpleado" layoutX="540.0" layoutY="172.0" mnemonicParsing="false" onAction="#eliminarEmpleadoEvent" prefHeight="25.0" prefWidth="96.0" text="Eliminar" />
-                                    <Button fx:id="btnActualizarEmpleado" layoutX="533.0" layoutY="103.0" mnemonicParsing="false" onAction="#actualizarEmpleadoEvent" prefHeight="39.0" prefWidth="109.0" text="Actualizar" />
-                                    <Label layoutX="12.0" layoutY="250.0" prefHeight="20.0" prefWidth="109.0" text="Correo :" textFill="#4227c9">
+                                    <TextField fx:id="txtCorreoEmpleado" layoutX="199.0" layoutY="227.0" prefHeight="28.0" prefWidth="200.0" />
+                                    <TextField fx:id="txtRespuestaSeguridadEmpleado" layoutX="199.0" layoutY="275.0" prefHeight="25.0" prefWidth="204.0" />
+                                    <Button fx:id="btnEliminarEmpleado" layoutX="348.0" layoutY="518.0" mnemonicParsing="false" onAction="#eliminarEmpleadoEvent" prefHeight="42.0" prefWidth="110.0" style="-fx-background-color: #4FC3F7;" text="Eliminar" textFill="WHITE">
+                                       <font>
+                                          <Font name="Sitka Small" size="18.0" />
+                                       </font></Button>
+                                    <Button fx:id="btnActualizarEmpleado" layoutX="523.0" layoutY="153.0" mnemonicParsing="false" onAction="#actualizarEmpleadoEvent" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: #4FC3F7;" text="Actualizar" textFill="WHITE">
+                                       <font>
+                                          <Font name="Sitka Small" size="18.0" />
+                                       </font></Button>
+                                    <Label layoutX="26.0" layoutY="230.0" prefHeight="20.0" prefWidth="109.0" text="Correo :" textFill="#4227c9">
                                        <font>
                                           <Font name="Franklin Gothic Demi" size="18.0" />
                                        </font>
@@ -122,7 +127,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView layoutX="129.0" layoutY="202.0" prefHeight="280.0" prefWidth="236.0">
+                        <TableView layoutX="131.0" layoutY="205.0" prefHeight="280.0" prefWidth="288.0">
                           <columns>
                             <TableColumn fx:id="columCodigoTransaccion" prefWidth="75.0" text="Codigo " />
                             <TableColumn fx:id="columFechaTransaccion" prefWidth="75.0" text="Fecha" />

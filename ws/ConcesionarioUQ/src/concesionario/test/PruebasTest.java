@@ -1,0 +1,90 @@
+package concesionario.test;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import concesionario.exceptions.ClienteException;
+import concesionario.exceptions.EmpleadoException;
+import concesionario.exceptions.VehiculoException;
+import concesionario.model.Administrador;
+import concesionario.model.Cliente;
+import concesionario.model.Empleado;
+import concesionario.model.TipoCombustible;
+import concesionario.model.TipoTransmision;
+import concesionario.model.Vehiculo;
+
+public class PruebasTest {
+
+	    private Empleado empleado;
+	    private Vehiculo vehiculo;
+	    private Cliente cliente;
+	    private Cliente cliente0;
+
+	    @Before
+	    public void setUp() {
+	        // Inicializar el objeto empleado antes de cada prueba
+	        empleado = new Empleado("cami", "ramirz", "123", "jdoe", "password", "cam@gmail.com", "respuesta", null);
+	        cliente0 = new Cliente("John", "Doe", "johndoe", "123456", "john.doe@example.com", "1234567890");
+	        cliente = new Cliente("juan", "lopez", "camila21tysh", "846415", "juan123@gmail.com", "C001");
+
+	    }
+
+	    @Test
+	    public void registrarVehiculo() {
+
+	        Vehiculo vehiculo = new Vehiculo("Toyota", true, "Camry", 6, TipoTransmision.AUTOMATICO, TipoCombustible.GASOLINA,
+	                180, 2000, true, 4, true, 6, 5, true, "12345");
+	        empleado.registrarVehiculo(vehiculo);
+	        Assert.assertTrue(empleado.getListaVehiculos().contains(vehiculo));
+	    }
+
+
+	    @Test
+	    public void testBuscarCliente() {
+	        empleado.registrarCliente(cliente);
+	        Cliente clienteEncontrado = empleado.buscarCliente("camila21tysh");
+	        Assert.assertNotNull(clienteEncontrado);
+	        Assert.assertEquals(cliente, clienteEncontrado);
+	    }
+
+	    @Test
+	    public void testRegistrarCliente() {
+	        empleado.registrarCliente(cliente);
+	        Assert.assertTrue(empleado.getListaClientes().contains(cliente));
+	    }
+
+	    @Test
+	    public void testRegistrarEmpleado() throws EmpleadoException {
+	        // Creamos un objeto Administrador
+	        Administrador administrador = new Administrador();
+
+	        // Parámetros del empleado a registrar
+	        String nombre = "Camila";
+	        String apellido = "Ramirez";
+	        String idEmpleado = "123456";
+	        String usuario = "camila21tysh";
+	        String contrasenia = "jhfjtgdj35";
+	        String correoElectronico = "camila21tysh@gmail.com";
+	        String respuestaSeguridad = "ci?";
+
+	        // Registramos el empleado
+	        Empleado empleadoRegistrado = administrador.registrarEmpleado(nombre, apellido, idEmpleado, usuario, contrasenia, correoElectronico, respuestaSeguridad);
+
+	        // Verificamos que el empleado se haya registrado correctamente
+	        Assert.assertNotNull(empleadoRegistrado);
+	        Assert.assertEquals(nombre, empleadoRegistrado.getNombre());
+	        Assert.assertEquals(apellido, empleadoRegistrado.getApellido());
+	        Assert.assertEquals(idEmpleado, empleadoRegistrado.getIdEmpleado());
+	        Assert.assertEquals(usuario, empleadoRegistrado.getUsuario());
+	        Assert.assertEquals(contrasenia, empleadoRegistrado.getContrasenia());
+	        Assert.assertEquals(correoElectronico, empleadoRegistrado.getCorreoElectronico());
+	        Assert.assertEquals(respuestaSeguridad, empleadoRegistrado.getRespuestaSeguridad());
+
+	        // Verificamos que el empleado se encuentre en la lista de empleados del administrador
+	        List<Empleado> listaEmpleados = administrador.getListaEmpleados();
+	        Assert.assertTrue(listaEmpleados.contains(empleadoRegistrado));
+	    }
+}

@@ -1,6 +1,9 @@
 package concesionario.model;
 
 public class Bus extends Vehiculo{
+	/**
+	 * atributos
+	 */
     private int capacidadMaletero;
     private int nEjes;
     private int nSalidasEmergencia;

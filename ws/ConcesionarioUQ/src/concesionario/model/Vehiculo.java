@@ -1,6 +1,9 @@
 package concesionario.model;
 
 public class Vehiculo {
+	/**
+	 * atributos
+	 */
 	protected String marca;
 	protected boolean esNuevo;
 	protected String modelo;
@@ -16,7 +19,25 @@ public class Vehiculo {
 	protected int nPasajeros;
 	protected boolean abs;
 	protected String numeroChasis;
-
+	private Cliente clienteAsignado;
+/**constructor
+ *
+ * @param marca
+ * @param esNuevo
+ * @param modelo
+ * @param cambios
+ * @param tipoTransmision
+ * @param tipoCombustible
+ * @param velocidadMaxima
+ * @param cilindraje
+ * @param aireAcondicionado
+ * @param nPuertas
+ * @param camaraReversa
+ * @param nBolsasDeAire
+ * @param nPasajeros
+ * @param abs
+ * @param numeroChasis
+ */
 	public Vehiculo(String marca, boolean esNuevo, String modelo, int cambios, TipoTransmision tipoTransmision,
 			TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje, boolean aireAcondicionado,
 			int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros, boolean abs, String numeroChasis) {
@@ -36,7 +57,79 @@ public class Vehiculo {
 		this.abs = abs;
 		this.numeroChasis = numeroChasis;
 	}
+	public boolean revisionTecnicaAprobada() {
+		boolean aprobo = true;
+		return aprobo;
+	}
 
+	public void vender(Cliente cliente) {
+        if (clienteAsignado != null) {
+            // Verificar si el vehículo está disponible para la venta
+            if (!this.isEsNuevo()) {
+                System.out.println("El vehículo no está disponible para la venta, ya ha sido vendido anteriormente.");
+                return;
+            }
+
+            // Verificar si el vehículo ha aprobado la revisión técnica
+            if (!revisionTecnicaAprobada()) {
+                System.out.println("El vehículo no puede ser vendido, no ha aprobado la revisión técnica.");
+                return;
+            }
+
+            // Realizar las operaciones de venta
+            System.out.println("Realizando venta del vehículo " + this.getMarca() + " " + this.getModelo());
+
+            // Asignar el cliente al vehículo
+            asignarCliente(cliente);
+
+            // Calcular el precio de venta
+            double precioVenta = calcularPrecioVenta();
+
+            // Registrar la venta
+            registrarVenta(cliente, precioVenta);
+
+            // Actualizar el estado del vehículo a vendido
+            this.setEsNuevo(false);
+
+            // Mostrar mensaje de confirmación de la venta
+            System.out.println("El vehículo " + this.getMarca() + " " + this.getModelo() + " ha sido vendido a " + cliente.getNombre() + " por un precio de $" + precioVenta);
+        } else {
+            System.out.println("No se puede realizar la venta, no hay cliente asignado.");
+        }
+    }
+
+    private double calcularPrecioVenta() {
+
+        double precioCalculado = 0.0;
+
+
+        double precioBase = 10000.0;
+
+
+        double factorDescuento = 0.9;
+
+
+        precioCalculado = precioBase * factorDescuento;
+
+        return precioCalculado;
+    }
+
+    private void registrarVenta(Cliente cliente, double precioVenta) {
+
+        System.out.println("Registrando la venta del vehículo " + this.getMarca() + " " + this.getModelo() + " al cliente " + cliente.getNombre() + " por un precio de $" + precioVenta);
+
+
+        cliente.agregarVenta(this, precioVenta);
+    }
+
+    private void asignarCliente(Cliente cliente) {
+
+        this.clienteAsignado = cliente;
+    }
+/**
+ * getters y setters
+ * @return
+ */
 	public String getMarca() {
 		return marca;
 	}
@@ -169,8 +262,8 @@ public class Vehiculo {
 	}
 
 	public boolean revisionTecnicaAprobada() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean aprobo = true;
+		return aprobo;
 	}
 
 	public void vender(Cliente cliente) {

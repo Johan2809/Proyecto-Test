@@ -1,5 +1,26 @@
 package concesionario.model;
 
 public class Transaccion {
+private Double precio;
 
+
+	public Transaccion() {
+		super();
+	}
+
+
+	public Transaccion(Double precio) {
+		super();
+		this.precio = precio;
+	}
+
+
+	public Double getPrecio() {
+		return precio;
+	}
+
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
 }

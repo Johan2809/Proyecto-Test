@@ -1,6 +1,9 @@
 package concesionario.model;
 
 public class Deportivo extends Vehiculo{
+	/**
+	 * atributos
+	 */
     private int numCaballosFuerza;
     private int tiempo0a100kmh;
 //DATOS PROPIEDADES NO SE SABE QUE ES

@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Empleado {
+	/**
+	 * atributos
+	 */
     private String nombre;
     private String apellido;
     private String idEmpleado;
@@ -25,7 +28,17 @@ public class Empleado {
     }
 
 
-
+/**
+ * constructor
+ * @param nombre
+ * @param apellido
+ * @param idEmpleado
+ * @param usuario
+ * @param contrasenia
+ * @param correoElectronico
+ * @param respuestaSeguridad
+ * @param listaClientes
+ */
 	public Empleado(String nombre, String apellido, String idEmpleado, String usuario, String contrasenia,
 			String correoElectronico, String respuestaSeguridad, List<Cliente> listaClientes) {
 		super();
@@ -39,7 +52,10 @@ public class Empleado {
 		this.listaClientes = listaClientes;
 	}
 
-
+/**
+ * geters y setters
+ * @return
+ */
 	public String getNombre() {
 		return nombre;
 	}
@@ -131,14 +147,31 @@ public class Empleado {
 	public void registrarVehiculo(Vehiculo vehiculo) {
         listaVehiculos.add(vehiculo);
     }
-
+	public void registrarCliente(Cliente cliente) {
+		listaClientes.add(cliente);
+	}
+	/**
+	 * metodo que registra cliente
+	 * @param nombre
+	 * @param apellido
+	 * @param idCliente
+	 * @param usuario
+	 * @param contrasenia
+	 * @param correoElectronico
+	 * @return
+	 * @throws ClienteException
+	 */
     public Cliente registrarCliente(String nombre, String apellido,String idCliente, String usuario, String contrasenia, String correoElectronico) throws ClienteException {
         Cliente clienteAux = new Cliente(nombre,apellido,idCliente,usuario,contrasenia,correoElectronico);
         listaClientes.add(clienteAux);
         return clienteAux;
     }
 
-	// ALQUILAR VEHICULO
+	/**
+	 * metodo para ALQUILAR VEHICUL
+	 * @param vehiculo
+	 * @param cliente
+	 */
 	public void alquilarVehiculo(Vehiculo vehiculo, Cliente cliente) {
 		if (listaVehiculos.contains(vehiculo)) {
 			vehiculo.alquilar(cliente);
@@ -147,7 +180,11 @@ public class Empleado {
 		}
 	}
 
-	// VENDER VEHICULO
+	/**
+	 * metodo para vender vehiculo
+	 * @param vehiculo
+	 * @param cliente
+	 */
 	public void venderVehiculo(Vehiculo vehiculo, Cliente cliente) {
 		if (listaVehiculos.contains(vehiculo)) {
 			vehiculo.vender(cliente);
@@ -157,7 +194,11 @@ public class Empleado {
 		}
 	}
 
-	// COMPRAR VEHICULO
+	/**
+	 * metodo para comprar vehiculo
+	 * @param vehiculo
+	 * @param cliente
+	 */
 	public void comprarVehiculo(Vehiculo vehiculo, Cliente cliente) {
 		if (vehiculo.revisionTecnicaAprobada()) {
 			listaVehiculos.add(vehiculo);
@@ -166,7 +207,10 @@ public class Empleado {
 		}
 	}
 
-	// REGISTRAR TRANSACCION
+	/**
+	 * metodo para registrar transaccion
+	 * @param transaccion
+	 */
 	public void registrarTransaccion(Transaccion transaccion) {
 		listaTransacciones.add(transaccion);
 		// System.out.println("Empleado " + nombre + " realizó una " +
@@ -174,7 +218,26 @@ public class Empleado {
 		// cliente " + cliente.getNombre());
 	}
 
-	// CRUD VEHICULO
+	/**
+	 * metodo que registra vehiculo
+	 * @param marca
+	 * @param esNuevo
+	 * @param modelo
+	 * @param cambios
+	 * @param tipoTransmision
+	 * @param tipoCombustible
+	 * @param velocidadMaxima
+	 * @param cilindraje
+	 * @param aireAcondicionado
+	 * @param nPuertas
+	 * @param camaraReversa
+	 * @param nBolsasDeAire
+	 * @param nPasajeros
+	 * @param abs
+	 * @param numeroChasis
+	 * @return
+	 * @throws EmpleadoException
+	 */
 	public Vehiculo registroVehiculo(String marca, boolean esNuevo, String modelo, int cambios,
 			TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje,
 			boolean aireAcondicionado, int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros,
@@ -186,7 +249,11 @@ public class Empleado {
 		return nuevoVehiculo;
 		}
 
-
+/**
+ * metodo que obtiene el vehiculo
+ * @param numeroChasis
+ * @return
+ */
 	public Vehiculo obtenerVehiculo(String numeroChasis) {
 		Vehiculo vehiculoEncontrado = null;
 		for (Vehiculo vehiculo : listaVehiculos) {
@@ -196,7 +263,11 @@ public class Empleado {
 		}
 		return vehiculoEncontrado;
 	}
-
+/**
+ * metodo eliminar vehiculo
+ * @param numeroChasis
+ * @throws VehiculoException
+ */
 	public void eliminarVehiculo(String numeroChasis) throws VehiculoException {
 		Vehiculo vehiculoEncontrado = obtenerVehiculo(numeroChasis);
 		if (vehiculoEncontrado == null) {
@@ -204,7 +275,26 @@ public class Empleado {
 		}
 		listaVehiculos.remove(vehiculoEncontrado);
 	}
-
+/**
+ * metodo actualizar vehiculo
+ * @param marca
+ * @param esNuevo
+ * @param modelo
+ * @param cambios
+ * @param tipoTransmision
+ * @param tipoCombustible
+ * @param velocidadMaxima
+ * @param cilindraje
+ * @param aireAcondicionado
+ * @param nPuertas
+ * @param camaraReversa
+ * @param nBolsasDeAire
+ * @param nPasajeros
+ * @param abs
+ * @param numeroChasis
+ * @return
+ * @throws VehiculoException
+ */
 	public String actualizarVehiculo(String marca, boolean esNuevo, String modelo, int cambios,
 			TipoTransmision tipoTransmision, TipoCombustible tipoCombustible, int velocidadMaxima, int cilindraje,
 			boolean aireAcondicionado, int nPuertas, boolean camaraReversa, int nBolsasDeAire, int nPasajeros,
@@ -231,7 +321,17 @@ public class Empleado {
 		return "El vehiculo ha sido actualizado";
 	}
 
-	// CRUD CLIENTE
+	/**
+	 * metodo para registrar clientes
+	 * @param nombre
+	 * @param apellido
+	 * @param usuario
+	 * @param contrasenia
+	 * @param correoElectronico
+	 * @param identificacion
+	 * @return
+	 * @throws EmpleadoException
+	 */
 	public String registrarClientes(String nombre, String apellido, String usuario, String contrasenia,
 			String correoElectronico, String identificacion) throws EmpleadoException {
 
@@ -246,7 +346,11 @@ public class Empleado {
 		}
 		return mensaje;
 	}
-
+/**
+ * metodo para verificar cliente
+ * @param idCliente
+ * @return
+ */
 	private boolean verificarCliente(String idCliente) {
 		for (Cliente cliente : listaClientes) {
 			if (cliente.getIdCliente().equals(idCliente)) {
@@ -255,7 +359,11 @@ public class Empleado {
 		}
 		return false;
 	}
-
+/**
+ * metodo para eliminar cliente
+ * @param identificacion
+ * @throws ClienteException
+ */
 	public void eliminarCliente(String identificacion) throws ClienteException {
 		Cliente clienteEncontrado = buscarCliente(identificacion);
 		if (clienteEncontrado == null) {
@@ -263,7 +371,11 @@ public class Empleado {
 		}
 		listaClientes.remove(clienteEncontrado);
 	}
-
+/**
+ * metodo para buscar cliente
+ * @param idCliente
+ * @return
+ */
 	public Cliente buscarCliente(String idCliente) {
 		Cliente clienteteEncontrado = null;
 		for (Cliente cliente : listaClientes) {
@@ -273,7 +385,16 @@ public class Empleado {
 		}
 		return clienteteEncontrado;
 	}
-
+/**
+ * metodo para actualizar cliente
+ * @param nombre
+ * @param apellido
+ * @param idCliente
+ * @param usuario
+ * @param contrasenia
+ * @param correoElectronico
+ * @throws ClienteException
+ */
     public void actualizarCliente(String nombre, String apellido, String idCliente, String usuario,
             String contrasenia, String correoElectronico) throws ClienteException {
         Cliente clienteEncontrado = buscarCliente(idCliente);
@@ -286,9 +407,10 @@ public class Empleado {
     }
 
 
-	public void setBloqueado(boolean b) {
-		// TODO Auto-generated method stub
+public void setBloqueado(boolean b) {
 
-	}
+
+}
+
 
 }
